@@ -18,9 +18,14 @@
       defaultUserShell = pkgs.zsh;
     };
 
-    environment.systemPackages = with pkgs; [
-      git
-      git-crypt
-      zsh
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        git
+        git-crypt
+        zsh
+      ];
+      pathsToLink = [
+        "/share/zsh"
+      ];
+    };
   }
