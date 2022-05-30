@@ -5,6 +5,11 @@
 
       desktopManager.gnome = {
         enable = true;
+
+        favoriteAppsOverride = ''
+          [org.gnome.shell]
+          favorite-apps=[]
+        '';
       };
     };
 
