@@ -23,21 +23,30 @@
       interfaces.enp0s3.useDHCP = true;
     };
 
-    fileSystems."/" = {
-      device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
-    };
-
     fileSystems."/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
+    };
+
+    boot.initrd.luks.devices.luks.device = "/dev/disk/by-label/luks_root";
+
+    fileSystems."/" = {
+      device = "/dev/disk/by-label/root";
+      fsType = "ext4";
+    };
+
+    fileSystems."/home" = {
+      device = "/dev/disk/by-label/home";
+      fsType = "ext4";
     };
 
     swapDevices = [
       { device = "/dev/disk/by-label/swap"; }
     ];
 
+    hardware.enableRedistributableFirmware = true;
     hardware.cpu.intel.updateMicrocode = true;
+
     virtualisation.virtualbox.guest.enable = true;
 
     security.sudo.wheelNeedsPassword = false;

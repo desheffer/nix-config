@@ -24,7 +24,7 @@ docker run -it --rm nixpkgs/nix bash -c "
 Refer to the [Installation][nixos-installation] chapter of the NixOS Manual for
 detailed installation instructions. Below is a quick summary.
 
-Boot the NixOS installation environment.
+Boot the NixOS installation environment. Connect over SSH, if possible.
 
 Become root:
 
@@ -41,11 +41,30 @@ parted -s /dev/sda mklabel gpt
 parted -s /dev/sda mkpart ESP fat32 1MiB 512MiB
 parted -s /dev/sda set 1 esp on
 
-parted -s /dev/sda mkpart primary linux-swap 512MiB 8GiB
-
-parted -s /dev/sda mkpart primary 8GiB 100%
+parted -s /dev/sda mkpart primary 512MiB 100%
 
 parted -s /dev/sda print
+```
+
+Set up LUKS and LVM (replace `PASSWORD` with the desired password, replace
+`/dev/sda2` with the second partition from the previous step, and modify the
+`lvcreate` sizes as needed):
+
+```sh
+echo "PASSWORD" | cryptsetup -q --label=luks_root luksFormat /dev/sda2
+
+echo "PASSWORD" | cryptsetup luksOpen /dev/sda2 luks_root
+
+pvcreate /dev/mapper/luks_root
+pvdisplay
+
+vgcreate vg0 /dev/mapper/luks_root
+vgdisplay
+
+lvcreate -L 32GiB vg0 -n swap
+lvcreate -l +50%FREE vg0 -n root
+lvcreate -l +100%FREE vg0 -n home
+lvdisplay
 ```
 
 Format the partitions:
@@ -53,18 +72,19 @@ Format the partitions:
 ```sh
 mkfs.fat -F 32 -n boot /dev/sda1
 
-mkswap -L swap /dev/sda2
-
-mkfs.ext4 -L nixos /dev/sda3
+mkswap -L swap /dev/mapper/vg0-swap
+mkfs.ext4 -L root /dev/mapper/vg0-root
+mkfs.ext4 -L home /dev/mapper/vg0-home
 ```
 
 Mount the partitions:
 
 ```sh
-mount /dev/disk/by-label/nixos /mnt
+mount /dev/disk/by-label/root /mnt
 
-mkdir -p /mnt/boot
+mkdir -p /mnt/boot /mnt/home
 mount /dev/disk/by-label/boot /mnt/boot
+mount /dev/disk/by-label/home /mnt/home
 
 swapon /dev/disk/by-label/swap
 ```
