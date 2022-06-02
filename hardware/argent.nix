@@ -1,26 +1,32 @@
-{ ... }:
+{ config, modulesPath, ... }:
   {
+    imports = [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
+
     boot = {
-      kernelModules = [ ];
-      extraModulePackages = [ ];
+      kernelModules = [ "kvm-intel" "wl" ];
+      extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
       initrd = {
-        availableKernelModules = [ "ata_piix" "ohci_pci" "ahci" "sd_mod" "sr_mod" ];
-        kernelModules = [ ];
+        availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+        kernelModules = [ "dm-snapshot" ];
       };
 
       loader = {
         efi.canTouchEfiVariables = true;
-        systemd-boot.enable = true;
+
+        systemd-boot = {
+          enable = true;
+          consoleMode = "0";
+        };
       };
 
       plymouth.enable = true;
     };
 
     networking = {
-      hostName = "nixos-vm";
-      useDHCP = false;
-      interfaces.enp0s3.useDHCP = true;
+      hostName = "argent";
     };
 
     fileSystems."/boot" = {
@@ -46,13 +52,7 @@
 
     hardware.enableRedistributableFirmware = true;
     hardware.cpu.intel.updateMicrocode = true;
+    hardware.video.hidpi.enable = true;
 
-    virtualisation.virtualbox.guest.enable = true;
-
-    security.sudo.wheelNeedsPassword = false;
-
-    services.xserver.displayManager.autoLogin = {
-      enable = true;
-      user = "desheffer";
-    };
+    services.fstrim.enable = true;
   }

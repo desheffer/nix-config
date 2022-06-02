@@ -48,6 +48,27 @@
             })
           ];
         }
+        //
+        # Apple MacBook:
+        lib.mkNixosConfiguration {
+          hostname = "argent";
+          system = systems.x86_64-linux;
+          roles = {
+            gnome = true;
+          };
+          modules = [
+            ./hardware/argent.nix
+            (lib.mkNixosUserConfiguration {
+              username = "desheffer";
+              roles = {
+                cli = true;
+                gnome = true;
+              };
+              hashedPassword = nixpkgs.lib.fileContents ./secrets/hashedPassword;
+              extraGroups = [ "wheel" ];
+            })
+          ];
+        }
         ;
 
       # Home Manager for non-NixOS systems:
