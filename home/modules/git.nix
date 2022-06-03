@@ -1,5 +1,20 @@
 { config, lib, ... }:
-  lib.mkIf config.userRoles.git {
+
+with lib;
+
+let
+  cfg = config.homeConfig.git;
+
+in {
+  options.homeConfig.git = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable Git.";
+      default = config.homeConfig.cli.enable;
+    };
+  };
+
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
 
@@ -20,4 +35,5 @@
         github.user = "desheffer";
       };
     };
-  }
+  };
+}

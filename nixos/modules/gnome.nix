@@ -1,5 +1,20 @@
 { config, lib, ... }:
-  lib.mkIf config.hostRoles.gnome {
+
+with lib;
+
+let
+  cfg = config.nixosConfig.gnome;
+
+in {
+  options.nixosConfig.gnome = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable GNOME desktop environment.";
+      default = false;
+    };
+  };
+
+  config = mkIf cfg.enable {
     services.xserver = {
       enable = true;
 
@@ -14,4 +29,5 @@
     };
 
     services.gnome.core-utilities.enable = false;
-  }
+  };
+}

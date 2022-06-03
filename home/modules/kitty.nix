@@ -1,5 +1,20 @@
 { config, lib, pkgs, ... }:
-  lib.mkIf config.userRoles.kitty {
+
+with lib;
+
+let
+  cfg = config.homeConfig.kitty;
+
+in {
+  options.homeConfig.kitty = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable Kitty terminal emulator.";
+      default = config.homeConfig.gui.enable;
+    };
+  };
+
+  config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
 
@@ -39,4 +54,5 @@
         color15              = "#fbf1c7";
       };
     };
-  }
+  };
+}

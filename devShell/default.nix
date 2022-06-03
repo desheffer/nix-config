@@ -1,22 +1,27 @@
-inputs@{ nixpkgs, devshell, ... }:
-system:
-  let
-    pkgs = import nixpkgs {
-      inherit system;
+inputs@{ nixpkgs, flake-utils, devshell, ... }:
 
-      overlays = [ devshell.overlay ];
-    };
-  in
-    pkgs.devshell.mkShell {
+let
+  mkDevShell = (system:
+    let
+      pkgs = import nixpkgs {
+        inherit system;
+
+        overlays = [ devshell.overlay ];
+      };
+
+    in pkgs.devshell.mkShell {
       name = "nix-config";
+
       bash.extra = ''
         export NIX_CONFIG='experimental-features = nix-command flakes'
       '';
+
       packages = with pkgs; [
         git
         git-crypt
         jq
       ];
+
       # NOTE: Use ''$ to escape $ in variable names.
       commands = [
         {
@@ -96,3 +101,7 @@ system:
         }
       ];
     }
+  );
+
+in
+  flake-utils.lib.eachDefaultSystemMap mkDevShell

@@ -1,5 +1,20 @@
 { config, lib, pkgs, ... }:
-  lib.mkIf config.userRoles.gnome {
+
+with lib;
+
+let
+  cfg = config.homeConfig.gnome;
+
+in {
+  options.homeConfig.gnome = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable GNOME with most GUI applications.";
+      default = false;
+    };
+  };
+
+  config = mkIf cfg.enable {
     dconf.settings = {
       "org/gnome/desktop/datetime" = {
         automatic-timezone = true;
@@ -20,12 +35,12 @@
       };
 
       "org/gnome/desktop/peripherals/keyboard" = {
-        delay = lib.hm.gvariant.mkUint32 250;
-        repeat-interval = lib.hm.gvariant.mkUint32 30;
+        delay = hm.gvariant.mkUint32 250;
+        repeat-interval = hm.gvariant.mkUint32 30;
       };
 
       "org/gnome/desktop/privacy" = {
-        old-files-age = lib.hm.gvariant.mkUint32 7;
+        old-files-age = hm.gvariant.mkUint32 7;
         remember-recent-files = false;
         remove-old-temp-files = true;
         remove-old-trash-files = true;
@@ -36,7 +51,7 @@
       };
 
       "org/gnome/desktop/session" = {
-        idle-delay = lib.hm.gvariant.mkUint32 3600;
+        idle-delay = hm.gvariant.mkUint32 3600;
       };
 
       "org/gnome/desktop/sound" = {
@@ -51,7 +66,7 @@
 
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;
-        night-light-temperature = lib.hm.gvariant.mkUint32 4500;
+        night-light-temperature = hm.gvariant.mkUint32 4500;
       };
 
       "org/gnome/shell" = {
@@ -99,4 +114,5 @@
       gnomeExtensions.dash-to-panel
       tela-icon-theme
     ];
-  }
+  };
+}

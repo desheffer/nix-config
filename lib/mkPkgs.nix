@@ -1,21 +1,25 @@
 inputs@{ nixpkgs, nixpkgs-unstable, ... }:
+
 system:
-  let
-    pkgs = import nixpkgs {
-      inherit system config overlays;
-    };
 
-    pkgs-unstable = import nixpkgs-unstable {
-      inherit system config;
-    };
+let
+  pkgs = import nixpkgs {
+    inherit system config overlays;
+  };
 
-    config = {
-      allowUnfree = true;
-    };
+  pkgs-unstable = import nixpkgs-unstable {
+    inherit system config;
+  };
 
-    overlays = [
-      (final: prev: {
-        inherit (pkgs-unstable) neovim-unwrapped;
-      })
-    ];
-  in pkgs
+  config = {
+    allowUnfree = true;
+  };
+
+  overlays = [
+    (final: prev: {
+      inherit (pkgs-unstable) neovim-unwrapped;
+    })
+  ];
+
+in
+  pkgs

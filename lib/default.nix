@@ -1,8 +1,10 @@
-inputs@{ ... }:
-  {
-    mkDevShell = import ./mkDevShell.nix inputs;
-    mkHomeManagerConfiguration = import ./mkHomeManagerConfiguration.nix inputs;
-    mkNixosConfiguration = import ./mkNixosConfiguration.nix inputs;
-    mkNixosUserConfiguration = import ./mkNixosUserConfiguration.nix inputs;
-    mkPkgs = import ./mkPkgs.nix inputs;
-  }
+inputs@{ nixpkgs, ... }:
+
+{
+  mergeAttrs = nixpkgs.lib.foldAttrs (n: a: n // a) {};
+
+  mkHomeManagerConfiguration = import ../home/lib/mkHomeManagerConfiguration.nix inputs;
+  mkNixosConfiguration = import ../nixos/lib/mkNixosConfiguration.nix inputs;
+  mkNixosUserConfiguration = import ../home/lib/mkNixosUserConfiguration.nix inputs;
+  mkPkgs = import ./mkPkgs.nix inputs;
+}

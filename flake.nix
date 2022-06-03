@@ -6,12 +6,14 @@
 
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-21.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     devshell = {
       url = "github:numtide/devshell";
@@ -20,78 +22,14 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-unstable, flake-utils, home-manager, devshell, ... }:
-    let
-      lib = import ./lib inputs;
-
-      systems = flake-utils.lib.system;
-    in {
+  outputs = inputs@{ ... }:
+    {
       # NixOS with Home Manager:
-      nixosConfigurations =
-        # NixOS virtual machine:
-        lib.mkNixosConfiguration {
-          hostname = "nixos-vm";
-          system = systems.x86_64-linux;
-          roles = {
-            gnome = true;
-          };
-          modules = [
-            ./hardware/nixos-vm.nix
-            (lib.mkNixosUserConfiguration {
-              username = "desheffer";
-              roles = {
-                cli = true;
-                gnome = true;
-              };
-              hashedPassword = nixpkgs.lib.fileContents ./secrets/hashedPassword;
-              extraGroups = [ "wheel" "vboxsf" ];
-            })
-          ];
-        }
-        //
-        # Apple MacBook:
-        lib.mkNixosConfiguration {
-          hostname = "argent";
-          system = systems.x86_64-linux;
-          roles = {
-            gnome = true;
-          };
-          modules = [
-            ./hardware/argent.nix
-            (lib.mkNixosUserConfiguration {
-              username = "desheffer";
-              roles = {
-                cli = true;
-                gnome = true;
-              };
-              hashedPassword = nixpkgs.lib.fileContents ./secrets/hashedPassword;
-              extraGroups = [ "wheel" ];
-            })
-          ];
-        }
-        ;
+      nixosConfigurations = import ./nixos/configurations inputs;
 
       # Home Manager for non-NixOS systems:
-      homeConfigurations =
-        lib.mkHomeManagerConfiguration rec {
-          hostname = system;
-          system = systems.x86_64-linux;
-          username = "root";
-          roles = {
-            cli = true;
-          };
-        }
-        //
-        lib.mkHomeManagerConfiguration rec {
-          hostname = system;
-          system = systems.x86_64-linux;
-          username = "desheffer";
-          roles = {
-            cli = true;
-          };
-        }
-        ;
+      homeConfigurations = import ./home/configurations inputs;
 
-      devShell = flake-utils.lib.eachDefaultSystemMap (system: lib.mkDevShell system);
+      devShell = import ./devShell inputs;
     };
 }

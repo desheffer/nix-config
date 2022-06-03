@@ -1,9 +1,19 @@
-{ pkgs, ... }:
-  {
+{ config, lib, pkgs, modulesPath, ... }:
+
+with lib;
+
+{
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
+  config = {
     nix = {
       extraOptions = "experimental-features = nix-command flakes";
       package = pkgs.nixFlakes;
     };
+
+    hardware.enableRedistributableFirmware = true;
 
     time.timeZone = "US/Eastern";
 
@@ -21,8 +31,10 @@
         git-crypt
         zsh
       ];
+
       pathsToLink = [
         "/share/zsh"
       ];
     };
-  }
+  };
+}

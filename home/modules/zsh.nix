@@ -1,5 +1,20 @@
 { config, lib, ... }:
-  lib.mkIf config.userRoles.zsh {
+
+with lib;
+
+let
+  cfg = config.homeConfig.zsh;
+
+in {
+  options.homeConfig.zsh = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable Z shell (Zsh).";
+      default = config.homeConfig.cli.enable;
+    };
+  };
+
+  config = mkIf cfg.enable {
     programs.zsh = {
       enable = true;
 
@@ -93,7 +108,7 @@
       enableBashIntegration = false;
 
       settings = {
-        format = lib.concatStrings [
+        format = concatStrings [
           "$username"
           "$hostname"
           "$directory"
@@ -117,4 +132,5 @@
         git_branch.symbol = " ";
       };
     };
-  }
+  };
+}
