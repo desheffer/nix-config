@@ -30,13 +30,13 @@
       nixosConfigurations =
         # NixOS virtual machine:
         lib.mkNixosConfiguration {
-          hostname = "nixos";
+          hostname = "nixos-vm";
           system = systems.x86_64-linux;
           roles = {
             gnome = true;
           };
           modules = [
-            ./hardware/nixos.nix
+            ./hardware/nixos-vm.nix
             (lib.mkNixosUserConfiguration {
               username = "desheffer";
               roles = {
