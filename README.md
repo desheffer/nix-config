@@ -188,6 +188,16 @@ sudo -u desheffer -i bash -c "
     ~/.nix-profile/bin/zsh"
 ```
 
+### Installing with Home Manager in a Docker container to test local changes
+
+```sh
+docker run -it --rm \
+    -v "${PWD}":/etc/nix-config \
+    -w /etc/nix-config \
+    nixpkgs/nix \
+    bash -c "./devShell.sh --home-switch && ~/.nix-profile/bin/zsh"
+```
+
 ## 📚 Resources
 
 - [NixOS configuration options][nixos-options]

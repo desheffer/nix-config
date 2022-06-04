@@ -66,7 +66,7 @@ in {
         gs = "git status";
         gsp = "git show -p";
 
-        ta = "tmux attach 2>/dev/null || tmux new-session";
+        ta = "tmux attach";
         tmux = "tmux -2u";
       };
 
