@@ -72,7 +72,7 @@ in {
       "org/gnome/shell" = {
         enabled-extensions = [ "dash-to-panel@jderose9.github.com" ];
         disable-user-extensions = false;
-        favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" "spotify.desktop" "kitty.desktop" ];
+        favorite-apps = [ "org.gnome.Nautilus.desktop" "google-chrome.desktop" "spotify.desktop" "kitty.desktop" ];
       };
 
       "org/gnome/shell/extensions/dash-to-panel" = {

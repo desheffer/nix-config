@@ -6,6 +6,7 @@ with lib;
   home.stateVersion = mkForce "21.11";
 
   imports = [
+    ./chrome.nix
     ./cli.nix
     ./git.nix
     ./gnome.nix
