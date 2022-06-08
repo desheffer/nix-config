@@ -29,6 +29,9 @@ with lib;
       systemPackages = with pkgs; [
         git
         git-crypt
+        htop
+        killall
+        wget
         zsh
       ];
 

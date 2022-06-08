@@ -7,7 +7,6 @@ with lib;
 
   imports = [
     ./boot.nix
-    ./gdm.nix
     ./general.nix
     ./gnome.nix
     ./fileSystems.nix

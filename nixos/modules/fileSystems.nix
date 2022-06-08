@@ -12,17 +12,17 @@ with lib;
     };
 
     fileSystems."/" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/mapper/vg0-root";
       fsType = "ext4";
     };
 
     fileSystems."/home" = {
-      device = "/dev/disk/by-label/home";
+      device = "/dev/mapper/vg0-home";
       fsType = "ext4";
     };
 
     swapDevices = [
-      { device = "/dev/disk/by-label/swap"; }
+      { device = "/dev/mapper/vg0-swap"; }
     ];
   };
 }
