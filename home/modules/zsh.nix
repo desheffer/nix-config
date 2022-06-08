@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 
@@ -132,5 +132,9 @@ in {
         git_branch.symbol = " ";
       };
     };
+
+    home.packages = with pkgs; [
+      ripgrep
+    ];
   };
 }
