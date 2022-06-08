@@ -13,6 +13,7 @@ with lib;
     ./gui.nix
     ./kitty.nix
     ./neovim.nix
+    ./spotify.nix
     ./tmux.nix
     ./zsh.nix
   ];
