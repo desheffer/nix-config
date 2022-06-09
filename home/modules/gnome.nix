@@ -69,6 +69,10 @@ in {
         night-light-temperature = hm.gvariant.mkUint32 4500;
       };
 
+      "org/gnome/settings-daemon/plugins/power" = {
+        sleep-inactive-ac-type = "nothing";
+      };
+
       "org/gnome/shell" = {
         enabled-extensions = [ "dash-to-panel@jderose9.github.com" ];
         disable-user-extensions = false;
