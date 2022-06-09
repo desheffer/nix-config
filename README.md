@@ -38,7 +38,7 @@ Create the partition schema (run `lsblk` to list block devices and replace
 ```sh
 parted -s /dev/sda mklabel gpt
 
-parted -s /dev/sda mkpart ESP fat32 1MiB 512MiB
+parted -s /dev/sda mkpart ESP fat32 0% 512MiB
 parted -s /dev/sda set 1 esp on
 
 parted -s /dev/sda mkpart primary 512MiB 100%
@@ -46,47 +46,65 @@ parted -s /dev/sda mkpart primary 512MiB 100%
 parted -s /dev/sda print
 ```
 
-Set up LUKS and LVM (replace `PASSWORD` with the desired password, replace
-`/dev/sda2` with the second partition from the previous step, and modify the
-`lvcreate` sizes as needed):
+Format the boot partition:
 
 ```sh
-echo "PASSWORD" | cryptsetup -q --label=luks_root luksFormat /dev/sda2
-
-echo "PASSWORD" | cryptsetup luksOpen /dev/sda2 luks_root
-
-pvcreate /dev/mapper/luks_root
-pvdisplay
-
-vgcreate vg0 /dev/mapper/luks_root
-vgdisplay
-
-lvcreate -L 32GiB vg0 -n swap
-lvcreate -l +50%FREE vg0 -n root
-lvcreate -l +100%FREE vg0 -n home
-lvdisplay
+mkfs.fat -F 32 -n BOOT /dev/sda1
 ```
 
-Format the partitions:
+Format the primary partition (set `PASSWORD` to the desired password):
 
 ```sh
-mkfs.fat -F 32 -n boot /dev/sda1
+PASSWORD="password"
 
-mkswap -L swap /dev/mapper/vg0-swap
-mkfs.ext4 -L root /dev/mapper/vg0-root
-mkfs.ext4 -L home /dev/mapper/vg0-home
+echo "${PASSWORD}" | cryptsetup -q --label=luks_primary luksFormat /dev/sda2
+echo "${PASSWORD}" | cryptsetup luksOpen /dev/sda2 primary
+
+mkfs.btrfs -L primary /dev/mapper/primary
 ```
 
-Mount the partitions:
+Create subvolumes in the primary partition:
 
 ```sh
-mount /dev/disk/by-label/root /mnt
+mount -t btrfs /dev/mapper/primary /mnt
+btrfs subvolume create /mnt/@root
+btrfs subvolume create /mnt/@home
+btrfs subvolume create /mnt/@nix
+btrfs subvolume create /mnt/@swap
+umount /mnt
+```
 
-mkdir -p /mnt/boot /mnt/home
-mount /dev/disk/by-label/boot /mnt/boot
-mount /dev/disk/by-label/home /mnt/home
+Mount the partitions and subvolumes:
 
-swapon /dev/disk/by-label/swap
+```sh
+mount -t btrfs -o subvol=@root,compress=zstd /dev/mapper/primary /mnt
+
+mkdir -p /mnt/home
+mount -t btrfs -o subvol=@home,compress=zstd /dev/mapper/primary /mnt/home
+
+mkdir -p /mnt/nix
+mount -t btrfs -o subvol=@nix,compress=zstd,noatime /dev/mapper/primary /mnt/nix
+
+mkdir -p /mnt/swap
+mount -t btrfs -o subvol=@swap,noatime /dev/mapper/primary /mnt/swap
+
+mkdir -p /mnt/boot
+mount /dev/disk/by-label/BOOT /mnt/boot
+```
+
+Create a swapfile (set `SIZE` to the desired size in MB):
+
+```sh
+SIZE=$(( 16 * 1024 ))
+
+truncate -s 0 /mnt/swap/swapfile
+chattr +C /mnt/swap/swapfile
+btrfs property set /mnt/swap/swapfile compression none
+dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=${SIZE}
+chmod 0600 /mnt/swap/swapfile
+mkswap /mnt/swap/swapfile
+
+swapon /mnt/swap/swapfile
 ```
 
 Clone this repository:
@@ -95,6 +113,7 @@ Clone this repository:
 mkdir -p /mnt/etc
 cd /mnt/etc
 
+nix-env -iA nixos.git
 git clone https://github.com/desheffer/nix-config
 cd nix-config
 ```
@@ -117,8 +136,6 @@ Run the installation (`HOSTNAME` must be specified in `nixosConfigurations`):
 ```sh
 @install HOSTNAME
 ```
-
-Set a root password when prompted.
 
 Reboot into the new system:
 

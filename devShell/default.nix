@@ -88,7 +88,7 @@ let
               exit 1
             fi
 
-            nixos-install --flake .#"''${1}" --impure
+            nixos-install --flake .#"''${1}" --impure --no-root-password
           '';
         }
         {

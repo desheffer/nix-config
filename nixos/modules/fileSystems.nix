@@ -4,25 +4,43 @@ with lib;
 
 {
   config = {
-    boot.initrd.luks.devices.luks.device = "/dev/disk/by-label/luks_root";
+    boot.initrd.luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
 
-    fileSystems."/boot" = {
-      device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
-    };
+    fileSystems = {
+      "/" = {
+        device = "/dev/mapper/primary";
+        fsType = "btrfs";
+        options = [ "subvol=@root" "compress=zstd" ];
+      };
 
-    fileSystems."/" = {
-      device = "/dev/mapper/vg0-root";
-      fsType = "ext4";
-    };
+      "/home" = {
+        device = "/dev/mapper/primary";
+        fsType = "btrfs";
+        options = [ "subvol=@home" "compress=zstd" ];
+      };
 
-    fileSystems."/home" = {
-      device = "/dev/mapper/vg0-home";
-      fsType = "ext4";
+      "/nix" = {
+        device = "/dev/mapper/primary";
+        fsType = "btrfs";
+        options = [ "subvol=@nix" "compress=zstd" "noatime" ];
+      };
+
+      "/swap" = {
+        device = "/dev/mapper/primary";
+        fsType = "btrfs";
+        options = [ "subvol=@swap" "noatime" ];
+      };
+
+      "/boot" = {
+        device = "/dev/disk/by-label/BOOT";
+        fsType = "vfat";
+      };
     };
 
     swapDevices = [
-      { device = "/dev/mapper/vg0-swap"; }
+      {
+        device = "/swap/swapfile";
+      }
     ];
   };
 }
