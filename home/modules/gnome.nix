@@ -16,6 +16,10 @@ in {
 
   config = mkIf cfg.enable {
     dconf.settings = {
+      "ca/desrt/dconf-editor" = {
+        show-warning = false;
+      };
+
       "org/gnome/desktop/datetime" = {
         automatic-timezone = true;
       };
