@@ -43,6 +43,11 @@ in {
         repeat-interval = hm.gvariant.mkUint32 30;
       };
 
+      "org/gnome/desktop/peripherals/touchpad" = {
+        disable-while-typing = false;
+        speed = 0.5;
+      };
+
       "org/gnome/desktop/privacy" = {
         old-files-age = hm.gvariant.mkUint32 7;
         remember-recent-files = false;
