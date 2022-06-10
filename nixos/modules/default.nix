@@ -7,8 +7,10 @@ with lib;
 
   imports = [
     ./boot.nix
+    ./fileSystems.nix
     ./general.nix
     ./gnome.nix
-    ./fileSystems.nix
+    ./gui.nix
+    ./steam.nix
   ];
 }
