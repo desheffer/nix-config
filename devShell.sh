@@ -5,7 +5,7 @@
 cd "$(dirname "${0}")"
 
 export NIX_CONFIG='experimental-features = nix-command flakes'
-export NIX_PATH='nixpkgs=channel:nixos-21.11'
+export NIX_PATH='nixpkgs=channel:nixos-22.05'
 
 echo "Creating environment..."
 
