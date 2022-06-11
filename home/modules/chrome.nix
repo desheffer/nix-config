@@ -19,6 +19,7 @@ in {
       enable = true;
       package = pkgs.google-chrome.override {
         commandLineArgs = [
+          "--disable-features=HardwareMediaKeyHandling"
           "--enable-features=WebUIDarkMode"
           "--force-dark-mode"
         ];
