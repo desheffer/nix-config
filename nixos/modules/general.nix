@@ -24,20 +24,5 @@ with lib;
       mutableUsers = false;
       defaultUserShell = pkgs.zsh;
     };
-
-    environment = {
-      systemPackages = with pkgs; [
-        git
-        git-crypt
-        htop
-        killall
-        wget
-        zsh
-      ];
-
-      pathsToLink = [
-        "/share/zsh"
-      ];
-    };
   };
 }

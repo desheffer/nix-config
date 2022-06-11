@@ -112,10 +112,6 @@ in {
       enable = true;
     };
 
-    programs.fzf = {
-      enable = true;
-    };
-
     programs.starship = {
       enable = true;
 
@@ -146,9 +142,5 @@ in {
         git_branch.symbol = " ";
       };
     };
-
-    home.packages = with pkgs; [
-      ripgrep
-    ];
   };
 }

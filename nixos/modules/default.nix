@@ -7,6 +7,7 @@ with lib;
 
   imports = [
     ./boot.nix
+    ./cli.nix
     ./docker.nix
     ./fileSystems.nix
     ./general.nix
