@@ -8,6 +8,7 @@ in lib.mkNixosConfiguration {
   system = "x86_64-linux";
 
   nixosConfig = {
+    docker.enable = true;
     gnome.enable = true;
   };
 
@@ -35,7 +36,7 @@ in lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       hashedPassword = nixpkgs.lib.fileContents ../../secrets/hashedPassword;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "docker" "wheel" ];
 
       homeConfig = {
         cli.enable = true;

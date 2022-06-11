@@ -37,6 +37,10 @@ in {
 
         df = "df -hT";
 
+        dkr-sh = "docker run -it --rm --entrypoint sh";
+        dkr-sh-v = "docker run -it --rm --entrypoint sh -v \"\${PWD}\":/pwd";
+        dkr-stop = "[ ! -z \"$(docker ps -q)\" ] && docker stop $(docker ps -q)";
+
         d = "cd \"$(git rev-parse --show-cdup)\"";
         ga = "git add";
         gap = "git add -p";

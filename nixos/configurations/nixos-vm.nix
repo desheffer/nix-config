@@ -41,7 +41,7 @@ in lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       hashedPassword = nixpkgs.lib.fileContents ../../secrets/hashedPassword;
-      extraGroups = [ "wheel" "vboxsf" ];
+      extraGroups = [ "vboxsf" "wheel" ];
 
       homeConfig = {
         cli.enable = true;
