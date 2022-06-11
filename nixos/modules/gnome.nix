@@ -12,13 +12,21 @@ in {
       description = "Whether to enable GNOME desktop environment.";
       default = false;
     };
+    wayland = mkOption {
+      type = types.bool;
+      description = "Whether to enable Wayland.";
+      default = false;
+    };
   };
 
   config = mkIf cfg.enable {
     services.xserver = {
       enable = true;
 
-      displayManager.gdm.enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = cfg.wayland;
+      };
 
       desktopManager.gnome = {
         enable = true;
