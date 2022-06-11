@@ -33,11 +33,11 @@ in {
       shellAliases = {
         cat = "bat --style=plain";
 
-        la = "exa -ahlF --git --group-directories-first";
-        ll = "exa -hlF --git --group-directories-first";
-        ls = "exa -F --group-directories-first";
-        tree = "exa -T --group-directories-first";
+        "chown." = "sudo chown -R \"\${USER}\": .";
 
+        df = "df -hT";
+
+        d = "cd \"$(git rev-parse --show-cdup)\"";
         ga = "git add";
         gap = "git add -p";
         gb = "git branch";
@@ -49,6 +49,7 @@ in {
         gcop = "git checkout -p";
         gd = "git diff";
         gdc = "git diff --cached";
+        gf = "git fetch";
         gl = "git log";
         gl1 = "git log --oneline";
         glp = "git log -p";
@@ -63,8 +64,17 @@ in {
         gr = "git rebase";
         gri = "git rebase -i";
         grs = "git restore --staged";
+        gRo = "git reset --hard origin/\"$(git branch --show-current)\"";
         gs = "git status";
         gsp = "git show -p";
+        gS = "git add -A && git commit -m SAVE";
+
+        gh-https-to-ssh = "git remote set-url origin \"$(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')\"";
+
+        la = "exa -ahlF --git --group-directories-first";
+        ll = "exa -hlF --git --group-directories-first";
+        ls = "exa -F --group-directories-first";
+        tree = "exa -T --group-directories-first";
 
         ta = "tmux attach";
         tmux = "tmux -2u";
