@@ -20,9 +20,6 @@ with lib;
     i18n.defaultLocale = "en_US.UTF-8";
     console.keyMap = "us";
 
-    users = {
-      mutableUsers = false;
-      defaultUserShell = pkgs.zsh;
-    };
+    users.mutableUsers = false;
   };
 }
