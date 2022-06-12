@@ -10,6 +10,7 @@ in lib.mkNixosConfiguration {
   nixosConfig = {
     docker.enable = true;
     gnome.enable = true;
+    hidpi.enable = true;
   };
 
   extraModules = [
@@ -28,8 +29,6 @@ in lib.mkNixosConfiguration {
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     {
-      hardware.video.hidpi.enable = true;
-
       services.mbpfan.enable = true;
     }
 
@@ -41,6 +40,7 @@ in lib.mkNixosConfiguration {
       homeConfig = {
         cli.enable = true;
         gnome.enable = true;
+        hidpi.enable = true;
       };
     })
   ];

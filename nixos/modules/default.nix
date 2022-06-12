@@ -13,6 +13,7 @@ with lib;
     ./general.nix
     ./gnome.nix
     ./gui.nix
+    ./hidpi.nix
     ./steam.nix
   ];
 }

@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       (spotify.override {
-        deviceScaleFactor = 2;
+        deviceScaleFactor = if config.homeConfig.hidpi.enable then 2 else null;
       })
     ];
   };

@@ -11,6 +11,7 @@ with lib;
     ./git.nix
     ./gnome.nix
     ./gui.nix
+    ./hidpi.nix
     ./kitty.nix
     ./neovim.nix
     ./slack.nix

@@ -21,7 +21,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       (steam.override {
-        extraProfile = ''
+        extraProfile = optionalString config.nixosConfig.hidpi.enable ''
           export GDK_SCALE=2
         '';
       })
