@@ -7,9 +7,7 @@ in lib.mkNixosConfiguration {
   hostname = "nixos-vm";
   system = "x86_64-linux";
 
-  nixosConfig = {
-    gnome.enable = true;
-  };
+  nixosConfig = { };
 
   extraModules = [
     {
@@ -29,23 +27,13 @@ in lib.mkNixosConfiguration {
       virtualisation.virtualbox.guest.enable = true;
     }
 
-    {
-      security.sudo.wheelNeedsPassword = false;
-
-      services.xserver.displayManager.autoLogin = {
-        enable = true;
-        user = "desheffer";
-      };
-    }
-
-    (lib.mkNixosUserConfiguration {
+    ({ config, ... }: lib.mkNixosUserConfiguration {
       username = "desheffer";
-      hashedPassword = nixpkgs.lib.fileContents ../../secrets/hashedPassword;
+      passwordFile = config.age.secrets.deshefferPassword.path;
       extraGroups = [ "vboxsf" "wheel" ];
 
       homeConfig = {
         cli.enable = true;
-        gnome.enable = true;
       };
     })
   ];

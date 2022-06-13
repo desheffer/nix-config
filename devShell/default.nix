@@ -18,20 +18,11 @@ let
 
       packages = with pkgs; [
         git
-        git-crypt
         jq
       ];
 
       # NOTE: Use ''$ to escape $ in variable names.
       commands = [
-        {
-          category = "git";
-          name = "@unlock";
-          help = "unlocks the git-crypt";
-          command = ''
-            git crypt unlock "''${1:-''${HOME}/.git-crypt-key}"
-          '';
-        }
         {
           category = "home-manager";
           name = "@home-switch";
@@ -76,19 +67,6 @@ let
           help = "dry-builds a new system configuration";
           command = ''
             nixos-rebuild dry-build --flake .#
-          '';
-        }
-        {
-          category = "nixos";
-          name = "@install";
-          help = "installs a new system";
-          command = ''
-            if [ ''${#} -lt 1 ]; then
-              echo "Usage: .install HOSTNAME" > /dev/stderr
-              exit 1
-            fi
-
-            nixos-install --flake .#"''${1}" --impure --no-root-password
           '';
         }
         {

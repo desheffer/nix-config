@@ -1,5 +1,7 @@
 # Installing with NixOS
 
+## Installing NixOS
+
 Refer to the [Installation][nixos-installation] chapter of the NixOS Manual for
 detailed installation instructions. Below is a quick summary.
 
@@ -86,16 +88,63 @@ mkswap /mnt/swap/swapfile
 swapon /mnt/swap/swapfile
 ```
 
+Generate a basic configuration file:
+
+```sh
+nixos-generate-config --root /mnt
+```
+
+Modify the `/mnt/etc/nixos/configuration.nix` file that was generated:
+- Uncomment `networking.hostName = "nixos";` and set the desired hostname.
+- Uncomment `services.openssh.enable = true;`.
+- Add `services.openssh.permitRootLogin = "yes";`.
+- Other values should not matter since this configuration is temporary.
+
+Perform a basic install:
+
+```sh
+nixos-install
+```
+
+Enter a root password when prompted.
+
+Reboot:
+
+```sh
+reboot
+```
+
+## Installing nix-config
+
+Find the SSH key that was generated:
+
+```sh
+cat /etc/ssh/ssh_host_ed25519_key.pub
+```
+
+On another, already authenticated machine:
+- Create a new Git branch.
+- In the `nixos/configurations` directory, create a configuration for the new
+  machine.
+- Open the `secrets` directory, add the public key from the previous step to
+  `secrets.nix`, and rekey secrets by running `agenix --rekey`.
+- Commit and push.
+- Return to the new machine.
+
+Open a Nix shell with Git:
+
+```sh
+nix-shell -p git
+```
+
 Clone this repository:
 
 ```sh
-mkdir -p /mnt/etc
-cd /mnt/etc
-
-nix-env -iA nixos.git
-git clone https://github.com/desheffer/nix-config
-cd nix-config
+git clone https://github.com/desheffer/nix-config /etc/nix-config
+cd /etc/nix-config
 ```
+
+Checkout the Git branch from above.
 
 Open a development shell:
 
@@ -103,26 +152,27 @@ Open a development shell:
 ./devShell.sh
 ```
 
-Unlock the git-crypt (copy `~/.git-crypt-key` from an external source, if you
-are me):
+Run the installation:
 
 ```sh
-@unlock
+@boot
 ```
 
-Run the installation (`HOSTNAME` must be specified in `nixosConfigurations`):
-
-```sh
-@install HOSTNAME
-```
-
-Reboot into the new system:
+Reboot:
 
 ```sh
 reboot
 ```
 
-Finally, it may be helpful to change ownership of the configuration directory:
+## Cleaning up
+
+Clean up the temporary configuration files:
+
+```sh
+rm -f /etc/nixos/*
+```
+
+Change ownership of the new configuration directory (as a non-root user):
 
 ```sh
 sudo chown -R ${USER}: /etc/nix-config

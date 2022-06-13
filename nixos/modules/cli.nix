@@ -17,7 +17,9 @@ in {
   config = mkIf cfg.enable {
     environment = {
       systemPackages = with pkgs; [
+        agenix
         dnsutils
+        git
         htop
         killall
         python

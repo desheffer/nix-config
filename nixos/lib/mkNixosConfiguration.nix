@@ -1,6 +1,6 @@
-inputs@{ nixpkgs, home-manager, ... }:
+inputs@{ nixpkgs, home-manager, agenix, ... }:
 
-{ hostname, system, nixosConfig, extraModules ? [], ... }:
+{ hostname, system, nixosConfig, extraModules ? [ ], ... }:
 
 let
   lib = import ../../lib inputs;
@@ -21,6 +21,8 @@ in {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
+
+      agenix.nixosModule
 
       {
         networking = {

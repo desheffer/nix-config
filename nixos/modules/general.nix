@@ -21,5 +21,12 @@ with lib;
     console.keyMap = "us";
 
     users.mutableUsers = false;
+
+    services.openssh = {
+      enable = true;
+      kbdInteractiveAuthentication = false;
+      passwordAuthentication = false;
+      permitRootLogin = "no";
+    };
   };
 }

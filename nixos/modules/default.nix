@@ -14,6 +14,7 @@ with lib;
     ./gnome.nix
     ./gui.nix
     ./hidpi.nix
+    ./secrets.nix
     ./steam.nix
   ];
 }

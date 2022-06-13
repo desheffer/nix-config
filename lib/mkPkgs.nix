@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, nixpkgs-unstable, ... }:
+inputs@{ nixpkgs, nixpkgs-unstable, agenix, ... }:
 
 system:
 
@@ -18,6 +18,8 @@ let
   overlays = [
     (final: prev: {
       inherit (pkgs-unstable) neovim-unwrapped;
+
+      agenix = agenix.defaultPackage.${system};
     })
   ];
 

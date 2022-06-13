@@ -1,13 +1,13 @@
 inputs@{ ... }:
 
-{ username, homeConfig, hashedPassword, extraGroups ? [ ], ... }:
+{ username, passwordFile, homeConfig, extraGroups ? [ ], ... }:
 
 {
   imports = [
     ({ pkgs, ... }: {
       users.users.${username} = {
-        # NOTE: A hashed password can be generated using `mkpasswd -m sha-512`.
-        inherit hashedPassword extraGroups;
+        # NOTE: Hashed passwords can be generated using `mkpasswd -m sha-512`.
+        inherit passwordFile extraGroups;
 
         isNormalUser = true;
         shell = pkgs.zsh;
