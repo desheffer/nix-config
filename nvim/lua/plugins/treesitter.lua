@@ -1,0 +1,35 @@
+require("nvim-treesitter.configs").setup({
+    ensure_installed = {
+        "bash",
+        "c",
+        "c_sharp",
+        "comment",
+        "css",
+        "dockerfile",
+        "go",
+        "gomod",
+        "html",
+        "http",
+        "java",
+        "javascript",
+        "json",
+        "lua",
+        "make",
+        "markdown",
+        "php",
+        "python",
+        "regex",
+        "yaml",
+    },
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            node_incremental = ".",
+            node_decremental = ",",
+        },
+    },
+})

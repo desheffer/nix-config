@@ -11,9 +11,9 @@ demonstration purposes since it makes no changes to the host system.
 To start a container and activate the home configuration:
 
 ```sh
-docker run -it --rm nixpkgs/nix bash -c "
-    git clone https://github.com/desheffer/nix-config.git ~/nix-config &&
-    ~/nix-config/devShell.sh --home-switch &&
+docker run -it --rm -e TERM=xterm-256color nixpkgs/nix bash -c "
+    git clone https://github.com/desheffer/nix-config.git /etc/nix-config &&
+    /etc/nix-config/devShell.sh --home-switch &&
     ~/.nix-profile/bin/zsh"
 ```
 

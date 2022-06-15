@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 
@@ -20,6 +20,25 @@ in {
 
       viAlias = true;
       vimAlias = true;
+
+      extraConfig = lib.fileContents ../../nvim/init.vim;
+
+      extraPackages = with pkgs; [
+        dotnet-runtime
+        gcc
+        go
+        nodejs nodePackages.npm
+        openjdk16-bootstrap
+        php81 php81Packages.composer
+        unzip
+      ];
+    };
+
+    xdg.configFile = {
+      "nvim/lua" = {
+        source = config.lib.file.mkOutOfStoreSymlink "/etc/nix-config/nvim/lua";
+        recursive = true;
+      };
     };
   };
 }

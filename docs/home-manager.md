@@ -48,8 +48,8 @@ echo "desheffer ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/99-desheffer
 sudo -u desheffer -i bash -c "
     sh <(curl -L https://nixos.org/nix/install) &&
     . ~/.nix-profile/etc/profile.d/nix.sh &&
-    git clone https://github.com/desheffer/nix-config ~/nix-config &&
-    ~/nix-config/devShell.sh --home-switch &&
+    git clone https://github.com/desheffer/nix-config /etc/nix-config &&
+    /etc/nix-config/devShell.sh --home-switch &&
     ~/.nix-profile/bin/zsh"
 ```
 
@@ -57,10 +57,10 @@ sudo -u desheffer -i bash -c "
 
 ```sh
 docker run -it --rm \
+    -e TERM=xterm-256color \
     -v "${PWD}":/etc/nix-config \
-    -w /etc/nix-config \
     nixpkgs/nix \
-    bash -c "./devShell.sh --home-switch && ~/.nix-profile/bin/zsh"
+    bash -c "/etc/nix-config/devShell.sh --home-switch && ~/.nix-profile/bin/zsh"
 ```
 
 [nix-download]: https://nixos.org/download.html
