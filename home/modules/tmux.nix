@@ -24,39 +24,44 @@ in {
       historyLimit = 50000;
       newSession = true;
       prefix = "M-o";
-      reverseSplit = true;
       shell = "${pkgs.zsh}/bin/zsh";
       terminal = "\${TERM}";
 
       extraConfig = ''
         # Set window titles.
-        set -g set-titles on
-        set -g set-titles-string "#H / #S / #W"
+        set-option -g set-titles on
+        set-option -g set-titles-string "#H / #S / #W"
 
         # Fix Home and End keys.
         bind-key -n Home send Escape '[H'
         bind-key -n End  send Escape '[F'
 
         # Allow true colors.
-        set -ga terminal-overrides ',*256col*:Tc'
+        set-option -ga terminal-overrides ',*256col*:Tc'
 
         # Allow undercurls.
-        set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
-        set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
+        set-option -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+        set-option -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 
         # Split panes using more intuitive keys.
-        bind '|' split-window -h -c "#{pane_current_path}"
-        bind '-' split-window -v -c "#{pane_current_path}"
+        bind-key '|' split-window -h -c "#{pane_current_path}"
+        bind-key '-' split-window -v -c "#{pane_current_path}"
 
         # Add window navigation options.
-        bind -n M-Home previous-window
-        bind -n M-End  next-window
+        bind-key -n M-Home previous-window
+        bind-key -n M-End  next-window
 
         # Renumber when a window is closed.
-        set -g renumber-windows on
+        set-option -g renumber-windows on
 
-        # Bind key to reload configuration.
-        bind r source-file ~/.config/tmux/tmux.conf \; display-message "Configuration reloaded"
+        # Smart pane switching with awareness of Vim splits.
+        # See: https://github.com/christoomey/vim-tmux-navigator
+        IS_VIM="ps -o state= -o comm= -t '#{pane_tty}' \
+            | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+        bind-key -n M-Left  if-shell "''${IS_VIM}" "send-keys C-w h" "select-pane -L"
+        bind-key -n M-Down  if-shell "''${IS_VIM}" "send-keys C-w j" "select-pane -D"
+        bind-key -n M-Up    if-shell "''${IS_VIM}" "send-keys C-w k" "select-pane -U"
+        bind-key -n M-Right if-shell "''${IS_VIM}" "send-keys C-w l" "select-pane -R"
 
         # Set Gruvbox Dark colors.
         TMUX_THEME_GRAY1="#a89984"
