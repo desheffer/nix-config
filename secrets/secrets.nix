@@ -6,5 +6,4 @@ let
   nixos-vm = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBRgH5nki61gwc/TK1XOs8lbCORU03P172C7tcXCBBOz";
   systems = [ argent nixos-vm ];
 in {
-  "deshefferPassword.age".publicKeys = users ++ systems;
 }

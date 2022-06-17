@@ -32,9 +32,9 @@ in lib.mkNixosConfiguration {
       services.mbpfan.enable = true;
     }
 
-    ({ config, ... }: lib.mkNixosUserConfiguration {
+    (lib.mkNixosUserConfiguration {
       username = "desheffer";
-      passwordFile = config.age.secrets.deshefferPassword.path;
+      initialPassword = "nix";
       extraGroups = [ "docker" "wheel" ];
 
       homeConfig = {

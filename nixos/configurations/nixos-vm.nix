@@ -27,9 +27,9 @@ in lib.mkNixosConfiguration {
       virtualisation.virtualbox.guest.enable = true;
     }
 
-    ({ config, ... }: lib.mkNixosUserConfiguration {
+    (lib.mkNixosUserConfiguration {
       username = "desheffer";
-      passwordFile = config.age.secrets.deshefferPassword.path;
+      initialPassword = "nix";
       extraGroups = [ "vboxsf" "wheel" ];
 
       homeConfig = {
