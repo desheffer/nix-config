@@ -23,9 +23,13 @@ in {
     services.xserver = {
       enable = true;
 
-      displayManager.gdm = {
-        enable = true;
-        wayland = cfg.wayland;
+      displayManager = {
+        defaultSession = if cfg.wayland then "gnome" else "gnome-xorg";
+
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
       };
 
       desktopManager.gnome = {
