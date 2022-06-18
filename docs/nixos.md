@@ -1,7 +1,5 @@
 # Installing with NixOS
 
-## Installing NixOS
-
 Refer to the [Installation][nixos-installation] chapter of the NixOS Manual for
 detailed installation instructions. Below is a quick summary.
 
@@ -88,38 +86,13 @@ mkswap /mnt/swap/swapfile
 swapon /mnt/swap/swapfile
 ```
 
-Generate a basic configuration file:
+Generate an SSH key to use for managing secrets:
 
 ```sh
-nixos-generate-config --root /mnt
-```
+mkdir -p /mnt/etc/ssh
+ssh-keygen -t ed25519 -f /mnt/etc/ssh/ssh_host_ed25519_key -N ""
 
-Modify the `/mnt/etc/nixos/configuration.nix` file that was generated:
-- Uncomment `networking.hostName = "nixos";` and set the desired hostname.
-- Uncomment `services.openssh.enable = true;`.
-- Add `services.openssh.permitRootLogin = "yes";`.
-- Other values should not matter since this configuration is temporary.
-
-Perform a basic install:
-
-```sh
-nixos-install
-```
-
-Enter a root password when prompted.
-
-Reboot:
-
-```sh
-reboot
-```
-
-## Installing nix-config
-
-Find the SSH key that was generated:
-
-```sh
-cat /etc/ssh/ssh_host_ed25519_key.pub
+cat /mnt/etc/ssh/ssh_host_ed25519_key.pub
 ```
 
 On another, already authenticated machine:
@@ -152,19 +125,19 @@ Open a development shell:
 ./devShell.sh
 ```
 
-Run the installation:
+Run the installation (replace `HOSTNAME`):
 
 ```sh
-@boot
+@install HOSTNAME
 ```
 
-Reboot:
+Reboot when the installation is finished:
 
 ```sh
 reboot
 ```
 
-## Cleaning up
+Be sure to change all default user passwords.
 
 Clean up the temporary configuration files:
 

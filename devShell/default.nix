@@ -71,6 +71,19 @@ let
         }
         {
           category = "nixos";
+          name = "@install";
+          help = "installs a new system";
+          command = ''
+            if [ ''${#} -lt 1 ]; then
+              echo "Usage: .install HOSTNAME" > /dev/stderr
+              exit 1
+            fi
+
+            nixos-install --flake .#"''${1}" --impure
+          '';
+        }
+        {
+          category = "nixos";
           name = "@switch";
           help = "builds and activates a new system configuration and makes it the boot default";
           command = ''
