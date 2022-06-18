@@ -38,6 +38,7 @@ in lib.mkNixosConfiguration {
       extraGroups = [ "docker" "wheel" ];
 
       homeConfig = {
+        agenix.enable = true;
         cli.enable = true;
         gnome.enable = true;
         hidpi.enable = true;

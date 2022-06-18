@@ -6,6 +6,7 @@ with lib;
   system.stateVersion = mkForce "21.11";
 
   imports = [
+    ./agenix.nix
     ./boot.nix
     ./cli.nix
     ./docker.nix
@@ -14,7 +15,6 @@ with lib;
     ./gnome.nix
     ./gui.nix
     ./hidpi.nix
-    ./secrets.nix
     ./steam.nix
   ];
 }

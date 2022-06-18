@@ -1,7 +1,7 @@
-inputs@{ nixpkgs, ... }:
+inputs@{ ... }:
 
 {
-  mergeAttrs = nixpkgs.lib.foldAttrs (n: a: n // a) { };
+  mergeAttrs = builtins.foldl' (n: a: n // a) { };
 
   mkHomeManagerConfiguration = import ../home/lib/mkHomeManagerConfiguration.nix inputs;
   mkNixosConfiguration = import ../nixos/lib/mkNixosConfiguration.nix inputs;

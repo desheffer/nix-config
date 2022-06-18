@@ -33,6 +33,7 @@ in lib.mkNixosConfiguration {
       extraGroups = [ "vboxsf" "wheel" ];
 
       homeConfig = {
+        agenix.enable = true;
         cli.enable = true;
       };
     })

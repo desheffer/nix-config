@@ -20,8 +20,7 @@ in {
     };
 
     home.packages = with pkgs; [
-      aws
-      google-cloud-sdk
+      awscli2
       jq
       ripgrep
       yq-go

@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 with lib;
 
@@ -6,6 +6,7 @@ with lib;
   home.stateVersion = mkForce "21.11";
 
   imports = [
+    ./agenix.nix
     ./chrome.nix
     ./cli.nix
     ./git.nix
