@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.chrome;
+  cfg = config.modules.chrome;
 
 in {
-  options.homeConfig.chrome = {
+  options.modules.chrome = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Chrome.";
-      default = config.homeConfig.gui.enable;
+      default = config.modules.gui.enable;
     };
   };
 

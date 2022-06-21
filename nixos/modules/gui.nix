@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.nixosConfig.gui;
+  cfg = config.modules.gui;
 
 in {
-  options.nixosConfig.gui = {
+  options.modules.gui = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable most GUI applications.";
-      default = config.nixosConfig.gnome.enable;
+      default = config.modules.gnome.enable;
     };
   };
 }

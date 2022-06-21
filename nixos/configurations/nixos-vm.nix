@@ -6,10 +6,7 @@ let
 in lib.mkNixosConfiguration {
   hostname = "nixos-vm";
   system = "x86_64-linux";
-
-  nixosConfig = { };
-
-  extraModules = [
+  modules = [
     {
       boot = {
         initrd = {
@@ -31,11 +28,12 @@ in lib.mkNixosConfiguration {
       username = "desheffer";
       initialPassword = "nix";
       extraGroups = [ "vboxsf" "wheel" ];
-
-      homeConfig = {
-        agenix.enable = true;
-        cli.enable = true;
-      };
+      modules = [
+        {
+          modules.agenix.enable = true;
+          modules.cli.enable = true;
+        }
+      ];
     })
   ];
 }

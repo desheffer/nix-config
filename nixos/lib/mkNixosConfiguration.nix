@@ -1,6 +1,6 @@
 inputs@{ nixpkgs, home-manager, agenix, ... }:
 
-{ hostname, system, nixosConfig, extraModules ? [ ], ... }:
+{ hostname, system, modules, ... }:
 
 let
   lib = import ../../lib inputs;
@@ -11,9 +11,6 @@ in {
 
     pkgs = lib.mkPkgs system;
     modules = [
-      {
-        config.nixosConfig = nixosConfig;
-      }
       ../modules
 
       home-manager.nixosModules.home-manager
@@ -30,6 +27,6 @@ in {
         };
       }
     ]
-    ++ extraModules;
+    ++ modules;
   };
 }

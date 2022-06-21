@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.gui;
+  cfg = config.modules.gui;
 
 in {
-  options.homeConfig.gui = {
+  options.modules.gui = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable most GUI applications.";
-      default = config.homeConfig.gnome.enable;
+      default = config.modules.gnome.enable;
     };
   };
 

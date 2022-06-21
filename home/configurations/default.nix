@@ -8,19 +8,21 @@ in lib.mergeAttrs [
     hostname = system;
     system = "x86_64-linux";
     username = "root";
-
-    homeConfig = {
-      cli.enable = true;
-    };
+    modules = [
+      {
+        modules.cli.enable = true;
+      }
+    ];
   })
 
   (lib.mkHomeManagerConfiguration rec {
     hostname = system;
     system = "x86_64-linux";
     username = "desheffer";
-
-    homeConfig = {
-      cli.enable = true;
-    };
+    modules = [
+      {
+        modules.cli.enable = true;
+      }
+    ];
   })
 ]

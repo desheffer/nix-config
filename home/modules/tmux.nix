@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.tmux;
+  cfg = config.modules.tmux;
 
 in {
-  options.homeConfig.tmux = {
+  options.modules.tmux = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable tmux.";
-      default = config.homeConfig.cli.enable;
+      default = config.modules.cli.enable;
     };
   };
 

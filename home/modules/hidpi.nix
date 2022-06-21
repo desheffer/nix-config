@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.homeConfig.hidpi;
+  cfg = config.modules.hidpi;
 
 in {
-  options.homeConfig.hidpi = {
+  options.modules.hidpi = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to optimize for HiDPI displays.";

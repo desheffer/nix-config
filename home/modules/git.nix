@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.git;
+  cfg = config.modules.git;
 
 in {
-  options.homeConfig.git = {
+  options.modules.git = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Git.";
-      default = config.homeConfig.cli.enable;
+      default = config.modules.cli.enable;
     };
   };
 

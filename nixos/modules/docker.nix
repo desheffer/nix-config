@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.nixosConfig.docker;
+  cfg = config.modules.docker;
 
 in {
-  options.nixosConfig.docker = {
+  options.modules.docker = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Docker.";

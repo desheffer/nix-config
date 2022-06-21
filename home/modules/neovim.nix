@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.neovim;
+  cfg = config.modules.neovim;
 
 in {
-  options.homeConfig.neovim = {
+  options.modules.neovim = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Neovim.";
-      default = config.homeConfig.cli.enable;
+      default = config.modules.cli.enable;
     };
   };
 

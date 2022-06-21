@@ -12,8 +12,10 @@ let
   filesMapped = mapAttrs filesMapper secretsManifest.files;
 
 in {
-  age = {
-    secrets = filesMapped;
-    secretsDir = secretsManifest.secretsDir;
+  config = {
+    age = {
+      secrets = filesMapped;
+      secretsDir = secretsManifest.secretsDir;
+    };
   };
 }

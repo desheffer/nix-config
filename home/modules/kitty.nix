@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.kitty;
+  cfg = config.modules.kitty;
 
 in {
-  options.homeConfig.kitty = {
+  options.modules.kitty = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Kitty terminal emulator.";
-      default = config.homeConfig.gui.enable;
+      default = config.modules.gui.enable;
     };
   };
 

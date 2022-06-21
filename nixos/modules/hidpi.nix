@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.nixosConfig.hidpi;
+  cfg = config.modules.hidpi;
 
 in {
-  options.nixosConfig.hidpi = {
+  options.modules.hidpi = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to optimize for HiDPI displays.";

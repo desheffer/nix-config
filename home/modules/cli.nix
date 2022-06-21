@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.homeConfig.cli;
+  cfg = config.modules.cli;
 
 in {
-  options.homeConfig.cli = {
+  options.modules.cli = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable most CLI applications.";

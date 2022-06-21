@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.slack;
+  cfg = config.modules.slack;
 
 in {
-  options.homeConfig.slack = {
+  options.modules.slack = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Slack.";
-      default = config.homeConfig.gui.enable;
+      default = config.modules.gui.enable;
     };
   };
 

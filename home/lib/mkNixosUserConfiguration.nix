@@ -1,6 +1,6 @@
 inputs@{ ... }:
 
-{ username, initialPassword, homeConfig, extraGroups ? [ ], ... }:
+{ username, initialPassword, modules, extraGroups ? [ ], ... }:
 
 {
   imports = [
@@ -14,10 +14,5 @@ inputs@{ ... }:
     })
   ];
 
-  home-manager.users.${username}.imports = [
-    {
-      config.homeConfig = homeConfig;
-    }
-    ../modules
-  ];
+  home-manager.users.${username}.imports = [ ../modules ] ++ modules;
 }

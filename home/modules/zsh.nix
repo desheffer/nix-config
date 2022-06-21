@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.homeConfig.zsh;
+  cfg = config.modules.zsh;
 
 in {
-  options.homeConfig.zsh = {
+  options.modules.zsh = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Z shell (Zsh).";
-      default = config.homeConfig.cli.enable;
+      default = config.modules.cli.enable;
     };
   };
 

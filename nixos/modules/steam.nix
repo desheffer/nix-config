@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.nixosConfig.steam;
+  cfg = config.modules.steam;
 
 in {
-  options.nixosConfig.steam = {
+  options.modules.steam = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Steam.";
-      default = config.nixosConfig.gui.enable;
+      default = config.modules.gui.enable;
     };
   };
 
@@ -21,7 +21,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       (steam.override {
-        extraProfile = optionalString config.nixosConfig.hidpi.enable ''
+        extraProfile = optionalString config.modules.hidpi.enable ''
           export GDK_SCALE=2
         '';
       })

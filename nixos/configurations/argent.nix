@@ -6,14 +6,7 @@ let
 in lib.mkNixosConfiguration {
   hostname = "argent";
   system = "x86_64-linux";
-
-  nixosConfig = {
-    docker.enable = true;
-    gnome.enable = true;
-    hidpi.enable = true;
-  };
-
-  extraModules = [
+  modules = [
     ({ config, ... }: {
       boot = {
         initrd = {
@@ -32,17 +25,24 @@ in lib.mkNixosConfiguration {
       services.mbpfan.enable = true;
     }
 
+    {
+      modules.docker.enable = true;
+      modules.gnome.enable = true;
+      modules.hidpi.enable = true;
+    }
+
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       initialPassword = "nix";
       extraGroups = [ "docker" "wheel" ];
-
-      homeConfig = {
-        agenix.enable = true;
-        cli.enable = true;
-        gnome.enable = true;
-        hidpi.enable = true;
-      };
+      modules = [
+        {
+          modules.agenix.enable = true;
+          modules.cli.enable = true;
+          modules.gnome.enable = true;
+          modules.hidpi.enable = true;
+        }
+      ];
     })
   ];
 }

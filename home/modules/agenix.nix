@@ -3,7 +3,7 @@
 with lib;
 
 let
-  cfg = config.homeConfig.agenix;
+  cfg = config.modules.agenix;
 
   secretsManifest = import ../../secrets/manifest.nix;
 
@@ -16,7 +16,7 @@ let
   filesMapped = mapAttrs' filesMapper filesFiltered;
 
 in {
-  options.homeConfig.agenix = {
+  options.modules.agenix = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to link agenix secrets.";

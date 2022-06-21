@@ -3,21 +3,21 @@
 with lib;
 
 let
-  cfg = config.homeConfig.spotify;
+  cfg = config.modules.spotify;
 
 in {
-  options.homeConfig.spotify = {
+  options.modules.spotify = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Spotify.";
-      default = config.homeConfig.gui.enable;
+      default = config.modules.gui.enable;
     };
   };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       (spotify.override {
-        deviceScaleFactor = if config.homeConfig.hidpi.enable then 2 else null;
+        deviceScaleFactor = if config.modules.hidpi.enable then 2 else null;
       })
     ];
   };

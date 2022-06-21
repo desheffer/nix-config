@@ -3,10 +3,10 @@
 with lib;
 
 let
-  cfg = config.homeConfig.gnome;
+  cfg = config.modules.gnome;
 
 in {
-  options.homeConfig.gnome = {
+  options.modules.gnome = {
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable GNOME with most GUI applications.";
