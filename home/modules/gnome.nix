@@ -83,7 +83,7 @@ in {
       };
 
       "org/gnome/shell" = {
-        enabled-extensions = [ "dash-to-panel@jderose9.github.com" ];
+        enabled-extensions = [ "dash-to-panel@jderose9.github.com" "sound-output-device-chooser@kgshank.net" ];
         disable-user-extensions = false;
         favorite-apps = [ "org.gnome.Nautilus.desktop" "google-chrome.desktop" "spotify.desktop" "kitty.desktop" ];
       };
@@ -125,6 +125,7 @@ in {
       gnome.dconf-editor
       gnome.nautilus
       gnomeExtensions.dash-to-panel
+      gnomeExtensions.sound-output-device-chooser
       tela-icon-theme
     ];
   };
