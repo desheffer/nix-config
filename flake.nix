@@ -25,6 +25,11 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ ... }:

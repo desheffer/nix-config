@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, home-manager, agenix, ... }:
+inputs@{ nixpkgs, agenix, home-manager, kmonad, ... }:
 
 { hostname, system, modules, ... }:
 
@@ -13,15 +13,14 @@ in {
     modules = [
       ../modules
 
+      agenix.nixosModule
       home-manager.nixosModules.home-manager
+      kmonad.nixosModules.default
+
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-      }
 
-      agenix.nixosModule
-
-      {
         networking = {
           hostName = hostname;
         };
