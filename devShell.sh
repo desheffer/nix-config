@@ -11,4 +11,8 @@ if [ ${#} -ge 1 ] && [ "${1}" = "--home-switch" ]; then
     exec nix develop -c @home-switch
 fi
 
+if [ ${#} -ge 1 ] && [ "${1}" = "--update" ]; then
+    exec nix develop -c @update
+fi
+
 exec nix develop
