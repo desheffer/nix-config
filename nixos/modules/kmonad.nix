@@ -40,9 +40,12 @@ in {
             colemak (layer-switch colemak)
             ctl_esc (tap-hold-next-release 200 esc lctl)
             ctl_ret (tap-hold-next-release 200 ret rctl)
-            nav_spc (tap-hold-next-release 200 spc (layer-toggle nav))
+            nav_spc (tap-hold-next-release 200 spc (layer-toggle navigation))
             qwerty (layer-switch qwerty)
+            sym (layer-toggle symbol)
             tmux A-o
+            vim_dn C-d
+            vim_up C-u
           )
 
           (deflayer qwerty
@@ -59,15 +62,24 @@ in {
             tab      q        w        f        p        g        j        l        u        y        '        bspc     bspc     bspc
             @ctl_esc a        r        s        t        d        h        n        e        i        o        @ctl_ret @ctl_ret
             lsft     z        x        c        v        b        k        m        ,        .        /        rsft
-            lctl     lalt     lmet                       @nav_spc                   rmet     ralt              up
+            lmet     lalt     @sym                       @nav_spc                   rsft     ralt              up
                                                                                                       left     down     rght
           )
 
-          (deflayer nav
-            _        _        _        _        _        _        _        _        _        _        _        _        _        _
-            _        @qwerty  @colemak _        _        _        _        _        _        _        _        _        _        _
-            _        _        _        _        _        _        @tmux    left     down     up       rght     _        _
+          (deflayer navigation
+            lalt     _        _        _        _        _        _        _        _        _        _        _        _        bspc
+            @ctl_esc @qwerty  @colemak _        _        _        _        _        @vim_dn  @vim_up  _        bspc     bspc     bspc
+            _        _        _        _        _        _        @tmux    left     down     up       rght     del      del
             _        _        _        _        _        _        _        home     pgdn     pgup     end      _
+            _        _        _                          _                          _        _                 _
+                                                                                                      _        _        _
+          )
+
+          (deflayer symbol
+            _        _        _        _        _        _        _        _        _        _        _        _        _        bspc
+            grv      !        @        #        $        %        ^        &        *        _        "        bspc     bspc     bspc
+            ~        \\       \(       \)       =        _        _        -        {        }        ;        :        _
+            _        |        [        ]        +        _        _        \_       <        >        ?        _
             _        _        _                          _                          _        _                 _
                                                                                                       _        _        _
           )
