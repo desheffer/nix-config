@@ -128,6 +128,7 @@ in {
           "$git_status"
           "$cmd_duration"
           "$line_break"
+          "$python"
           "$jobs"
           "$character"
         ];
@@ -137,9 +138,11 @@ in {
           truncate_to_repo = false;
         };
 
+        git_branch.symbol = " ";
+
         hostname.disabled = false;
 
-        git_branch.symbol = " ";
+        python.format = "[$virtualenv]($style) ";
       };
     };
   };
