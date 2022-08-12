@@ -2,6 +2,11 @@
 
 cd "$(dirname "${0}")"
 
+if [ "${PWD}" != /etc/nix-config ]; then
+    echo "Error: This script expects to run from /etc/nix-config."
+    exit 1
+fi
+
 export NIX_CONFIG='experimental-features = nix-command flakes'
 export NIX_PATH='nixpkgs=channel:nixos-22.05'
 
