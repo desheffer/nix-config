@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
         "lua",
         "make",
         "markdown",
+        "nix",
         "php",
         "python",
         "regex",
