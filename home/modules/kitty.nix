@@ -26,6 +26,7 @@ in {
 
       settings = {
         enable_audio_bell = false;
+        window_alert_on_bell = false;
         wayland_titlebar_color = "#282828";
       };
 
