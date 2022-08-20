@@ -91,14 +91,16 @@ in {
         zstyle ':completion:*:commands' rehash 1
         zstyle ':completion:*:*:*:*:*' menu select
 
+        bindkey '^[[1;5C' forward-word       # Ctrl + Right
+        bindkey '^[[1;5D' backward-word      # Ctrl + Left
         bindkey '^[[H'    beginning-of-line  # Home
         bindkey '^[[F'    end-of-line        # End
         bindkey '^[[3~'   delete-char        # Del
         bindkey '^H'      backward-kill-word # Ctrl + Backspace
         bindkey '^[[5~'   beep               # PageDown
         bindkey '^[[6~'   beep               # PageUp
-        bindkey '^[[5;3~' beep               # Alt + PageDown
-        bindkey '^[[6;3~' beep               # Alt + PageUp
+        bindkey '^[[5;3~' beep               # Alt + PageDown (no-op)
+        bindkey '^[[6;3~' beep               # Alt + PageUp (no-op)
       '';
     };
 
