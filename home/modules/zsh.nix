@@ -26,6 +26,11 @@ in {
 
       defaultKeymap = "emacs";
 
+      history = {
+        extended = true;
+        share = false;
+      };
+
       sessionVariables = {
         EDITOR = "nvim";
       };
@@ -87,20 +92,32 @@ in {
       initExtra = ''
         PATH="''${PATH}:''${HOME}/.nix-profile/bin"
 
+        # Append history, do not replace it.
+        setopt APPEND_HISTORY
+
+        # Ignore duplicates when searching.
+        setopt HIST_FIND_NO_DUPS
+
+        # Append history immediately.
+        setopt INC_APPEND_HISTORY
+
+        # Do not beep.
+        unsetopt BEEP
+
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
         zstyle ':completion:*:commands' rehash 1
         zstyle ':completion:*:*:*:*:*' menu select
 
-        bindkey '^[[1;5C' forward-word       # Ctrl + Right
-        bindkey '^[[1;5D' backward-word      # Ctrl + Left
-        bindkey '^[[H'    beginning-of-line  # Home
-        bindkey '^[[F'    end-of-line        # End
-        bindkey '^[[3~'   delete-char        # Del
-        bindkey '^H'      backward-kill-word # Ctrl + Backspace
-        bindkey '^[[5~'   beep               # PageDown
-        bindkey '^[[6~'   beep               # PageUp
-        bindkey '^[[5;3~' beep               # Alt + PageDown (no-op)
-        bindkey '^[[6;3~' beep               # Alt + PageUp (no-op)
+        bindkey '^[[1;5C' forward-word        # Ctrl + Right
+        bindkey '^[[1;5D' backward-word       # Ctrl + Left
+        bindkey '^[[H'    beginning-of-line   # Home
+        bindkey '^[[F'    end-of-line         # End
+        bindkey '^[[3~'   delete-char         # Del
+        bindkey '^H'      backward-kill-word  # Ctrl + Backspace
+        bindkey '^[[5~'   beep                # PageDown
+        bindkey '^[[6~'   beep                # PageUp
+        bindkey '^[[5;3~' beep                # Alt + PageDown (no-op)
+        bindkey '^[[6;3~' beep                # Alt + PageUp (no-op)
       '';
     };
 
