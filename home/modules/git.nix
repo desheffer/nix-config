@@ -33,6 +33,7 @@ in {
 
       extraConfig = {
         github.user = "desheffer";
+        init.defaultBranch = "main";
       };
     };
   };
