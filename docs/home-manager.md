@@ -23,7 +23,8 @@ Build and activate the home configuration (`USER` and `SYSTEM` must be
 specified in `homeConfigurations`):
 
 ```sh
-./devShell.sh --home-switch
+export NIX_CONFIG='experimental-features = nix-command flakes'
+nix develop -c @home-switch
 ```
 
 Run Zsh via the newly installed home configuration:

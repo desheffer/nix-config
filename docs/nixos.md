@@ -122,7 +122,8 @@ Checkout the Git branch from above.
 Open a development shell:
 
 ```sh
-./devShell.sh
+export NIX_CONFIG='experimental-features = nix-command flakes'
+nix develop
 ```
 
 Run the installation (replace `HOSTNAME`):

@@ -11,10 +11,15 @@ demonstration purposes since it makes no changes to the host system.
 To start a container and activate the home configuration:
 
 ```sh
-docker run -it --rm -e TERM=xterm-256color nixpkgs/nix bash -c "
-    git clone https://github.com/desheffer/nix-config.git /etc/nix-config &&
-    /etc/nix-config/devShell.sh --home-switch &&
-    ~/.nix-profile/bin/zsh"
+docker run -it --rm \
+    -e NIX_CONFIG='experimental-features = nix-command flakes' \
+    -e TERM=xterm-256color \
+    -w /etc/nix-config \
+    nixpkgs/nix \
+    bash -c "
+        git clone https://github.com/desheffer/nix-config.git . &&
+        nix develop -c @home-switch &&
+        ~/.nix-profile/bin/zsh"
 ```
 
 ## 🔨 Installation scenarios
