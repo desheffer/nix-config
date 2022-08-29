@@ -154,7 +154,10 @@ in {
 
         directory = {
           read_only = " ";
+          repo_root_style = "underline bold cyan";
           truncate_to_repo = false;
+          truncation_length = 0;
+          truncation_symbol = "…/";
         };
 
         git_branch.symbol = " ";
