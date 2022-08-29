@@ -6,6 +6,8 @@ with lib;
   home.stateVersion = mkForce "21.11";
 
   imports = [
+    ./neovim
+
     ./agenix.nix
     ./chrome.nix
     ./cli.nix
@@ -14,7 +16,6 @@ with lib;
     ./gui.nix
     ./hidpi.nix
     ./kitty.nix
-    ./neovim.nix
     ./slack.nix
     ./spotify.nix
     ./tmux.nix

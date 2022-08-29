@@ -38,11 +38,4 @@ dashboard.section.buttons.val = {
     button("Grep",         "<Space>fg"),
 }
 
-dashboard.section.footer.val = {
-    vim.fn.printf(
-        "Loaded in %.3f seconds",
-        vim.fn.reltimefloat(vim.fn.reltime(vim.g.start_time))
-    )
-}
-
 require("alpha").setup(dashboard.config)

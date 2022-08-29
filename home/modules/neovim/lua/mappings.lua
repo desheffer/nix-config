@@ -55,9 +55,6 @@ vim.keymap.set("n", "<Leader>fr", function () require("telescope.builtin").resum
 vim.keymap.set("n", "<Leader>fw", function () require("telescope.builtin").grep_string() end)
 vim.keymap.set("v", "<Leader>fw", function () require("telescope.builtin").grep_string() end)
 
--- Bind Telescope session commands.
-vim.keymap.set("n", "<Leader>fs", function () require("session-lens").search_session() end)
-
 -- Bind Telescope Git commands.
 vim.keymap.set("n", "<Leader>gc", function () require("telescope.builtin").git_bcommits() end)
 vim.keymap.set("n", "<Leader>gf", function () require("telescope.builtin").git_files() end)
@@ -106,6 +103,9 @@ vim.keymap.set("n", "Q", [[]])
 
 -- Make Y yank to end of line.
 vim.keymap.set("n", "Y", [[y$]])
+
+-- Copy to system clipboard with <Leader>y.
+vim.keymap.set("v", "<Leader>y", [["+y]])
 
 -- Prevent p from replacing the buffer by copying the pasted text.
 vim.keymap.set("v", "p", [[pgvy]])
