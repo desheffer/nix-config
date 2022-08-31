@@ -50,6 +50,14 @@ let
           name = "@home-switch";
           help = "builds and switches to a new home configuration";
           command = ''
+            if command -v nixos-rebuild &> /dev/null; then
+              read -p "This appears to be a NixOS system. Are you sure you want to configure Home Manager separately? [y/N] " -n 1 -r
+              echo
+              if [[ ! ''${REPLY} =~ [Yy] ]]; then
+                exit 1
+              fi
+            fi
+
             export USER=$(whoami)
             echo "USER: ''${USER}"
 
