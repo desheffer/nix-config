@@ -1,0 +1,36 @@
+name: Update flake.lock
+
+on:
+  schedule:
+    - cron: '0 0 * * 6'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Configure Git
+      run: |
+        git config --global user.email 'action@github.com'
+        git config --global user.name 'github-actions'
+
+    - name: Install Nix
+      run: |
+        sh <(curl -L https://nixos.org/nix/install)
+
+    - name: Run update
+      run: |
+        . ~/.nix-profile/etc/profile.d/nix.sh
+        export NIX_CONFIG='experimental-features = nix-command flakes'
+        nix develop -c @update
+
+    - name: Commit and push
+      run: |
+        git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
+        git add flake.lock
+        git commit -m 'Update flake.lock'
+        git push
