@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, nixpkgs-unstable, agenix, ... }:
+inputs@{ nixpkgs, agenix, ... }:
 
 system:
 
@@ -7,18 +7,12 @@ let
     inherit system config overlays;
   };
 
-  pkgs-unstable = import nixpkgs-unstable {
-    inherit system config;
-  };
-
   config = {
     allowUnfree = true;
   };
 
   overlays = [
     (final: prev: {
-      inherit (pkgs-unstable) neovim-unwrapped;
-
       agenix = agenix.defaultPackage.${system};
     })
   ];
