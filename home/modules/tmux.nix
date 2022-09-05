@@ -23,7 +23,6 @@ in {
       escapeTime = 0;
       historyLimit = 50000;
       newSession = true;
-      prefix = "M-o";
       shell = "${pkgs.zsh}/bin/zsh";
       terminal = "\${TERM}";
 
