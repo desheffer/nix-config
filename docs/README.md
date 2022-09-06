@@ -29,10 +29,12 @@ docker run -it --rm \
 
 ## 📚 Resources
 
+- [Nix packages][nix-packages]
 - [NixOS configuration options][nixos-options]
 - [Home Manager configuration options][home-manager-options]
-- [Nix expressions][nix-expressions]
+- [Nixpkgs library functions][nixpkgs-lib]
 
 [home-manager-options]: https://nix-community.github.io/home-manager/options.html
-[nix-expressions]: https://nixos.org/manual/nix/stable/expressions/expression-language.html
+[nix-packages]: https://search.nixos.org/packages
 [nixos-options]: https://search.nixos.org/options
+[nixpkgs-lib]: https://nixos.org/manual/nixpkgs/stable/#sec-functions-library
