@@ -8,6 +8,11 @@ lspconfig.bashls.setup({
 
 lspconfig.ccls.setup({
     capabilities = capabilities,
+    init_options = {
+        cache = {
+            directory = "/tmp/ccls-cache",
+        },
+    },
 })
 
 lspconfig.cssls.setup({
