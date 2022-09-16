@@ -167,6 +167,12 @@ in {
           "$character"
         ];
 
+        character = {
+          success_symbol = "[>](bold green)";
+          error_symbol = "[>](bold red)";
+          vicmd_symbol = "[<](bold green)";
+        };
+
         directory = {
           read_only = " ";
           repo_root_style = "underline bold cyan";
