@@ -185,7 +185,7 @@ in {
 
         hostname.disabled = false;
 
-        python.format = "[$virtualenv]($style) ";
+        python.format = "[$virtualenv]($style)";
       };
     };
 
