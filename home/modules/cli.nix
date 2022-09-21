@@ -25,5 +25,15 @@ in {
       ripgrep
       yq-go
     ];
+
+    xdg.configFile = {
+      ".rgignore" = {
+        target = "../.rgignore";
+        text = ''
+          !.*
+          .git
+        '';
+      };
+    };
   };
 }
