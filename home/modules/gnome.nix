@@ -123,6 +123,7 @@ in {
 
     home.packages = with pkgs; [
       gnome.dconf-editor
+      gnome.file-roller
       gnome.nautilus
       gnomeExtensions.dash-to-panel
       gnomeExtensions.sound-output-device-chooser
