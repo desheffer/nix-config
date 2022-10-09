@@ -4,25 +4,29 @@ let
   lib = import ../../lib inputs;
 
 in lib.mkNixosConfiguration {
-  hostname = "argent";
+  hostname = "astral";
   system = "x86_64-linux";
   modules = [
-    ({ config, ... }: {
+    ({ pkgs, ... }: {
       boot = {
+        # Linux >=5.17 is required for wifi functionality.
+        kernelPackages = pkgs.linuxPackages_5_19;
+
         initrd = {
-          availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-          kernelModules = [ "dm-snapshot" ];
+          availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+          kernelModules = [ ];
         };
 
-        kernelModules = [ "kvm-intel" "wl" ];
-        extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+        kernelModules = [ "kvm-amd" ];
+        extraModulePackages = [ ];
       };
     })
 
-    nixos-hardware.nixosModules.common-cpu-intel
-    nixos-hardware.nixosModules.common-pc-laptop-ssd
+    nixos-hardware.nixosModules.common-cpu-amd
+    nixos-hardware.nixosModules.common-gpu-nvidia
+    nixos-hardware.nixosModules.common-pc-ssd
     {
-      services.mbpfan.enable = true;
+      hardware.nvidia.prime.offload.enable = false;
     }
 
     {

@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, nixos-hardware, ... }:
+inputs@{ nixos-hardware, ... }:
 
 let
   lib = import ../../lib inputs;
@@ -19,7 +19,8 @@ in lib.mkNixosConfiguration {
       };
     }
 
-    nixos-hardware.nixosModules.common-cpu-intel
+    # nixos-hardware.nixosModules.common-cpu-amd
+    # nixos-hardware.nixosModules.common-cpu-intel
     {
       virtualisation.virtualbox.guest.enable = true;
     }

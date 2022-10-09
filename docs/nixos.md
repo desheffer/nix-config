@@ -12,23 +12,27 @@ sudo -i
 ```
 
 Create the partition schema (run `lsblk` to list block devices and replace
-`/dev/sda` with the target disk):
+`/dev/nvme0n1` with the target disk):
 
 ```sh
-parted -s /dev/sda mklabel gpt
+TARGET=/dev/nvme0n1
+BOOT=/dev/nvme0n1p1
+PRIMARY=/dev/nvme0n1p2
 
-parted -s /dev/sda mkpart ESP fat32 0% 512MiB
-parted -s /dev/sda set 1 esp on
+parted -s ${TARGET} mklabel gpt
 
-parted -s /dev/sda mkpart primary 512MiB 100%
+parted -s ${TARGET} mkpart ESP fat32 0% 512MiB
+parted -s ${TARGET} set 1 esp on
 
-parted -s /dev/sda print
+parted -s ${TARGET} mkpart primary 512MiB 100%
+
+parted -s ${TARGET} print
 ```
 
 Format the boot partition:
 
 ```sh
-mkfs.fat -F 32 -n BOOT /dev/sda1
+mkfs.fat -F 32 -n BOOT ${BOOT}
 ```
 
 Format the primary partition (set `PASSWORD` to the desired password):
@@ -36,8 +40,8 @@ Format the primary partition (set `PASSWORD` to the desired password):
 ```sh
 PASSWORD="password"
 
-echo "${PASSWORD}" | cryptsetup -q --label=luks_primary luksFormat /dev/sda2
-echo "${PASSWORD}" | cryptsetup luksOpen /dev/sda2 primary
+echo "${PASSWORD}" | cryptsetup -q --label=luks_primary luksFormat ${PRIMARY}
+echo "${PASSWORD}" | cryptsetup luksOpen ${PRIMARY} primary
 
 mkfs.btrfs -L primary /dev/mapper/primary
 ```
@@ -113,8 +117,8 @@ nix-shell -p git
 Clone this repository:
 
 ```sh
-git clone https://github.com/desheffer/nix-config /etc/nix-config
-cd /etc/nix-config
+git clone https://github.com/desheffer/nix-config /mnt/etc/nix-config
+cd /mnt/etc/nix-config
 ```
 
 Checkout the Git branch from above.
@@ -139,12 +143,6 @@ reboot
 ```
 
 Be sure to change all default user passwords.
-
-Clean up the temporary configuration files:
-
-```sh
-rm -f /etc/nixos/*
-```
 
 Change ownership of the new configuration directory (as a non-root user):
 
