@@ -62,6 +62,19 @@ in {
         bindkey '^[[5;3~' beep                # Alt + PageDown (no-op)
         bindkey '^[[6;3~' beep                # Alt + PageUp (no-op)
       '';
+
+      plugins = [
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.5.0";
+            sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+          };
+        }
+      ];
     };
 
     programs.bat = {
@@ -84,6 +97,7 @@ in {
           "$username"
           "$hostname"
           "$directory"
+          "$nix_shell"
           "$git_branch"
           "$git_commit"
           "$git_state"
@@ -112,6 +126,11 @@ in {
         git_branch.symbol = " ";
 
         hostname.disabled = false;
+
+        nix_shell = {
+          format = "via [$symbol$name]($style) ";
+          symbol = " ";
+        };
 
         python.format = "[$virtualenv]($style)";
       };
