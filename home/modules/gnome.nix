@@ -122,7 +122,9 @@ in {
     };
 
     home.packages = with pkgs; [
+      evince
       gnome.dconf-editor
+      gnome.eog
       gnome.file-roller
       gnome.nautilus
       gnomeExtensions.dash-to-panel
