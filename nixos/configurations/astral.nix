@@ -48,5 +48,45 @@ in lib.mkNixosConfiguration {
         }
       ];
     })
+
+    ({ pkgs, ... }: {
+      environment = {
+        systemPackages = with pkgs; [
+          barrier
+        ];
+
+        etc = {
+          "barrier.conf" = {
+            text = ''
+              section: screens
+                astral:
+                ethereal:
+              end
+
+              section: aliases
+              end
+
+              section: links
+                astral:
+                  left = ethereal
+                ethereal:
+                  right = astral
+              end
+            '';
+          };
+        };
+      };
+
+      networking.firewall.allowedTCPPorts = [ 24800 ];
+
+      systemd.user.services.barrier-server = {
+        after = [ "network.target" "graphical-session.target" ];
+        description = "barrier server";
+        wantedBy = [ "graphical-session.target" ];
+        path = [ pkgs.barrier ];
+        serviceConfig.ExecStart = ''${pkgs.barrier}/bin/barriers -f --config /etc/barrier.conf --disable-crypto'';
+        serviceConfig.Restart = "on-failure";
+      };
+    })
   ];
 }
