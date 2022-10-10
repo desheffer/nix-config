@@ -12,11 +12,18 @@ in {
       description = "Whether to enable Docker.";
       default = false;
     };
+
+    enableNvidia = mkOption {
+      type = types.bool;
+      description = "Whether to enable nvidia-docker wrapper.";
+      default = false;
+    };
   };
 
   config = mkIf cfg.enable {
     virtualisation.docker = {
       enable = true;
+      enableNvidia = cfg.enableNvidia;
 
       daemon.settings = {
         features = {
