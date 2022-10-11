@@ -22,7 +22,7 @@ in {
         git
         htop
         killall
-        python
+        python3
         wget
         zsh
       ];
