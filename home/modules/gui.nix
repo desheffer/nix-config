@@ -21,5 +21,12 @@ in {
       vlc
       xsel
     ];
+
+    xdg.userDirs.extraConfig = {
+      XDG_CODE_DIR = "$HOME/Code";
+      XDG_DESKTOP_DIR = {};
+      XDG_PUBLICSHARE_DIR = {};
+      XDG_TEMPLATES_DIR = {};
+    };
   };
 }
