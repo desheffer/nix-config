@@ -1,6 +1,6 @@
 inputs@{ ... }:
 
-{ username, initialPassword, modules, extraGroups ? [ ], ... }:
+{ username, initialPassword, modules, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
 
 {
   imports = [
@@ -10,6 +10,8 @@ inputs@{ ... }:
 
         isNormalUser = true;
         shell = pkgs.zsh;
+
+        openssh.authorizedKeys.keys = authorizedKeys;
       };
     })
   ];

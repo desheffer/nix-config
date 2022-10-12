@@ -104,7 +104,7 @@ On another, already authenticated machine:
 - In the `nixos/configurations` directory, create a configuration for the new
   machine.
 - Open the `secrets` directory, add the public key from the previous step to
-  `secrets.nix`, and rekey secrets by running `agenix --rekey`.
+  `keys.nix`, and rekey secrets by running `agenix --rekey`.
 - Commit and push.
 - Return to the new machine.
 

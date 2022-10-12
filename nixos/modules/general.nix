@@ -26,12 +26,5 @@ with lib;
 
     i18n.defaultLocale = "en_US.UTF-8";
     console.keyMap = "us";
-
-    services.openssh = {
-      enable = true;
-      kbdInteractiveAuthentication = false;
-      passwordAuthentication = false;
-      permitRootLogin = "no";
-    };
   };
 }

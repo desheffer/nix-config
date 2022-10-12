@@ -2,6 +2,7 @@ inputs@{ nixos-hardware, ... }:
 
 let
   lib = import ../../lib inputs;
+  keys = import ../../secrets/keys.nix;
 
 in lib.mkNixosConfiguration {
   hostname = "astral";
@@ -47,6 +48,9 @@ in lib.mkNixosConfiguration {
           modules.gnome.enable = true;
           modules.hidpi.enable = true;
         }
+      ];
+      authorizedKeys = [
+        keys.users.desheffer
       ];
     })
 
