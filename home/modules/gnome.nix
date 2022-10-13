@@ -129,6 +129,7 @@ in {
       gnome.nautilus
       gnomeExtensions.dash-to-panel
       gnomeExtensions.sound-output-device-chooser
+      roboto
       tela-icon-theme
     ];
   };
