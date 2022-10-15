@@ -17,5 +17,6 @@ with lib;
     ./hidpi.nix
     ./ssh.nix
     ./steam.nix
+    ./zram.nix
   ];
 }
