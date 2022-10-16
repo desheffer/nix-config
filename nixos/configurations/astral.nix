@@ -31,10 +31,29 @@ in lib.mkNixosConfiguration {
     }
 
     {
-      modules.docker.enable = true;
-      modules.docker.enableNvidia = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+
+      modules.docker.enable = true;
+      modules.docker.enableNvidia = true;
+
+      modules.barrier.enable = true;
+      modules.barrier.config = ''
+        section: screens
+          astral:
+          ethereal:
+        end
+
+        section: aliases
+        end
+
+        section: links
+          astral:
+            left = ethereal
+          ethereal:
+            right = astral
+        end
+      '';
     }
 
     (lib.mkNixosUserConfiguration {
@@ -52,46 +71,6 @@ in lib.mkNixosConfiguration {
       authorizedKeys = [
         keys.users.desheffer
       ];
-    })
-
-    ({ pkgs, ... }: {
-      environment = {
-        systemPackages = with pkgs; [
-          barrier
-        ];
-
-        etc = {
-          "barrier.conf" = {
-            text = ''
-              section: screens
-                astral:
-                ethereal:
-              end
-
-              section: aliases
-              end
-
-              section: links
-                astral:
-                  left = ethereal
-                ethereal:
-                  right = astral
-              end
-            '';
-          };
-        };
-      };
-
-      networking.firewall.allowedTCPPorts = [ 24800 ];
-
-      systemd.user.services.barrier-server = {
-        after = [ "network.target" "graphical-session.target" ];
-        description = "barrier server";
-        wantedBy = [ "graphical-session.target" ];
-        path = [ pkgs.barrier ];
-        serviceConfig.ExecStart = ''${pkgs.barrier}/bin/barriers -f --config /etc/barrier.conf --disable-crypto'';
-        serviceConfig.Restart = "on-failure";
-      };
     })
   ];
 }

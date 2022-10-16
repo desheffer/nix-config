@@ -7,14 +7,17 @@ with lib;
 
   imports = [
     ./agenix.nix
+    ./barrier.nix
     ./boot.nix
     ./cli.nix
     ./docker.nix
     ./fileSystems.nix
-    ./general.nix
     ./gnome.nix
     ./gui.nix
+    ./hardware.nix
     ./hidpi.nix
+    ./locale.nix
+    ./nix.nix
     ./ssh.nix
     ./steam.nix
     ./zram.nix

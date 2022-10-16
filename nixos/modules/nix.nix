@@ -1,12 +1,11 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 
-{
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+let
+  cfg = config.modules.nix;
 
+in {
   config = {
     nix = {
       extraOptions = "experimental-features = nix-command flakes";
@@ -19,12 +18,5 @@ with lib;
         persistent = true;
       };
     };
-
-    hardware.enableRedistributableFirmware = true;
-
-    time.timeZone = "US/Eastern";
-
-    i18n.defaultLocale = "en_US.UTF-8";
-    console.keyMap = "us";
   };
 }

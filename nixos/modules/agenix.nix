@@ -3,6 +3,8 @@
 with lib;
 
 let
+  cfg = config.modules.agenix;
+
   secretsManifest = import ../../secrets/manifest.nix;
 
   filesMapper = name: value: {
@@ -12,6 +14,9 @@ let
   filesMapped = mapAttrs filesMapper secretsManifest.files;
 
 in {
+  options.modules.agenix = {
+  };
+
   config = {
     age = {
       secrets = filesMapped;

@@ -22,9 +22,7 @@ in {
       agenix.nixosModule
 
       {
-        networking = {
-          hostName = hostname;
-        };
+        networking.hostName = hostname;
       }
     ]
     ++ modules;

@@ -2,7 +2,13 @@
 
 with lib;
 
-{
+let
+  cfg = config.modules.fileSystems;
+
+in {
+  options.modules.fileSystems = {
+  };
+
   config = {
     boot.initrd.luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
 
