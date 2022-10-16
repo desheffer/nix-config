@@ -1,13 +1,14 @@
 inputs@{ ... }:
 
-{ username, initialPassword, modules, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
+{ username, modules, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
 
 {
   imports = [
     ({ pkgs, ... }: {
       users.users.${username} = {
-        inherit initialPassword extraGroups;
+        inherit extraGroups;
 
+        initialPassword = username;
         isNormalUser = true;
         shell = pkgs.zsh;
 

@@ -136,13 +136,15 @@ Run the installation (replace `HOSTNAME`):
 @install HOSTNAME
 ```
 
+You will be prompted for the root password.
+
 Reboot when the installation is finished:
 
 ```sh
 reboot
 ```
 
-Be sure to change all default user passwords.
+Reset all user passwords (the initial password is the username).
 
 Change ownership of the new configuration directory (as a non-root user):
 

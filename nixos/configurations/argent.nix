@@ -33,7 +33,6 @@ in lib.mkNixosConfiguration {
 
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
-      initialPassword = "nix";
       extraGroups = [ "docker" "wheel" ];
       modules = [
         {
