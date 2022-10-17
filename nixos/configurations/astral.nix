@@ -33,6 +33,7 @@ in lib.mkNixosConfiguration {
     {
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+      modules.ups.enable = true;
 
       modules.docker.enable = true;
       modules.docker.enableNvidia = true;

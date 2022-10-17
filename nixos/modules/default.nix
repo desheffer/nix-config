@@ -20,6 +20,7 @@ with lib;
     ./nix.nix
     ./ssh.nix
     ./steam.nix
+    ./ups.nix
     ./zram.nix
   ];
 }
