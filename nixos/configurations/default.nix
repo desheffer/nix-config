@@ -6,5 +6,4 @@ let
 in lib.mergeAttrs [
   (import ./argent.nix inputs)
   (import ./astral.nix inputs)
-  (import ./nixos-vm.nix inputs)
 ]
