@@ -63,6 +63,11 @@ in {
         bindkey '^[[6;3~' beep                # Alt + PageUp (no-op)
       '';
 
+      dirHashes = {
+        c = "$HOME/Code";
+        nc = "/etc/nix-config";
+      };
+
       plugins = [
         {
           name = "zsh-nix-shell";
