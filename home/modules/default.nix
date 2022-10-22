@@ -11,6 +11,7 @@ with lib;
     ./agenix.nix
     ./chrome.nix
     ./cli.nix
+    ./discord.nix
     ./git.nix
     ./gnome.nix
     ./gui.nix
