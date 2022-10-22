@@ -84,9 +84,18 @@ in {
       };
 
       "org/gnome/shell" = {
-        enabled-extensions = [ "dash-to-panel@jderose9.github.com" "sound-output-device-chooser@kgshank.net" ];
+        enabled-extensions = [
+          "appindicatorsupport@rgcjonas.gmail.com"
+          "dash-to-panel@jderose9.github.com"
+          "sound-output-device-chooser@kgshank.net"
+        ];
         disable-user-extensions = false;
-        favorite-apps = [ "org.gnome.Nautilus.desktop" "google-chrome.desktop" "spotify.desktop" "kitty.desktop" ];
+        favorite-apps = [
+          "org.gnome.Nautilus.desktop"
+          "google-chrome.desktop"
+          "spotify.desktop"
+          "kitty.desktop"
+        ];
       };
 
       "org/gnome/shell/extensions/dash-to-panel" = {
@@ -128,6 +137,7 @@ in {
       gnome.eog
       gnome.file-roller
       gnome.nautilus
+      gnomeExtensions.appindicator
       gnomeExtensions.dash-to-panel
       gnomeExtensions.sound-output-device-chooser
       roboto
