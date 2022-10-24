@@ -47,7 +47,7 @@ cmp.setup({
     window = {
         documentation = {
             border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-            winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+            winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
         },
     },
 })

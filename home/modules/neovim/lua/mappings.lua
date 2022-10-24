@@ -5,18 +5,18 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<C-n>", function () vim.cmd([[enew]]) end)
 
 -- Cycle buffers with <M-Pageup> and <M-Pagedown> (for consistency with Tmux).
-vim.keymap.set("n", "<M-Pageup>",   require("utilities.buffer").next)
-vim.keymap.set("n", "<M-Pagedown>", require("utilities.buffer").prev)
+vim.keymap.set("n", "<M-Pageup>",   function () require("utilities.buffer").next() end)
+vim.keymap.set("n", "<M-Pagedown>", function () require("utilities.buffer").prev() end)
 
 -- Cycle buffers with gt and gT (for consistency with vanilla Vim tabs).
-vim.keymap.set("n", "gt", require("utilities.buffer").next)
-vim.keymap.set("n", "gT", require("utilities.buffer").prev)
+vim.keymap.set("n", "gt", function () require("utilities.buffer").next() end)
+vim.keymap.set("n", "gT", function () require("utilities.buffer").prev() end)
 
 -- Save a buffer with <C-s>.
 vim.keymap.set({"i", "n"}, "<C-s>", function () vim.cmd([[write]]) end)
 
 -- Close a buffer with <C-c>.
-vim.keymap.set("n", "<C-c>", require("utilities.buffer").delete)
+vim.keymap.set("n", "<C-c>", function () require("utilities.buffer").delete() end)
 
 -- Quit Neovim with <C-q>.
 vim.keymap.set("n", "<C-q>", function () vim.cmd([[qall]]) end)
@@ -42,7 +42,7 @@ vim.keymap.set("n", "g<Down>", [[j]])
 vim.keymap.set("n", "g<Up>",   [[k]])
 
 -- Bind a smart fuzzy finder to <C-p>.
-vim.keymap.set("n", "<C-p>", require("utilities.finder").find_files)
+vim.keymap.set("n", "<C-p>", function () require("utilities.finder").find_files() end)
 
 -- Bind Telescope file commands.
 vim.keymap.set("n", "<Leader>fa", function () require("telescope.builtin").find_files({hidden = true}) end)
@@ -71,15 +71,15 @@ vim.keymap.set("", "<Leader><Leader>", function () require("hop").hint_char1() e
 
 -- Bind various LSP commands.
 vim.keymap.set("n", "gd", function () require("telescope.builtin").lsp_definitions({jump_type = "never"}) end)
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+vim.keymap.set("n", "gD", function () vim.lsp.buf.declaration() end)
 vim.keymap.set("n", "gi", function () require("telescope.builtin").lsp_implementations({jump_type = "never"}) end)
 vim.keymap.set("n", "gr", function () require("telescope.builtin").lsp_references({jump_type = "never"}) end)
-vim.keymap.set("n", "K",  vim.lsp.buf.hover)
-vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action)
-vim.keymap.set("v", "<Leader>ca", vim.lsp.buf.range_code_action)
-vim.keymap.set("n", "<Leader>cf", vim.lsp.buf.formatting)
-vim.keymap.set("v", "<Leader>cf", vim.lsp.buf.range_formatting)
-vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename)
+vim.keymap.set("n", "K",  function () vim.lsp.buf.hover() end)
+vim.keymap.set("n", "<Leader>ca", function () vim.lsp.buf.code_action() end)
+vim.keymap.set("v", "<Leader>ca", function () vim.lsp.buf.range_code_action() end)
+vim.keymap.set("n", "<Leader>cf", function () vim.lsp.buf.formatting() end)
+vim.keymap.set("v", "<Leader>cf", function () vim.lsp.buf.range_formatting() end)
+vim.keymap.set("n", "<Leader>cr", function () vim.lsp.buf.rename() end)
 
 -- Bind various diagnostic commands.
 vim.keymap.set("n", "[d", function () vim.diagnostic.goto_prev({popup_opts = {focusable = false}}) end)
