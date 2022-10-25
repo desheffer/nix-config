@@ -26,9 +26,8 @@ in {
       yq-go
     ];
 
-    xdg.configFile = {
+    home.file = {
       ".rgignore" = {
-        target = "../.rgignore";
         text = ''
           !.*
           .git
