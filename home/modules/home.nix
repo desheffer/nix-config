@@ -85,7 +85,7 @@ in {
 
         gh-https-to-ssh = "git remote set-url origin \"$(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')\"";
 
-        la = "exa -ahlF --git --group-directories-first";
+        la = "exa -aahlF --git --group-directories-first";
         ll = "exa -hlF --git --group-directories-first";
         ls = "exa -F --group-directories-first";
         tree = "exa -T --group-directories-first";
