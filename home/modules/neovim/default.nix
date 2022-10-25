@@ -114,7 +114,7 @@ in {
         bash-language-server
         ccls
         dockerfile-language-server-nodejs
-        gopls
+        gopls go
         intelephense
         jdt-language-server jdk17_headless
         pyright

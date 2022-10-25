@@ -10,7 +10,7 @@ lspconfig.ccls.setup({
     capabilities = capabilities,
     init_options = {
         cache = {
-            directory = "/tmp/ccls-cache",
+            directory = vim.env.HOME .. "/.cache/ccls",
         },
     },
 })
@@ -26,6 +26,9 @@ lspconfig.dockerls.setup({
 
 lspconfig.gopls.setup({
     capabilities = capabilities,
+    cmd_env = {
+        GOPATH = vim.env.HOME .. "/.cache/gopls",
+    },
 })
 
 lspconfig.html.setup({
@@ -35,6 +38,9 @@ lspconfig.html.setup({
 
 lspconfig.intelephense.setup({
     capabilities = capabilities,
+    init_options = {
+        globalStoragePath = vim.env.HOME .. "/.cache/intelephense",
+    },
 })
 
 lspconfig.jdtls.setup({
