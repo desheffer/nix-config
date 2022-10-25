@@ -16,6 +16,12 @@ in {
 
   config = mkIf cfg.enable {
     home = {
+      file = {
+        "Code/.keep" = {
+          text = "";
+        };
+      };
+
       sessionVariables = {
         EDITOR = "nvim";
       };
