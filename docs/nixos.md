@@ -75,15 +75,14 @@ mkdir -p /mnt/boot
 mount /dev/disk/by-label/BOOT /mnt/boot
 ```
 
-Create a swapfile (set `SIZE` to the desired size in MB):
+Create a swapfile (set `SIZE` to the desired size):
 
 ```sh
-SIZE=$(( 16 * 1024 ))
+SIZE=16GB
 
 truncate -s 0 /mnt/swap/swapfile
 chattr +C /mnt/swap/swapfile
-btrfs property set /mnt/swap/swapfile compression none
-dd if=/dev/zero of=/mnt/swap/swapfile bs=1M count=${SIZE}
+head -c ${SIZE} /dev/zero > /mnt/swap/swapfile
 chmod 0600 /mnt/swap/swapfile
 mkswap /mnt/swap/swapfile
 
