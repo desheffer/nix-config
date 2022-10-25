@@ -35,26 +35,30 @@ in lib.mkNixosConfiguration {
       modules.hidpi.enable = true;
       modules.ups.enable = true;
 
-      modules.docker.enable = true;
-      modules.docker.enableNvidia = true;
+      modules.docker = {
+        enable = true;
+        enableNvidia = true;
+      };
 
-      modules.barrier.enable = true;
-      modules.barrier.config = ''
-        section: screens
-          astral:
-          ethereal:
-        end
+      modules.barrier = {
+        enable = true;
+        config = ''
+          section: screens
+            astral:
+            ethereal:
+          end
 
-        section: aliases
-        end
+          section: aliases
+          end
 
-        section: links
-          astral:
-            left = ethereal
-          ethereal:
-            right = astral
-        end
-      '';
+          section: links
+            astral:
+              left = ethereal
+            ethereal:
+              right = astral
+          end
+        '';
+      };
     }
 
     (lib.mkNixosUserConfiguration {
