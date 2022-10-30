@@ -23,6 +23,8 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-custom.url = "github:desheffer/neovim-flake";
   };
 
   outputs = inputs@{ ... }:
