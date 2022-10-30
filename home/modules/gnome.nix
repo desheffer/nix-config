@@ -84,18 +84,19 @@ in {
       };
 
       "org/gnome/shell" = {
+        disable-user-extensions = false;
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "dash-to-panel@jderose9.github.com"
           "sound-output-device-chooser@kgshank.net"
         ];
-        disable-user-extensions = false;
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
           "google-chrome.desktop"
           "spotify.desktop"
           "kitty.desktop"
         ];
+        welcome-dialog-last-shown-version = "999";
       };
 
       "org/gnome/shell/extensions/dash-to-panel" = {
