@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.slack;
 
-in {
+in
+{
   options.modules.slack = {
     enable = mkOption {
       type = types.bool;

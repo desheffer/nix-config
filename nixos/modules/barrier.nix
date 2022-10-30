@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.barrier;
 
-in {
+in
+{
   options.modules.barrier = {
     enable = mkOption {
       type = types.bool;

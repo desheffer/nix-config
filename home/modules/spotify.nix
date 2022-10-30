@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.spotify;
 
-in {
+in
+{
   options.modules.spotify = {
     enable = mkOption {
       type = types.bool;

@@ -25,7 +25,8 @@ let
     };
   };
 
-in {
+in
+{
   options.modules.neovim = {
     enable = mkOption {
       type = types.bool;
@@ -114,9 +115,11 @@ in {
         bash-language-server
         ccls
         dockerfile-language-server-nodejs
-        gopls go
+        go # gopls
+        gopls
         intelephense
-        jdt-language-server jdk17_headless
+        jdk17_headless # jdt-language-server
+        jdt-language-server
         pyright
         rnix-lsp
         sumneko-lua-language-server

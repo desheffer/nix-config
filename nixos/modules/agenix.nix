@@ -13,9 +13,9 @@ let
   };
   filesMapped = mapAttrs filesMapper secretsManifest.files;
 
-in {
-  options.modules.agenix = {
-  };
+in
+{
+  options.modules.agenix = { };
 
   config = {
     age = {

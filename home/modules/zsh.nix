@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.zsh;
 
-in {
+in
+{
   options.modules.zsh = {
     enable = mkOption {
       type = types.bool;

@@ -15,7 +15,8 @@ let
   };
   filesMapped = mapAttrs' filesMapper filesFiltered;
 
-in {
+in
+{
   options.modules.agenix = {
     enable = mkOption {
       type = types.bool;

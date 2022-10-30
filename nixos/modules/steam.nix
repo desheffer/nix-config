@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.steam;
 
-in {
+in
+{
   options.modules.steam = {
     enable = mkOption {
       type = types.bool;

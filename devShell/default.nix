@@ -9,7 +9,8 @@ let
         overlays = [ devshell.overlay ];
       };
 
-    in pkgs.devshell.mkShell {
+    in
+    pkgs.devshell.mkShell {
       name = "nix-config";
 
       bash.extra = ''
@@ -125,4 +126,4 @@ let
   );
 
 in
-  flake-utils.lib.eachDefaultSystemMap mkDevShell
+flake-utils.lib.eachDefaultSystemMap mkDevShell

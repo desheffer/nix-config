@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.tmux;
 
-in {
+in
+{
   options.modules.tmux = {
     enable = mkOption {
       type = types.bool;

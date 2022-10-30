@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.docker;
 
-in {
+in
+{
   options.modules.docker = {
     enable = mkOption {
       type = types.bool;

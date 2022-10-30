@@ -5,7 +5,8 @@ inputs@{ nixpkgs, home-manager, agenix, ... }:
 let
   lib = import ../../lib inputs;
 
-in {
+in
+{
   ${hostname} = nixpkgs.lib.nixosSystem {
     inherit system;
 

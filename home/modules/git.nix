@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.git;
 
-in {
+in
+{
   options.modules.git = {
     enable = mkOption {
       type = types.bool;

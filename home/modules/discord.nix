@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.discord;
 
-in {
+in
+{
   options.modules.discord = {
     enable = mkOption {
       type = types.bool;

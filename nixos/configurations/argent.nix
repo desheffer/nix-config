@@ -3,7 +3,8 @@ inputs@{ nixos-hardware, ... }:
 let
   lib = import ../../lib inputs;
 
-in lib.mkNixosConfiguration {
+in
+lib.mkNixosConfiguration {
   hostname = "argent";
   system = "x86_64-linux";
   modules = [

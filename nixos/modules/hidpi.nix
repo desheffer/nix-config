@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.hidpi;
 
-in {
+in
+{
   options.modules.hidpi = {
     enable = mkOption {
       type = types.bool;

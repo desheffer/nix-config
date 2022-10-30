@@ -4,7 +4,8 @@ let
   lib = import ../../lib inputs;
   keys = import ../../secrets/keys.nix;
 
-in lib.mkNixosConfiguration {
+in
+lib.mkNixosConfiguration {
   hostname = "astral";
   system = "x86_64-linux";
   modules = [

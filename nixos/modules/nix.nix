@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.nix;
 
-in {
+in
+{
   config = {
     nix = {
       extraOptions = "experimental-features = nix-command flakes";

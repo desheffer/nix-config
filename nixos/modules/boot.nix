@@ -5,9 +5,9 @@ with lib;
 let
   cfg = config.modules.boot;
 
-in {
-  options.modules.boot = {
-  };
+in
+{
+  options.modules.boot = { };
 
   config = {
     boot = {

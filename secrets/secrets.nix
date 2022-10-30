@@ -10,4 +10,4 @@ let
   filesMapped = mapAttrs filesMapper secretsManifest.files;
 
 in
-  filesMapped
+filesMapped

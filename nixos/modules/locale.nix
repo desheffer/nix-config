@@ -5,9 +5,9 @@ with lib;
 let
   cfg = config.modules.locale;
 
-in {
-  options.modules.locale = {
-  };
+in
+{
+  options.modules.locale = { };
 
   config = {
     time.timeZone = "US/Eastern";

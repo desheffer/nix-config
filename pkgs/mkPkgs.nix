@@ -18,4 +18,4 @@ let
   ];
 
 in
-  pkgs
+pkgs

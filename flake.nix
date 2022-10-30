@@ -33,6 +33,10 @@
       # Home Manager for non-NixOS systems:
       homeConfigurations = import ./home/configurations inputs;
 
+      # Shell provided by `nix develop`:
       devShell = import ./devShell inputs;
+
+      # Formatter provided by `nix fmt`:
+      formatter = import ./formatter inputs;
     };
 }

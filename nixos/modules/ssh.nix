@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.ssh;
 
-in {
+in
+{
   options.modules.ssh = {
     enable = mkOption {
       type = types.bool;

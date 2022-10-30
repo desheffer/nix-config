@@ -5,7 +5,8 @@ inputs@{ home-manager, ... }:
 let
   lib = import ../../lib inputs;
 
-in {
+in
+{
   "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
     inherit system username;
 

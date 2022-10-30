@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.gnome;
 
-in {
+in
+{
   options.modules.gnome = {
     enable = mkOption {
       type = types.bool;

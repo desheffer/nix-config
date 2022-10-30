@@ -5,7 +5,8 @@ with lib;
 let
   cfg = config.modules.home;
 
-in {
+in
+{
   options.modules.home = {
     enable = mkOption {
       type = types.bool;
