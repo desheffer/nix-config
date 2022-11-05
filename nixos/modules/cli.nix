@@ -32,6 +32,10 @@ in
       shells = [ pkgs.zsh ];
 
       pathsToLink = [ "/share/zsh" ];
+
+      variables = {
+        NIXPKGS_ALLOW_UNFREE = "1";
+      };
     };
 
     system.activationScripts.bin.text = ''
