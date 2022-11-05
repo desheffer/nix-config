@@ -13,6 +13,7 @@ in
     boot = {
       loader = {
         efi.canTouchEfiVariables = true;
+        timeout = 3;
 
         systemd-boot = {
           enable = true;
