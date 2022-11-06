@@ -10,6 +10,8 @@ inputs@{ ... }:
 
         initialPassword = username;
         isNormalUser = true;
+
+        useDefaultShell = false;
         shell = pkgs.zsh;
 
         openssh.authorizedKeys.keys = authorizedKeys;

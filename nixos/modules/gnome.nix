@@ -44,5 +44,7 @@ in
     };
 
     services.gnome.core-utilities.enable = false;
+
+    services.accounts-daemon.enable = true;
   };
 }

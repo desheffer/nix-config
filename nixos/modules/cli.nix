@@ -29,9 +29,9 @@ in
         zsh
       ];
 
-      pathsToLink = [
-        "/share/zsh"
-      ];
+      shells = [ pkgs.zsh ];
+
+      pathsToLink = [ "/share/zsh" ];
     };
 
     system.activationScripts.bin.text = ''
