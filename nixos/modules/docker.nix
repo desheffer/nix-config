@@ -30,12 +30,15 @@ in
         features = {
           buildkit = true;
         };
+        shutdown-timeout = 5;
       };
     };
 
     environment.systemPackages = with pkgs; [
       ctop
-      docker-compose
+      (writeShellScriptBin "docker-compose" "docker compose \"$@\"")
     ];
+
+    networking.firewall.allowedTCPPorts = [ 80 443 ];
   };
 }
