@@ -88,6 +88,7 @@ in
         set-option -g status-style bg=''${TMUX_THEME_GRAY3}
         set-option -g window-status-current-style ""
         set-option -g window-status-activity-style ""
+        set-option -g window-status-bell-style ""
         set-window-option -g window-status-separator ""
         set-window-option -g window-status-format "#[fg=''${TMUX_THEME_GRAY1}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLL}#[fg=''${TMUX_THEME_BLACK}]#[bg=''${TMUX_THEME_GRAY1}]#[bold] #I #[nobold]#[fg=''${TMUX_THEME_GRAY1}]#[bg=''${TMUX_THEME_GRAY2}]''${TMUX_THEME_SEPLR}#[fg=''${TMUX_THEME_GRAY1}]#[bold] #W #F #[nobold]#[fg=''${TMUX_THEME_GRAY2}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLR}"
         set-window-option -g window-status-current-format "#[fg=''${TMUX_THEME_BLUE}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLL}#[fg=''${TMUX_THEME_BLACK}]#[bg=''${TMUX_THEME_BLUE}]#[bold] #I #[nobold]#[fg=''${TMUX_THEME_BLUE}]#[bg=''${TMUX_THEME_GRAY2}]''${TMUX_THEME_SEPLR}#[fg=''${TMUX_THEME_BLUE}]#[bold] #W #F #[nobold]#[fg=''${TMUX_THEME_GRAY2}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLR}"
