@@ -28,6 +28,8 @@ in
       };
 
       shellAliases = {
+        c = "cd ~/Code";
+
         cat = "bat --style=plain";
 
         "chown." = "sudo chown -R \"\${USER}\": .";

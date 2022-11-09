@@ -66,7 +66,6 @@ in
 
       dirHashes = {
         c = "$HOME/Code";
-        nc = "/etc/nix-config";
       };
 
       plugins = [
