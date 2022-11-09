@@ -21,6 +21,7 @@ with lib;
     ./steam.nix
     ./sudo.nix
     ./ups.nix
+    ./users.nix
     ./zram.nix
   ];
 }

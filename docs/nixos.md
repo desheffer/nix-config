@@ -140,15 +140,11 @@ Run the installation (replace `HOSTNAME`):
 @install HOSTNAME
 ```
 
-You will be prompted for the root password.
-
 Reboot when the installation is finished:
 
 ```sh
 reboot
 ```
-
-Reset all user passwords (the initial password is the username).
 
 Clone this repository to a more permanent location:
 

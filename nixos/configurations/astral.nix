@@ -2,6 +2,7 @@ inputs@{ nixos-hardware, secrets, ... }:
 
 let
   lib = import ../../lib inputs;
+  passwords = secrets.nixosModules.passwords;
   keys = secrets.nixosModules.keys;
 
 in
@@ -65,6 +66,7 @@ lib.mkNixosConfiguration {
 
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
+      initialHashedPassword = passwords.desheffer;
       extraGroups = [ "docker" "wheel" ];
       modules = [
         {

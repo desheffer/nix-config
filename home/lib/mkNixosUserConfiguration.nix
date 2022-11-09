@@ -1,6 +1,6 @@
 inputs@{ secrets, ... }:
 
-{ username, modules, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
+{ username, modules, initialHashedPassword, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@ inputs@{ secrets, ... }:
       users.users.${username} = {
         inherit extraGroups;
 
-        initialPassword = username;
+        initialHashedPassword = initialHashedPassword;
         isNormalUser = true;
 
         useDefaultShell = false;
