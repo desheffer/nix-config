@@ -62,6 +62,8 @@ in
         glp = "git log -p";
         gls = "git log --stat";
         gm = "git merge";
+        gma = "git merge --abort";
+        gmc = "git merge --continue";
         gp = "git pull";
         gpr = "git pull --rebase";
         gP = "git push";
