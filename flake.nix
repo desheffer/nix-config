@@ -19,8 +19,8 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
+    secrets = {
+      url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

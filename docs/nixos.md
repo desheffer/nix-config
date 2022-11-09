@@ -3,7 +3,10 @@
 Refer to the [Installation][nixos-installation] chapter of the NixOS Manual for
 detailed installation instructions. Below is a quick summary.
 
-Boot the NixOS installation environment. Connect over SSH, if possible.
+Boot the NixOS installation environment.
+
+Connect over SSH to the new machine from an existing, already authenticated
+machine. Use `ssh -A` to enable ssh-agent forwarding for accessing secrets.
 
 Become root:
 
@@ -98,12 +101,12 @@ ssh-keygen -t ed25519 -f /mnt/etc/ssh/ssh_host_ed25519_key -N ""
 cat /mnt/etc/ssh/ssh_host_ed25519_key.pub
 ```
 
-On another, already authenticated machine:
-- Create a new Git branch.
-- In the `nixos/configurations` directory, create a configuration for the new
-  machine.
-- Open the `secrets` directory, add the public key from the previous step to
-  `keys.nix`, and rekey secrets by running `agenix --rekey`.
+Back on the existing machine:
+- Create a configuration for the new machine in the `nixos/configurations`
+  directory.
+- Add the public key from the previous step in the `desheffer/secrets`
+  repository and rekey secrets.
+- Update `flake.lock` files.
 - Commit and push.
 - Return to the new machine.
 

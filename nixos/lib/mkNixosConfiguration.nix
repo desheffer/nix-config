@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, home-manager, agenix, ... }:
+inputs@{ nixpkgs, home-manager, secrets, ... }:
 
 { hostname, system, modules, ... }:
 
@@ -20,7 +20,7 @@ in
         home-manager.useUserPackages = true;
       }
 
-      agenix.nixosModule
+      secrets.nixosModules.nixos
 
       {
         networking.hostName = hostname;

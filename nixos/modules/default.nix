@@ -6,7 +6,6 @@ with lib;
   system.stateVersion = mkForce "21.11";
 
   imports = [
-    ./agenix.nix
     ./barrier.nix
     ./boot.nix
     ./cli.nix

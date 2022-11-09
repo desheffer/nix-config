@@ -30,6 +30,7 @@ lib.mkNixosConfiguration {
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+      modules.secrets.enable = true;
     }
 
     (lib.mkNixosUserConfiguration {
@@ -37,10 +38,10 @@ lib.mkNixosConfiguration {
       extraGroups = [ "docker" "wheel" ];
       modules = [
         {
-          modules.agenix.enable = true;
           modules.cli.enable = true;
           modules.gnome.enable = true;
           modules.hidpi.enable = true;
+          modules.secrets.enable = true;
         }
       ];
     })

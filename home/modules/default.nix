@@ -6,7 +6,6 @@ with lib;
   home.stateVersion = mkForce "21.11";
 
   imports = [
-    ./agenix.nix
     ./chrome.nix
     ./cli.nix
     ./discord.nix

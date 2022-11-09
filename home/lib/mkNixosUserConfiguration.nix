@@ -1,4 +1,4 @@
-inputs@{ ... }:
+inputs@{ secrets, ... }:
 
 { username, modules, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
 
@@ -19,5 +19,10 @@ inputs@{ ... }:
     })
   ];
 
-  home-manager.users.${username}.imports = [ ../modules ] ++ modules;
+  home-manager.users.${username}.imports = [
+    ../modules
+
+    secrets.nixosModules.home-manager
+  ]
+  ++ modules;
 }

@@ -1,8 +1,8 @@
-inputs@{ nixos-hardware, ... }:
+inputs@{ nixos-hardware, secrets, ... }:
 
 let
   lib = import ../../lib inputs;
-  keys = import ../../secrets/keys.nix;
+  keys = secrets.nixosModules.keys;
 
 in
 lib.mkNixosConfiguration {
@@ -34,6 +34,7 @@ lib.mkNixosConfiguration {
     {
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+      modules.secrets.enable = true;
       modules.ups.enable = true;
 
       modules.docker = {
@@ -67,10 +68,10 @@ lib.mkNixosConfiguration {
       extraGroups = [ "docker" "wheel" ];
       modules = [
         {
-          modules.agenix.enable = true;
           modules.cli.enable = true;
           modules.gnome.enable = true;
           modules.hidpi.enable = true;
+          modules.secrets.enable = true;
         }
       ];
       authorizedKeys = [

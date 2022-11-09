@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, agenix, neovim-custom, ... }:
+inputs@{ nixpkgs, neovim-custom, ... }:
 
 system:
 
@@ -13,7 +13,6 @@ let
 
   overlays = [
     (final: prev: {
-      agenix = agenix.packages.${system}.agenix;
       neovim-custom = neovim-custom.packages.${system}.neovim;
     })
   ];

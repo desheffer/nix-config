@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, flake-utils, devshell, agenix, ... }:
+inputs@{ nixpkgs, flake-utils, devshell, ... }:
 
 let
   mkDevShell = (system:
@@ -18,34 +18,12 @@ let
       '';
 
       packages = with pkgs; [
-        agenix.defaultPackage.${system}
         git
         jq
       ];
 
       # NOTE: Use ''$ to escape $ in variable names.
       commands = [
-        {
-          category = "agenix";
-          name = "@agenix-encrypt";
-          help = "encrypts stdin to a file";
-          command = ''
-            if [ ''${#} -lt 1 ]; then
-              echo "Usage: @agenix-encrypt OUTPUT" > /dev/stderr
-              exit 1
-            fi
-
-            EDITOR='cp /dev/stdin' agenix --edit "''${1}"
-          '';
-        }
-        {
-          category = "agenix";
-          name = "@agenix-rekey";
-          help = "re-encrypts all secrets";
-          command = ''
-            agenix --rekey
-          '';
-        }
         {
           category = "home-manager";
           name = "@home-switch";
