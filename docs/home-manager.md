@@ -12,11 +12,8 @@ You may be instructed to log out and log back in.
 Clone this repository:
 
 ```sh
-sudo mkdir /etc/nix-config
-sudo chown ${USER}: /etc/nix-config
-
-git clone https://github.com/desheffer/nix-config /etc/nix-config
-cd /etc/nix-config
+git clone https://github.com/desheffer/nix-config
+cd nix-config
 ```
 
 Build and activate the home configuration (`USER` and `SYSTEM` must be

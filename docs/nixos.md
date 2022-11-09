@@ -116,11 +116,13 @@ Open a Nix shell with Git:
 nix-shell -p git
 ```
 
-Clone this repository:
+Clone this repository to a temporary location for the install:
 
 ```sh
-git clone https://github.com/desheffer/nix-config /mnt/etc/nix-config
-cd /mnt/etc/nix-config
+cd /tmp
+
+git clone https://github.com/desheffer/nix-config
+cd nix-config
 ```
 
 Checkout the Git branch from above.
@@ -148,11 +150,10 @@ reboot
 
 Reset all user passwords (the initial password is the username).
 
-Change ownership of the new configuration directory (as a non-root user):
+Clone this repository to a more permanent location:
 
 ```sh
-sudo chown -R ${USER}: /etc/nix-config
-sudo git config --global --add safe.directory /etc/nix-config
+git clone git@github.com:desheffer/nix-config.git ~/Code/nix-config
 ```
 
 [nixos-installation]: https://nixos.org/manual/nixos/stable/index.html#ch-installation

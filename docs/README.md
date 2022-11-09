@@ -14,7 +14,7 @@ To start a container and activate the home configuration:
 docker run -it --rm \
     -e NIX_CONFIG='experimental-features = nix-command flakes' \
     -e TERM=xterm-256color \
-    -w /etc/nix-config \
+    -w ~/Code/nix-config \
     nixpkgs/nix \
     bash -c "
         git clone https://github.com/desheffer/nix-config.git . &&
