@@ -13,10 +13,11 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     secrets = {

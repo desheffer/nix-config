@@ -38,11 +38,6 @@ lib.mkNixosConfiguration {
       modules.secrets.enable = true;
       modules.ups.enable = true;
 
-      modules.docker = {
-        enable = true;
-        enableNvidia = true;
-      };
-
       modules.barrier = {
         enable = true;
         config = ''
@@ -61,6 +56,11 @@ lib.mkNixosConfiguration {
               right = astral
           end
         '';
+      };
+
+      modules.docker = {
+        enable = true;
+        enableNvidia = true;
       };
     }
 
