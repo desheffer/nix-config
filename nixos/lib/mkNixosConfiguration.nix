@@ -20,7 +20,7 @@ in
         home-manager.useUserPackages = true;
       }
 
-      secrets.nixosModules.nixos
+      secrets.nixosModules.secrets
 
       {
         networking.hostName = hostname;

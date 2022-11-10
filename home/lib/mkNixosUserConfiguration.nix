@@ -22,7 +22,7 @@ inputs@{ secrets, ... }:
   home-manager.users.${username}.imports = [
     ../modules
 
-    secrets.nixosModules.home-manager
+    secrets.nixosModules.home-manager.secrets
   ]
   ++ modules;
 }
