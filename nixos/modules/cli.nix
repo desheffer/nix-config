@@ -38,6 +38,7 @@ in
     };
 
     system.activationScripts.bin.text = ''
+      mkdir -p /bin
       ln -sfn /run/current-system/sw/bin/bash /bin/bash
     '';
   };

@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, home-manager, secrets, ... }:
+inputs@{ nixpkgs, home-manager, impermanence, secrets, ... }:
 
 { hostname, system, modules, ... }:
 
@@ -19,6 +19,8 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
+
+      impermanence.nixosModules.impermanence
 
       secrets.nixosModules.secrets
 

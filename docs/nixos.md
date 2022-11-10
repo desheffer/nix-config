@@ -5,8 +5,10 @@ detailed installation instructions. Below is a quick summary.
 
 Boot the NixOS installation environment.
 
-Connect over SSH to the new machine from an existing, already authenticated
-machine. Use `ssh -A` to enable ssh-agent forwarding for accessing secrets.
+Use `passwd` to set a temporary password.
+
+Connect over SSH from an existing, already authenticated machine. Use `ssh -A`
+to enable ssh-agent forwarding for accessing secrets later on.
 
 Become root:
 
@@ -24,10 +26,10 @@ PRIMARY=/dev/nvme0n1p2
 
 parted -s ${TARGET} mklabel gpt
 
-parted -s ${TARGET} mkpart ESP fat32 0% 512MiB
+parted -s ${TARGET} mkpart ESP fat32 0% 1GiB
 parted -s ${TARGET} set 1 esp on
 
-parted -s ${TARGET} mkpart primary 512MiB 100%
+parted -s ${TARGET} mkpart primary 1GiB 100%
 
 parted -s ${TARGET} print
 ```
@@ -53,10 +55,15 @@ Create subvolumes in the primary partition:
 
 ```sh
 mount -t btrfs /dev/mapper/primary /mnt
+
 btrfs subvolume create /mnt/@root
-btrfs subvolume create /mnt/@home
+btrfs subvolume snapshot -r /mnt/@root /mnt/@root-blank
+
 btrfs subvolume create /mnt/@nix
+btrfs subvolume create /mnt/@persist
 btrfs subvolume create /mnt/@swap
+btrfs subvolume create /mnt/@home
+
 umount /mnt
 ```
 
@@ -65,14 +72,17 @@ Mount the partitions and subvolumes:
 ```sh
 mount -t btrfs -o subvol=@root,compress=zstd /dev/mapper/primary /mnt
 
-mkdir -p /mnt/home
-mount -t btrfs -o subvol=@home,compress=zstd /dev/mapper/primary /mnt/home
-
 mkdir -p /mnt/nix
 mount -t btrfs -o subvol=@nix,compress=zstd,noatime /dev/mapper/primary /mnt/nix
 
+mkdir -p /mnt/persist
+mount -t btrfs -o subvol=@persist,compress=zstd /dev/mapper/primary /mnt/persist
+
 mkdir -p /mnt/swap
 mount -t btrfs -o subvol=@swap,noatime /dev/mapper/primary /mnt/swap
+
+mkdir -p /mnt/home
+mount -t btrfs -o subvol=@home,compress=zstd /dev/mapper/primary /mnt/home
 
 mkdir -p /mnt/boot
 mount /dev/disk/by-label/BOOT /mnt/boot
@@ -95,49 +105,32 @@ swapon /mnt/swap/swapfile
 Generate an SSH key to use for managing secrets:
 
 ```sh
-mkdir -p /mnt/etc/ssh
-ssh-keygen -t ed25519 -f /mnt/etc/ssh/ssh_host_ed25519_key -N ""
+mkdir -p /mnt/persist/etc/ssh
+ssh-keygen -t ed25519 -f /mnt/persist/etc/ssh/ssh_host_ed25519_key -N ""
 
-cat /mnt/etc/ssh/ssh_host_ed25519_key.pub
+cat /mnt/persist/etc/ssh/ssh_host_ed25519_key.pub
 ```
 
-Back on the existing machine:
-- Create a configuration for the new machine in the `nixos/configurations`
-  directory.
-- Add the public key from the previous step in the `desheffer/secrets`
-  repository and rekey secrets.
-- Update `flake.lock` files.
-- Commit and push.
-- Return to the new machine.
-
-Open a Nix shell with Git:
+Optionally, view the hardware configuration for the new machine:
 
 ```sh
-nix-shell -p git
+nixos-generate-config --root /mnt
+cat /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-Clone this repository to a temporary location for the install:
+On an existing machine, clone the `desheffer/secrets` repository. Add the key
+from the previous step and rekey secrets. Commit the changes and push.
+
+On an existing machine, clone the `desheffer/nix-config` repository. Checkout a
+new `BRANCH`, if desired. Pull in any changes from the `desheffer/secrets`
+repository. Create a configuration for the new machine and assign it a
+`HOSTNAME`. Use the hardware configuration from the previous step as needed.
+Commit the changes and push.
+
+Run the install (replace `BRANCH` and `HOSTNAME` using the values from above):
 
 ```sh
-cd /tmp
-
-git clone https://github.com/desheffer/nix-config
-cd nix-config
-```
-
-Checkout the Git branch from above.
-
-Open a development shell:
-
-```sh
-export NIX_CONFIG='experimental-features = nix-command flakes'
-nix develop
-```
-
-Run the installation (replace `HOSTNAME`):
-
-```sh
-@install HOSTNAME
+nixos-install --flake github:desheffer/nix-config/BRANCH#HOSTNAME
 ```
 
 Reboot when the installation is finished:
@@ -149,7 +142,9 @@ reboot
 Clone this repository to a more permanent location:
 
 ```sh
-git clone git@github.com:desheffer/nix-config.git ~/Code/nix-config
+cd ~/Code
+
+git clone git@github.com:desheffer/nix-config.git
 ```
 
 [nixos-installation]: https://nixos.org/manual/nixos/stable/index.html#ch-installation
