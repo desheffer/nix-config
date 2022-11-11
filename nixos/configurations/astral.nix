@@ -37,6 +37,7 @@ lib.mkNixosConfiguration {
       modules.hidpi.enable = true;
       modules.secrets.enable = true;
       modules.ups.enable = true;
+      modules.virtualbox.enable = true;
 
       modules.barrier = {
         enable = true;
