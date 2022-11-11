@@ -20,9 +20,9 @@ Create the partition schema (run `lsblk` to list block devices and replace
 `/dev/nvme0n1` with the target disk):
 
 ```sh
-TARGET=/dev/nvme0n1
-BOOT=/dev/nvme0n1p1
-PRIMARY=/dev/nvme0n1p2
+TARGET=/dev/sda
+BOOT=/dev/sda1
+PRIMARY=/dev/sda2
 
 parted -s ${TARGET} mklabel gpt
 
@@ -86,7 +86,7 @@ mount /dev/disk/by-label/BOOT /mnt/boot
 Create a swapfile (set `SIZE` to the desired size):
 
 ```sh
-SIZE=16GB
+SIZE=1GB
 
 truncate -s 0 /mnt/swap/swapfile
 chattr +C /mnt/swap/swapfile
