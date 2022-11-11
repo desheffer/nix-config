@@ -22,6 +22,7 @@ with lib;
     ./sudo.nix
     ./ups.nix
     ./users.nix
+    ./virtualbox.nix
     ./zram.nix
   ];
 }
