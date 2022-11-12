@@ -17,7 +17,7 @@ docker run -it --rm \
     -w ~/Code/nix-config \
     nixpkgs/nix \
     bash -c "
-        git clone https://github.com/desheffer/nix-config.git . &&
+        git clone https://github.com/desheffer/nix-config.git &&
         nix develop -c @home-switch &&
         ~/.nix-profile/bin/zsh"
 ```

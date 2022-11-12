@@ -22,11 +22,11 @@ jobs:
       run: |
         sh <(curl -L https://nixos.org/nix/install)
 
-    - name: Run update
+    - name: Update nixpkgs
       run: |
         . ~/.nix-profile/etc/profile.d/nix.sh
         export NIX_CONFIG='experimental-features = nix-command flakes'
-        nix develop -c @update
+        nix flake lock --update-input nixpkgs
 
     - name: Commit and push
       run: |
