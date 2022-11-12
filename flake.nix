@@ -24,7 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-custom.url = "github:desheffer/neovim-flake";
+    neovim-custom = {
+      url = "github:desheffer/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ ... }:
