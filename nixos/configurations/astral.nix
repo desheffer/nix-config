@@ -13,7 +13,16 @@ lib.mkNixosConfiguration {
     ({ pkgs, ... }: {
       boot = {
         # Linux >=5.17 is required for wifi functionality.
-        kernelPackages = pkgs.linuxPackages_5_19;
+        kernelPackages = pkgs.linuxPackagesFor (pkgs.linux.override {
+          argsOverride = rec {
+            src = pkgs.fetchurl {
+              url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
+              sha256 = "sha256-yTuzhKl60fCk8Y5ELOApEkJyL3gCPspliyI0RUHwlIk=";
+            };
+            version = "5.19.17";
+            modDirVersion = "5.19.17";
+          };
+        });
 
         initrd = {
           availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
