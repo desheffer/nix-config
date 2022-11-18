@@ -16,6 +16,7 @@ with lib;
     ./home.nix
     ./kitty.nix
     ./neovim.nix
+    ./secrets.nix
     ./slack.nix
     ./spotify.nix
     ./tmux.nix
