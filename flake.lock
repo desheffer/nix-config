@@ -757,11 +757,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1668753724,
-        "narHash": "sha256-6yaQjhmpHMxZDvsqCTWNdYU11yvLY+Z6vllokisF4Io=",
+        "lastModified": 1668754495,
+        "narHash": "sha256-K0smRBN18JvUX+ElulA2BjF7nl837Oo+NBCRCR3i3Ys=",
         "ref": "main",
-        "rev": "57f1815e9ae33ca14a4edf620d71dc6ec4598075",
-        "revCount": 7,
+        "rev": "5f53c334d668a2df3f941b4f33306d2fd36c87a4",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@github.com/desheffer/secrets"
       },
