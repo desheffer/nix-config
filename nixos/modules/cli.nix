@@ -24,6 +24,7 @@ in
         htop
         killall
         python3
+        s-tui
         wget
         zsh
       ];
