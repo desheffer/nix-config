@@ -77,7 +77,7 @@ lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       initialHashedPassword = passwords.desheffer;
-      extraGroups = [ "docker" "wheel" ];
+      extraGroups = [ "docker" "networkmanager" "wheel" ];
       modules = [
         {
           modules.cli.enable = true;
