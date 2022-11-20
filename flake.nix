@@ -15,20 +15,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    devshell.url = "github:numtide/devshell";
 
-    secrets = {
-      url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    neovim-custom.url = "github:desheffer/neovim-flake";
 
-    neovim-custom = {
-      url = "github:desheffer/neovim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
   };
 
   outputs = inputs@{ ... }:
