@@ -17,7 +17,7 @@
 
     devshell.url = "github:numtide/devshell";
 
-    neovim-custom.url = "github:desheffer/neovim-flake";
+    neovim-config.url = "github:desheffer/neovim-config";
 
     secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
   };

@@ -16,8 +16,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      neovim-custom
-    ];
+    programs.neovim-config = {
+      enable = true;
+
+      lsp.enable = true;
+    };
   };
 }

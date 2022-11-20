@@ -1,4 +1,4 @@
-inputs@{ secrets, ... }:
+inputs@{ secrets, neovim-config, ... }:
 
 { username, modules, initialHashedPassword, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
 
@@ -21,6 +21,8 @@ inputs@{ secrets, ... }:
 
   home-manager.users.${username}.imports = [
     ../modules
+
+    neovim-config.hmModules.neovim
 
     secrets.nixosModules.home-manager.secrets
   ]
