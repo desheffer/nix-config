@@ -1,26 +1,9 @@
 # Nix config
 
-This repository contains a Nix flake that can be used to manage entire NixOS
-systems and/or Home Manager profiles of individual users.
-
-## 🏃 Quick start
-
-It is possible to run the home configuration in Docker. This can be useful for
-demonstration purposes since it makes no changes to the host system.
-
-To start a container and activate the home configuration:
-
-```sh
-docker run -it --rm \
-    -e NIX_CONFIG='experimental-features = nix-command flakes' \
-    -e TERM=xterm-256color \
-    -w ~/Code/nix-config \
-    nixpkgs/nix \
-    bash -c "
-        git clone https://github.com/desheffer/nix-config.git &&
-        nix develop -c @home-switch &&
-        ~/.nix-profile/bin/zsh"
-```
+This repository contains my system and user configurations as a Nix flake. It
+includes configurations for entire NixOS systems (using NixOS and Home Manager)
+and configurations for individual user profiles on non-NixOS systems (using
+Home Manager).
 
 ## 🔨 Installation scenarios
 
