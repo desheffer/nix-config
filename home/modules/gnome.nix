@@ -89,7 +89,6 @@ in
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "dash-to-panel@jderose9.github.com"
-          "sound-output-device-chooser@kgshank.net"
         ];
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
@@ -141,7 +140,6 @@ in
       gnome.nautilus
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-panel
-      gnomeExtensions.sound-output-device-chooser
       roboto
       tela-icon-theme
     ];
