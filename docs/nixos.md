@@ -26,10 +26,10 @@ PRIMARY=/dev/nvme0n1p2
 
 parted -s ${TARGET} mklabel gpt
 
-parted -s ${TARGET} mkpart ESP fat32 0% 1GiB
+parted -s ${TARGET} mkpart ESP fat32 0% 512MiB
 parted -s ${TARGET} set 1 esp on
 
-parted -s ${TARGET} mkpart primary 1GiB 100%
+parted -s ${TARGET} mkpart primary 512MiB 100%
 
 parted -s ${TARGET} print
 ```

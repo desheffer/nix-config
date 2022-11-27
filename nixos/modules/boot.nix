@@ -17,6 +17,7 @@ in
 
         systemd-boot = {
           enable = true;
+          configurationLimit = 16;
           consoleMode = "0";
         };
       };
