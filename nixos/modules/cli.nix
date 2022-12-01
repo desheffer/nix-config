@@ -19,6 +19,7 @@ in
     environment = {
       systemPackages = with pkgs; [
         bash
+        btop
         dnsutils
         git
         htop
