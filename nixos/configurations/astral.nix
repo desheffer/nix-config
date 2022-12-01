@@ -42,8 +42,10 @@ lib.mkNixosConfiguration {
     }
 
     {
+      modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+      modules.nvidia.enable = true;
       modules.secrets.enable = true;
       modules.ups.enable = true;
       modules.virtualbox.enable = true;
@@ -66,11 +68,6 @@ lib.mkNixosConfiguration {
               right = astral
           end
         '';
-      };
-
-      modules.docker = {
-        enable = true;
-        enableNvidia = true;
       };
     }
 

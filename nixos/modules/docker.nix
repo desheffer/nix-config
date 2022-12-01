@@ -17,7 +17,7 @@ in
     enableNvidia = mkOption {
       type = types.bool;
       description = "Whether to enable nvidia-docker wrapper.";
-      default = false;
+      default = config.modules.nvidia.enable;
     };
   };
 

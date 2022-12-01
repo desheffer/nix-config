@@ -17,6 +17,7 @@ with lib;
     ./hidpi.nix
     ./locale.nix
     ./nix.nix
+    ./nvidia.nix
     ./secrets.nix
     ./ssh.nix
     ./steam.nix
