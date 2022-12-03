@@ -9,9 +9,15 @@ let
 
 in
 {
-  options.modules.fileSystems = { };
+  options.modules.fileSystems = {
+    enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable the file systems configuration.";
+      default = false;
+    };
+  };
 
-  config = {
+  config = mkIf cfg.enable {
     boot.initrd.luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
 
     fileSystems = {

@@ -20,7 +20,7 @@ in
       enable = true;
       kbdInteractiveAuthentication = false;
       passwordAuthentication = false;
-      permitRootLogin = "no";
+      permitRootLogin = mkDefault "no";
     };
   };
 }

@@ -7,4 +7,5 @@ in
 lib.mergeAttrs [
   (import ./argent.nix inputs)
   (import ./astral.nix inputs)
+  (import ./iso.nix inputs)
 ]
