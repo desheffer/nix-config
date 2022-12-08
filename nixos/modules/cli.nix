@@ -24,6 +24,7 @@ in
         git
         htop
         killall
+        openssl
         python3
         s-tui
         wget
