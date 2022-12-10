@@ -31,6 +31,7 @@ lib.mkNixosConfiguration {
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
+      modules.printing.enable = true;
       modules.secrets.enable = true;
     }
 

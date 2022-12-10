@@ -18,6 +18,7 @@ with lib;
     ./locale.nix
     ./nix.nix
     ./nvidia.nix
+    ./printing.nix
     ./secrets.nix
     ./ssh.nix
     ./steam.nix
