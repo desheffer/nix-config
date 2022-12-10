@@ -15,6 +15,7 @@ with lib;
     ./gui.nix
     ./hardware.nix
     ./hidpi.nix
+    ./journald.nix
     ./locale.nix
     ./nix.nix
     ./nvidia.nix
