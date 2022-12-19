@@ -76,7 +76,7 @@ in
 
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;
-        night-light-temperature = hm.gvariant.mkUint32 4500;
+        night-light-temperature = hm.gvariant.mkUint32 3000;
       };
 
       "org/gnome/settings-daemon/plugins/power" = {
