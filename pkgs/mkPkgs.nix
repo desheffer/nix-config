@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, ... }:
+inputs@{ nixpkgs, nixpkgs-gnome, ... }:
 
 system:
 
@@ -7,14 +7,18 @@ let
     inherit system config overlays;
   };
 
+  pkgs-gnome = import nixpkgs-gnome {
+    inherit system config;
+  };
+
   config = {
     allowUnfree = true;
   };
 
   overlays = [
-    # (final: prev: {
-    #
-    # })
+    (final: prev: {
+      inherit (pkgs-gnome) gnome;
+    })
   ];
 
 in

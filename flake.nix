@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
 
+    # TODO: Remove when sound picker bug is fixed.
+    # See https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6207
+    nixpkgs-gnome.url = "github:nixos/nixpkgs/nixos-22.11";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
