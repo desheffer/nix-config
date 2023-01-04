@@ -12,17 +12,9 @@ lib.mkNixosConfiguration {
   modules = [
     ({ pkgs, ... }: {
       boot = {
+        # TODO: Remove when upstream Linux version is upgraded.
         # Linux >=5.17 is required for wifi functionality.
-        kernelPackages = pkgs.linuxPackagesFor (pkgs.linux.override {
-          argsOverride = rec {
-            src = pkgs.fetchurl {
-              url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
-              sha256 = "sha256-yTuzhKl60fCk8Y5ELOApEkJyL3gCPspliyI0RUHwlIk=";
-            };
-            version = "5.19.17";
-            modDirVersion = "5.19.17";
-          };
-        });
+        kernelPackages = pkgs.linuxPackages_6_1;
 
         initrd = {
           availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
