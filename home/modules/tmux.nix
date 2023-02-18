@@ -23,6 +23,7 @@ in
       baseIndex = 1;
       escapeTime = 0;
       historyLimit = 50000;
+      keyMode = "vi";
       newSession = true;
       shell = "${pkgs.zsh}/bin/zsh";
       terminal = "\${TERM}";
@@ -48,8 +49,8 @@ in
         bind-key '-' split-window -v -c "#{pane_current_path}"
 
         # Add window navigation options.
-        bind-key -n M-Home previous-window
-        bind-key -n M-End  next-window
+        bind-key -n M-PgDn next-window
+        bind-key -n M-PgUp previous-window
 
         # Renumber when a window is closed.
         set-option -g renumber-windows on

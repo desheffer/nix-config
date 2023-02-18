@@ -58,10 +58,12 @@ in
         bindkey '^[[F'    end-of-line         # End
         bindkey '^[[3~'   delete-char         # Del
         bindkey '^H'      backward-kill-word  # Ctrl + Backspace
-        bindkey '^[[5~'   beep                # PageDown
-        bindkey '^[[6~'   beep                # PageUp
+        bindkey '^[[5~'   beep                # PageDown (no-op)
+        bindkey '^[[6~'   beep                # PageUp (no-op)
         bindkey '^[[5;3~' beep                # Alt + PageDown (no-op)
         bindkey '^[[6;3~' beep                # Alt + PageUp (no-op)
+        bindkey '^[[5;5~' beep                # Ctrl + PageDown (no-op)
+        bindkey '^[[6;5~' beep                # Ctrl + PageUp (no-op)
       '';
 
       dirHashes = {
