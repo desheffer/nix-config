@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, nixpkgs-gnome, ... }:
+inputs@{ nixpkgs, ... }:
 
 system:
 
@@ -7,6 +7,15 @@ let
     inherit system config overlays;
   };
 
+  # Lock GNOME due to sound picker bug.
+  # TODO: Remove when bug is fixed.
+  # SEE: https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/6207
+  nixpkgs-gnome = pkgs.fetchFromGitHub {
+    owner = "nixos";
+    repo = "nixpkgs";
+    rev = "899e7ca";
+    sha256 = "fVbG427suESAEb8/P47O/zD/G9BSeFxLh94IUzgOchs=";
+  };
   pkgs-gnome = import nixpkgs-gnome {
     inherit system config;
   };
