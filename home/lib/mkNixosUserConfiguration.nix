@@ -6,9 +6,8 @@ inputs@{ secrets, neovim-config, ... }:
   imports = [
     ({ pkgs, ... }: {
       users.users.${username} = {
-        inherit extraGroups;
+        inherit initialHashedPassword extraGroups;
 
-        initialHashedPassword = initialHashedPassword;
         isNormalUser = true;
 
         useDefaultShell = false;
@@ -25,6 +24,7 @@ inputs@{ secrets, neovim-config, ... }:
     neovim-config.hmModules.neovim
 
     secrets.nixosModules.home-manager.secrets
+    ../modules/secrets.nix
   ]
   ++ modules;
 }
