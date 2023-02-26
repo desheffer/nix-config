@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, flakeInputs, ... }:
 
 with lib;
 
@@ -18,6 +18,8 @@ in
         options = "--delete-older-than 7d";
         persistent = true;
       };
+
+      registry.nixpkgs.flake = flakeInputs.nixpkgs;
     };
   };
 }

@@ -11,6 +11,10 @@ in
     inherit system;
 
     pkgs = lib.mkPkgs system;
+    specialArgs = {
+      flakeInputs = inputs;
+    };
+
     modules = [
       ../modules
 
