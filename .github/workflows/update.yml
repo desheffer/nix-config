@@ -19,8 +19,7 @@ jobs:
         git config --global user.name 'github-actions'
 
     - name: Install Nix
-      run: |
-        sh <(curl -L https://nixos.org/nix/install)
+      uses: DeterminateSystems/nix-installer-action@main
 
     - name: Update nixpkgs
       run: |

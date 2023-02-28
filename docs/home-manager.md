@@ -1,13 +1,17 @@
 # Installing with Home Manager on a non-NixOS system
 
 Install the Nix package manager, either through a system package manager or
-using the [Nix installation script][nix-download]:
+using the [Determinate Nix Installer][nix-installer]:
 
 ```sh
-sh <(curl -L https://nixos.org/nix/install)
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-You may be instructed to log out and log back in.
+You will be instructed to open a new shell or run:
+
+```sh
+. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+```
 
 Clone this repository:
 
@@ -16,11 +20,10 @@ git clone https://github.com/desheffer/nix-config
 cd nix-config
 ```
 
-Build and activate the home configuration (`USER` and `SYSTEM` must be
-specified in `homeConfigurations`):
+Build and activate the home configuration (the current`USER` and `SYSTEM` will
+be detected, and they must match pre-existing values in `homeConfigurations`):
 
 ```sh
-export NIX_CONFIG='experimental-features = nix-command flakes'
 nix develop -c @home-switch
 ```
 
@@ -38,4 +41,4 @@ echo ~/.nix-profile/bin/zsh | sudo tee -a /etc/shells
 chsh -s ~/.nix-profile/bin/zsh
 ```
 
-[nix-download]: https://nixos.org/download.html
+[nix-installer]: https://github.com/DeterminateSystems/nix-installer
