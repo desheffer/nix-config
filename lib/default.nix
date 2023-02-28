@@ -1,4 +1,4 @@
-inputs@{ ... }:
+inputs:
 
 {
   mergeAttrs = builtins.foldl' (n: a: n // a) { };

@@ -22,7 +22,7 @@
     secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
   };
 
-  outputs = inputs@{ ... }:
+  outputs = inputs:
     {
       # NixOS with Home Manager:
       nixosConfigurations = import ./nixos/configurations inputs;
