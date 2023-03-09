@@ -64,6 +64,15 @@ in
         bindkey '^[[6;3~' beep                # Alt + PageUp (no-op)
         bindkey '^[[5;5~' beep                # Ctrl + PageDown (no-op)
         bindkey '^[[6;5~' beep                # Ctrl + PageUp (no-op)
+
+        function nr {
+          if [ ''${#} -lt 1 ]; then
+              return
+          fi
+          pkg=''${1}
+          shift 1
+          nix run nixpkgs#"''${pkg}" -- "''${@}"
+        }
       '';
 
       dirHashes = {

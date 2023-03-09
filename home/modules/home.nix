@@ -95,6 +95,8 @@ in
         ls = "exa -F --group-directories-first";
         tree = "exa -T --group-directories-first";
 
+        ns = "nix search nixpkgs";
+
         ta = "tmux attach";
         tmux = "tmux -2u";
       };
