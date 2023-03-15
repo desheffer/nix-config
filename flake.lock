@@ -487,11 +487,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1678336580,
-        "narHash": "sha256-6XZT6G5ky5ABnDhfO77+p/U7NeZ8g9HCs8OToiUuSpI=",
+        "lastModified": 1678856968,
+        "narHash": "sha256-rLV3zLCLME4GC/rN7yanBVX2xE6Q4Nkpcq7oSkOEIrU=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "11dbca9482a5f68bb0da0fa1e978ebd4a0bcc0eb",
+        "rev": "48e5bad74500a9bb8668bae006b53625c6a8622f",
         "type": "github"
       },
       "original": {
@@ -807,11 +807,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1671140430,
-        "narHash": "sha256-UkAOnJfAULSmPaVUVxGMn7ADf32UjD1k2cBPBPPkejA=",
+        "lastModified": 1678857421,
+        "narHash": "sha256-MACHISkhjUvf4V/QYi+8T8+3xsBYjKpt3fZwaABzumU=",
         "ref": "main",
-        "rev": "b7cf2a0a21d41032f196f7f0b9bea3ad8c508d62",
-        "revCount": 13,
+        "rev": "b52273f9fb69466d26cc47b0fafee4f1a6f82bff",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/desheffer/secrets"
       },

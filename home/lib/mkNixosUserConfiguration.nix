@@ -21,9 +21,9 @@ inputs@{ secrets, neovim-config, ... }:
   home-manager.users.${username}.imports = [
     ../modules
 
-    neovim-config.hmModules.neovim
+    neovim-config.homeManagerModules.neovim
 
-    secrets.nixosModules.home-manager.secrets
+    secrets.homeManagerModules.secrets
     ../modules/secrets.nix
   ]
   ++ modules;
