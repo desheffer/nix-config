@@ -465,7 +465,6 @@
         "neovim": "neovim",
         "nixpkgs": "nixpkgs_3",
         "null-ls-nvim": "null-ls-nvim",
-        "nvim-autopairs": "nvim-autopairs",
         "nvim-cmp": "nvim-cmp",
         "nvim-hlslens": "nvim-hlslens",
         "nvim-lspconfig": "nvim-lspconfig",
@@ -487,11 +486,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1678856968,
-        "narHash": "sha256-rLV3zLCLME4GC/rN7yanBVX2xE6Q4Nkpcq7oSkOEIrU=",
+        "lastModified": 1680639270,
+        "narHash": "sha256-Rv6jXNQ9PI3ErNP9G9p4H2w9rzZ8EQ0MLbJmmSdM74U=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "48e5bad74500a9bb8668bae006b53625c6a8622f",
+        "rev": "9402c3d25fbfc938efd27b52511424dcac431488",
         "type": "github"
       },
       "original": {
@@ -640,22 +639,6 @@
       "original": {
         "owner": "jose-elias-alvarez",
         "repo": "null-ls.nvim",
-        "type": "github"
-      }
-    },
-    "nvim-autopairs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1669643962,
-        "narHash": "sha256-saW9+e5DeEJSL6T00v/MOE+dFuODmGRBd9Gf1pWDY98=",
-        "owner": "windwp",
-        "repo": "nvim-autopairs",
-        "rev": "99f696339266c22e7313d6a85a95bd538c3fc226",
-        "type": "github"
-      },
-      "original": {
-        "owner": "windwp",
-        "repo": "nvim-autopairs",
         "type": "github"
       }
     },
