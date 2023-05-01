@@ -15,6 +15,7 @@ with lib;
     ./hidpi.nix
     ./home.nix
     ./kitty.nix
+    ./libreoffice.nix
     ./neovim.nix
     ./slack.nix
     ./spotify.nix
