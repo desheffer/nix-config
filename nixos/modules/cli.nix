@@ -16,24 +16,29 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.git = {
+      enable = true;
+    };
+
+    programs.htop = {
+      enable = true;
+    };
+
+    programs.zsh = {
+      enable = true;
+    };
+
     environment = {
       systemPackages = with pkgs; [
         bash
         btop
         dnsutils
-        git
-        htop
         killall
         openssl
         python3
         s-tui
         wget
-        zsh
       ];
-
-      shells = [ pkgs.zsh ];
-
-      pathsToLink = [ "/share/zsh" ];
 
       variables = {
         NIXPKGS_ALLOW_UNFREE = "1";

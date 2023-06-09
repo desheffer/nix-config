@@ -16,6 +16,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.video.hidpi.enable = true;
+    console.font = lib.mkDefault "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
   };
 }
