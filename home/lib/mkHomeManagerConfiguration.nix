@@ -21,7 +21,7 @@ in
 
       ../modules
 
-      neovim-config.hmModules.neovim
+      neovim-config.homeManagerModules.neovim
     ]
     ++ modules;
   };
