@@ -54,8 +54,12 @@ in
 
         bindkey '^[[1;5C' forward-word        # Ctrl + Right
         bindkey '^[[1;5D' backward-word       # Ctrl + Left
+        bindkey '^[[1~'   beginning-of-line   # Home
         bindkey '^[[H'    beginning-of-line   # Home
+        bindkey '^[OH'    beginning-of-line   # Home
+        bindkey '^[[4~'   end-of-line         # End
         bindkey '^[[F'    end-of-line         # End
+        bindkey '^[OF'    end-of-line         # End
         bindkey '^[[3~'   delete-char         # Del
         bindkey '^H'      backward-kill-word  # Ctrl + Backspace
         bindkey '^[[5~'   beep                # PageDown (no-op)
