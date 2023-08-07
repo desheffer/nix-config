@@ -75,7 +75,7 @@ in
           fi
           pkg=''${1}
           shift 1
-          nix run nixpkgs#"''${pkg}" -- "''${@}"
+          nix run nixpkgs#"''${pkg}" --impure -- "''${@}"
         }
       '';
 
