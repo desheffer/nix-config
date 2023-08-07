@@ -8,9 +8,9 @@ let
 in
 {
   options.modules.barrier = {
-    enable = mkOption {
+    enableServer = mkOption {
       type = types.bool;
-      description = "Whether to enable Barrier.";
+      description = "Whether to enable the Barrier server.";
       default = false;
     };
 
@@ -19,9 +19,21 @@ in
       description = "Barrier configuration file.";
       default = "";
     };
+
+    enableClient = mkOption {
+      type = types.bool;
+      description = "Whether to enable the Barrier client.";
+      default = false;
+    };
+
+    serverAddress = mkOption {
+      type = types.str;
+      description = "Address of the Barrier server.";
+      default = "";
+    };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf (cfg.enableServer || cfg.enableClient) {
     environment = {
       systemPackages = with pkgs; [
         barrier
@@ -36,12 +48,21 @@ in
 
     networking.firewall.allowedTCPPorts = [ 24800 ];
 
-    systemd.user.services.barrier-server = {
+    systemd.user.services.barrier-server = mkIf cfg.enableServer {
       after = [ "network.target" "graphical-session.target" ];
       description = "barrier server";
       wantedBy = [ "graphical-session.target" ];
       path = [ pkgs.barrier ];
       serviceConfig.ExecStart = ''${pkgs.barrier}/bin/barriers -f --config /etc/barrier.conf --disable-crypto'';
+      serviceConfig.Restart = "on-failure";
+    };
+
+    systemd.user.services.barrier-client = mkIf cfg.enableClient {
+      after = [ "network.target" "graphical-session.target" ];
+      description = "barrier client";
+      wantedBy = [ "graphical-session.target" ];
+      path = [ pkgs.barrier ];
+      serviceConfig.ExecStart = ''${pkgs.barrier}/bin/barrierc -f --disable-crypto "${cfg.serverAddress}"'';
       serviceConfig.Restart = "on-failure";
     };
   };

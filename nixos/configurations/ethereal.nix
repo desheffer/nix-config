@@ -3,56 +3,37 @@ inputs@{ nixos-hardware, secrets, ... }:
 let
   lib = import ../../lib inputs;
   passwords = secrets.nixosModules.passwords;
-  keys = secrets.nixosModules.keys;
 
 in
 lib.mkNixosConfiguration {
-  hostname = "astral";
+  hostname = "ethereal";
   system = "x86_64-linux";
   modules = [
-    ({ pkgs, ... }: {
+    ({ config, ... }: {
       boot = {
         initrd = {
-          availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+          availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
           kernelModules = [ ];
         };
 
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
       };
     })
 
-    nixos-hardware.nixosModules.common-cpu-amd
-    nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-    nixos-hardware.nixosModules.common-pc-ssd
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     {
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
-      modules.nvidia.enable = true;
+      modules.printing.enable = true;
       modules.secrets.enable = true;
-      modules.ups.enable = true;
-      modules.virtualbox.enable = true;
 
       modules.barrier = {
-        enableServer = true;
-        config = ''
-          section: screens
-            astral:
-            ethereal:
-          end
-
-          section: aliases
-          end
-
-          section: links
-            astral:
-              left = ethereal
-            ethereal:
-              right = astral
-          end
-        '';
+        enableClient = true;
+        serverAddress = "192.168.1.32";
       };
     }
 
@@ -67,9 +48,6 @@ lib.mkNixosConfiguration {
           modules.hidpi.enable = true;
           modules.secrets.enable = true;
         }
-      ];
-      authorizedKeys = [
-        keys.users.desheffer
       ];
     })
   ];

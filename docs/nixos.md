@@ -5,7 +5,8 @@ detailed installation instructions. Below is a quick summary.
 
 Boot the NixOS installation environment.
 
-Use `passwd` to set a temporary password.
+Use `curl https://github.com/desheffer.keys > ~/.ssh/authorized_keys` to copy
+SSH authorized keys.
 
 Connect over SSH from an existing, already authenticated machine. Use `ssh -A`
 to enable ssh-agent forwarding for accessing secrets later on.
@@ -118,14 +119,16 @@ nixos-generate-config --root /mnt
 cat /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-On an existing machine, clone the `desheffer/secrets` repository. Add the key
-from the previous step and rekey secrets. Commit the changes and push.
+On the existing machine, clone the `desheffer/nix-config` repository. Create a
+new `BRANCH`. Create a configuration for the new machine and assign it a
+`HOSTNAME`. Use the hardware configuration from the previous step, as needed.
 
-On an existing machine, clone the `desheffer/nix-config` repository. Checkout a
-new `BRANCH`, if desired. Pull in any changes from the `desheffer/secrets`
-repository. Create a configuration for the new machine and assign it a
-`HOSTNAME`. Use the hardware configuration from the previous step as needed.
-Commit the changes and push.
+On the existing machine, clone the `desheffer/secrets` repository. Add the key
+from the previous step. Follow the instructions in that repository to rekey
+secrets. Commit the changes and push. Back in `desheffer/nix-config`, pull in
+the changes using `nix flake lock --update-input secrets`.
+
+On the existing machine, commit and push the configuration for the new machine.
 
 Run the install (replace `BRANCH` and `HOSTNAME` using the values from above):
 
