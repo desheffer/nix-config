@@ -28,6 +28,7 @@ lib.mkNixosConfiguration {
     }
 
     {
+      modules.autoUpgrade.enable = true;
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;

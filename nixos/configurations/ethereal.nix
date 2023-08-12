@@ -25,6 +25,7 @@ lib.mkNixosConfiguration {
     nixos-hardware.nixosModules.common-pc-laptop-ssd
 
     {
+      modules.autoUpgrade.enable = true;
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.hidpi.enable = true;
