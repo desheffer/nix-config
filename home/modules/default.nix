@@ -8,7 +8,7 @@ with lib;
   imports = [
     ./chrome.nix
     ./cli.nix
-    ./discord.nix
+    ./communication.nix
     ./git.nix
     ./gnome.nix
     ./gui.nix
@@ -17,7 +17,6 @@ with lib;
     ./kitty.nix
     ./libreoffice.nix
     ./neovim.nix
-    ./slack.nix
     ./spotify.nix
     ./tmux.nix
     ./zsh.nix

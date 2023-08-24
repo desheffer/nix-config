@@ -3,14 +3,14 @@
 with lib;
 
 let
-  cfg = config.modules.discord;
+  cfg = config.modules.communication;
 
 in
 {
-  options.modules.discord = {
+  options.modules.communication = {
     enable = mkOption {
       type = types.bool;
-      description = "Whether to enable Discord.";
+      description = "Whether to enable communication tools.";
       default = config.modules.gui.enable;
     };
   };
@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       discord
+      slack
+      zoom-us
     ];
 
     xdg.configFile = {
