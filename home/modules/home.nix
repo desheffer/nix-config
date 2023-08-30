@@ -71,7 +71,6 @@ in
         gP = "git push";
         gPf = "git push --force-with-lease";
         gPo = "git push origin --set-upstream \"$(git branch --show-current)\"";
-        gPod = "git push origin :\"$(git branch --show-current)\"";
         gPof = "git push origin --set-upstream \"$(git branch --show-current)\" --force-with-lease";
         gr = "git rebase";
         gra = "git rebase --abort";
@@ -86,7 +85,6 @@ in
         gstd = "git stash drop";
         gstl = "git stash list";
         gstp = "git stash pop";
-        gwip = "git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m 'WIP [skip ci]'";
 
         gh-https-to-ssh = "git remote set-url origin \"$(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')\"";
 

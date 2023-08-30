@@ -77,6 +77,30 @@ in
           shift 1
           nix run nixpkgs#"''${pkg}" --impure -- "''${@}"
         }
+
+        function gmain {
+          git fetch
+          gwip || return
+          git checkout main || return
+          gwip || return
+          git reset --hard origin/main || return
+        }
+
+        function gPod {
+          if [ ''${#} -lt 1 ]; then
+            return
+          fi
+          branch=''${1}
+          git push origin :"''${branch}"
+        }
+
+        function gwip {
+          git add -A || return
+          if [ ! -z "''$(git ls-files --deleted)" ]; then
+            git rm "''$(git ls-files --deleted)" 2> /dev/null || return
+          fi
+          git commit --no-verify --no-gpg-sign -m 'WIP [skip ci]' || true
+        }
       '';
 
       dirHashes = {
@@ -122,6 +146,7 @@ in
           "$git_commit"
           "$git_state"
           "$git_status"
+          "$git_metrics"
           "$cmd_duration"
           "$line_break"
           "$python"
@@ -144,6 +169,8 @@ in
         };
 
         git_branch.symbol = " ";
+
+        git_metrics.disabled = false;
 
         hostname.disabled = false;
 
