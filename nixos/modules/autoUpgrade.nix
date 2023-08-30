@@ -3,7 +3,7 @@
 with lib;
 
 let
-  cfg = config.modules.hidpi;
+  cfg = config.modules.autoUpgrade;
 
 in
 {
