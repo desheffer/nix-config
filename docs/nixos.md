@@ -119,16 +119,17 @@ nixos-generate-config --root /mnt
 cat /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-On the existing machine, clone the `desheffer/nix-config` repository. Create a
+On the existing machine: Clone the `desheffer/nix-config` repository. Create a
 new `BRANCH`. Create a configuration for the new machine and assign it a
 `HOSTNAME`. Use the hardware configuration from the previous step, as needed.
 
-On the existing machine, clone the `desheffer/secrets` repository. Add the key
+On the existing machine: Clone the `desheffer/secrets` repository. Add the key
 from the previous step. Follow the instructions in that repository to rekey
-secrets. Commit the changes and push. Back in `desheffer/nix-config`, pull in
-the changes using `nix flake lock --update-input secrets`.
+secrets. Commit the changes and push.
 
-On the existing machine, commit and push the configuration for the new machine.
+On the existing machine: Back in the `desheffer/nix-config` repository, pull in
+the changes using `nix flake lock --update-input secrets`. Commit the changes
+and push.
 
 Run the install (replace `BRANCH` and `HOSTNAME` using the values from above):
 
