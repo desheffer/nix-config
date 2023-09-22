@@ -36,8 +36,11 @@ in
 
         df = "df -hT";
 
+        dkr-bash = "docker run -it --rm --entrypoint bash";
+        dkr-bash-v = "docker run -it --rm --entrypoint bash -v \"\${PWD}\":/pwd -w /pwd";
+        dkr-run = "docker run -it --rm";
         dkr-sh = "docker run -it --rm --entrypoint sh";
-        dkr-sh-v = "docker run -it --rm --entrypoint sh -v \"\${PWD}\":/pwd";
+        dkr-sh-v = "docker run -it --rm --entrypoint sh -v \"\${PWD}\":/pwd -w /pwd";
         dkr-stop = "[ -z \"$(docker ps -q)\" ] || docker stop $(docker ps -q)";
 
         d = "cd \"$(git rev-parse --show-toplevel || echo .)\"";
