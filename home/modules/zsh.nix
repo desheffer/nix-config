@@ -161,7 +161,7 @@ in
         };
 
         directory = {
-          read_only = " ";
+          read_only = " 󰌾";
           repo_root_style = "underline bold cyan";
           truncate_to_repo = false;
           truncation_length = 0;
