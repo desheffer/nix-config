@@ -69,13 +69,20 @@ in
         bindkey '^[[5;5~' beep                # Ctrl + PageDown (no-op)
         bindkey '^[[6;5~' beep                # Ctrl + PageUp (no-op)
 
-        function nr {
+        function $ {
           if [ ''${#} -lt 1 ]; then
-              return
+            return 1
           fi
           pkg=''${1}
           shift 1
-          nix run nixpkgs#"''${pkg}" --impure -- "''${@}"
+          nix run "nixpkgs#''${pkg}" --impure -- "''${@}"
+        }
+
+        function + {
+          if [ ''${#} -lt 1 ]; then
+            return 1
+          fi
+          nix shell "''${@/#/nixpkgs#}" --impure
         }
 
         function gmain {
