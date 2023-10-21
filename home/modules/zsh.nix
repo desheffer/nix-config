@@ -103,9 +103,6 @@ in
 
         function gwip {
           git add -A || return
-          if [ ! -z "''$(git ls-files --deleted)" ]; then
-            git rm "''$(git ls-files --deleted)" 2> /dev/null || return
-          fi
           git commit --no-verify --no-gpg-sign -m 'WIP [skip ci]' || true
         }
       '';
