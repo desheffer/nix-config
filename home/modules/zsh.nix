@@ -95,7 +95,7 @@ in
 
         function gPod {
           if [ ''${#} -lt 1 ]; then
-            return
+            return 1
           fi
           branch=''${1}
           git push origin :"''${branch}"
