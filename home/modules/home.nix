@@ -50,7 +50,7 @@ in
         gbd = "git branch -d";
         gbD = "git branch -D";
         gc = "git commit --verbose";
-        gca = "git commit --verbose --amend";
+        gca = "git commit --verbose --amend --date=now";
         gclean = "git clean -d --force";
         gcm = "git commit --allow-empty -m";
         gco = "git checkout";
