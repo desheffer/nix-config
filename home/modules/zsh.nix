@@ -21,7 +21,8 @@ in
 
       enableAutosuggestions = true;
       enableCompletion = true;
-      enableSyntaxHighlighting = true;
+
+      syntaxHighlighting.enable = true;
 
       autocd = true;
 
@@ -131,7 +132,7 @@ in
       config.theme = "gruvbox-dark";
     };
 
-    programs.exa = {
+    programs.eza = {
       enable = true;
     };
 

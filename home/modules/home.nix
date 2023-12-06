@@ -91,10 +91,10 @@ in
 
         gh-https-to-ssh = "git remote set-url origin \"$(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')\"";
 
-        la = "exa -aahlF --git --group-directories-first";
-        ll = "exa -hlF --git --group-directories-first";
-        ls = "exa -F --group-directories-first";
-        tree = "exa -T --group-directories-first";
+        la = "eza -aahlF --git --group-directories-first";
+        ll = "eza -hlF --git --group-directories-first";
+        ls = "eza -F --group-directories-first";
+        tree = "eza -T --group-directories-first";
 
         ta = "tmux attach";
         tmux = "tmux -2u";
