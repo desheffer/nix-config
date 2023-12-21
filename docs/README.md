@@ -17,7 +17,7 @@ Home Manager).
 - [Home Manager configuration options][home-manager-options]
 - [Nixpkgs library functions][nixpkgs-lib]
 
-[home-manager-options]: https://nix-community.github.io/home-manager/options.html
+[home-manager-options]: https://nix-community.github.io/home-manager/options.xhtml
 [nix-packages]: https://search.nixos.org/packages
 [nixos-options]: https://search.nixos.org/options
 [nixpkgs-lib]: https://nixos.org/manual/nixpkgs/stable/#sec-functions-library
