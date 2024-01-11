@@ -96,7 +96,7 @@ in
         ls = "eza -F --group-directories-first";
         tree = "eza -T --group-directories-first";
 
-        ta = "tmux attach";
+        ta = "tmux new-session -A -s";
         tmux = "tmux -2u";
       };
     };

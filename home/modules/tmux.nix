@@ -24,7 +24,6 @@ in
       escapeTime = 0;
       historyLimit = 50000;
       keyMode = "vi";
-      newSession = true;
       shell = "${pkgs.zsh}/bin/zsh";
       terminal = "\${TERM}";
 
