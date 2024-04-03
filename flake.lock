@@ -819,11 +819,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1701835738,
-        "narHash": "sha256-0oBt2ZFBYoxBCfkjJuWOeOeUfDiyMMhZo+gpUsyq/xk=",
+        "lastModified": 1712172555,
+        "narHash": "sha256-nrFnOhMg+PJUZeIy1pNpQGHAx91xMS1Cp2TElhEQdf0=",
         "ref": "main",
-        "rev": "0f46af609030c45631b1e7974b65cb90b5f3c647",
-        "revCount": 19,
+        "rev": "61094ab7b20148d771347b4cb7a19c213a4393cc",
+        "revCount": 20,
         "type": "git",
         "url": "ssh://git@github.com/desheffer/secrets"
       },
