@@ -19,12 +19,11 @@ in
     programs.zsh = {
       enable = true;
 
-      enableAutosuggestions = true;
       enableCompletion = true;
 
-      syntaxHighlighting.enable = true;
-
       autocd = true;
+
+      autosuggestion.enable = true;
 
       defaultKeymap = "emacs";
 
@@ -32,6 +31,8 @@ in
         extended = true;
         share = false;
       };
+
+      syntaxHighlighting.enable = true;
 
       initExtra = ''
         PATH="''${PATH}:''${HOME}/.nix-profile/bin"

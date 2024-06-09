@@ -24,35 +24,24 @@ in
   config = mkIf cfg.enable {
     power.ups = {
       enable = true;
-      ups."ups" = {
+
+      ups."primary" = {
         driver = cfg.driver;
         port = "auto";
       };
+
+      users.upsmon = {
+        passwordFile = "/etc/nut/password";
+        upsmon = "master";
+      };
+
+      upsmon.monitor."primary".user = "upsmon";
     };
 
     environment.etc = {
-      "nut/upsd.conf" = {
-        text = ''
-          LISTEN 127.0.0.1
-        '';
-      };
-      "nut/upsd.users" = {
-        text = ''
-          [upsmon]
-          password = 1234
-          upsmon primary
-        '';
-      };
-      "nut/upsmon.conf" = {
-        text = ''
-          MONITOR ups@localhost 1 upsmon 1234 primary
-          SHUTDOWNCMD /run/current-system/sw/bin/poweroff
-        '';
+      "nut/password" = {
+        text = "1234";
       };
     };
-
-    systemd.services.upsd.preStart = ''
-      mkdir -p /var/lib/nut -m 0700
-    '';
   };
 }

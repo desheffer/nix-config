@@ -21,12 +21,14 @@ in
   };
 
   config = mkIf cfg.enable {
+    services.displayManager = {
+      defaultSession = if cfg.wayland then "gnome" else "gnome-xorg";
+    };
+
     services.xserver = {
       enable = true;
 
       displayManager = {
-        defaultSession = if cfg.wayland then "gnome" else "gnome-xorg";
-
         gdm = {
           enable = true;
           wayland = true;
