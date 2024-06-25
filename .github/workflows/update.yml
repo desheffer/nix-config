@@ -23,12 +23,12 @@ jobs:
     - name: Install Nix
       uses: DeterminateSystems/nix-installer-action@main
 
-    - name: Update nixpkgs
+    - name: Update flake.lock
       run: |
-        nix flake lock --update-input nixpkgs
-        nix flake lock --update-input home-manager
+        nix flake update nixpkgs
+        nix flake update home-manager
 
-    - name: Commit and push
+    - name: Commit and push flake.lock
       run: |
         git add flake.lock
         git commit -m 'Update flake.lock'
