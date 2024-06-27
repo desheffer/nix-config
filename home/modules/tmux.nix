@@ -51,6 +51,10 @@ in
         bind-key -n M-PgDn next-window
         bind-key -n M-PgUp previous-window
 
+        # Navigate between shell prompt outputs.
+        bind-key -n M-Home "copy-mode; send -X previous-prompt -o"
+        bind-key -n M-End  "copy-mode; send -X next-prompt -o"
+
         # Renumber when a window is closed.
         set-option -g renumber-windows on
 
