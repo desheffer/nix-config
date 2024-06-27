@@ -83,10 +83,12 @@ in
         # Set left status bar style.
         set-option -g status-left-style bg=''${TMUX_THEME_GRAY3}
         set-option -g status-left "#{?client_prefix,#[fg=''${TMUX_THEME_BLACK}]#[bg=''${TMUX_THEME_YELLOW}]#[bold] #S #[nobold]#[fg=''${TMUX_THEME_YELLOW}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLR},#[fg=''${TMUX_THEME_BLACK}]#[bg=''${TMUX_THEME_GRAY1}]#[bold] #S #[nobold]#[fg=''${TMUX_THEME_GRAY1}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPLR}}"
+        set-option -g status-left-length 0
 
         # Set right status bar style.
         set-option -g status-right-style bg=''${TMUX_THEME_GRAY3}
         set-option -g status-right "#[fg=''${TMUX_THEME_GRAY1}]#[bg=''${TMUX_THEME_GRAY3}]''${TMUX_THEME_SEPRL}#[fg=''${TMUX_THEME_BLACK}]#[bg=''${TMUX_THEME_GRAY1}]#[bold] #h #[nobold]"
+        set-option -g status-right-length 0
 
         # Set window title style.
         set-option -g status-style bg=''${TMUX_THEME_GRAY3}
