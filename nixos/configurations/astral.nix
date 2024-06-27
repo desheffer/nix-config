@@ -32,8 +32,12 @@ lib.mkNixosConfiguration {
       modules.hidpi.enable = true;
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
-      modules.ups.enable = true;
       modules.virtualbox.enable = true;
+
+      modules.ups = {
+        enable = true;
+        password = passwords.upsmon;
+      };
 
       modules.barrier = {
         enableServer = true;

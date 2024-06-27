@@ -19,6 +19,11 @@ in
       description = "Specify the program to run to talk to the UPS.";
       default = "usbhid-ups";
     };
+
+    password = mkOption {
+      type = types.str;
+      description = "The user's (clear text) password";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -40,7 +45,7 @@ in
 
     environment.etc = {
       "nut/password" = {
-        text = "1234";
+        text = cfg.password;
       };
     };
   };
