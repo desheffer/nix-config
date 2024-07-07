@@ -24,6 +24,11 @@ lib.mkNixosConfiguration {
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     {
+      hardware.facetimehd = {
+        enable = true;
+        withCalibration = true;
+      };
+
       services.mbpfan.enable = true;
     }
 
