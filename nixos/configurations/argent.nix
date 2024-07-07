@@ -22,6 +22,7 @@ lib.mkNixosConfiguration {
     })
 
     nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     {
       hardware.facetimehd = {
@@ -36,7 +37,6 @@ lib.mkNixosConfiguration {
       modules.autoUpgrade.enable = true;
       modules.docker.enable = true;
       modules.gnome.enable = true;
-      modules.hidpi.enable = true;
       modules.printing.enable = true;
       modules.secrets.enable = true;
     }
@@ -49,7 +49,6 @@ lib.mkNixosConfiguration {
         {
           modules.cli.enable = true;
           modules.gnome.enable = true;
-          modules.hidpi.enable = true;
           modules.secrets.enable = true;
         }
       ];

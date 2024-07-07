@@ -12,7 +12,6 @@ with lib;
     ./git.nix
     ./gnome.nix
     ./gui.nix
-    ./hidpi.nix
     ./home.nix
     ./kitty.nix
     ./libreoffice.nix
