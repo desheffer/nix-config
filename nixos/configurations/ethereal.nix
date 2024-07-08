@@ -21,7 +21,7 @@ lib.mkNixosConfiguration {
       };
     })
 
-    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.dell-xps-13-9370
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-laptop-ssd
 

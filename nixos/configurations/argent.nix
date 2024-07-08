@@ -21,7 +21,7 @@ lib.mkNixosConfiguration {
       };
     })
 
-    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.apple-macbook-pro
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     {
@@ -29,8 +29,6 @@ lib.mkNixosConfiguration {
         enable = true;
         withCalibration = true;
       };
-
-      services.mbpfan.enable = true;
     }
 
     {
