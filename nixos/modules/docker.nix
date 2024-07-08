@@ -36,7 +36,6 @@ in
 
     environment.systemPackages = with pkgs; [
       ctop
-      (writeShellScriptBin "docker-compose" "docker compose \"$@\"")
     ];
 
     networking.firewall.allowedTCPPorts = [ 80 443 ];
