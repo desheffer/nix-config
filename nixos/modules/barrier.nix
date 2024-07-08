@@ -35,10 +35,6 @@ in
 
   config = mkIf (cfg.enableServer || cfg.enableClient) {
     environment = {
-      systemPackages = with pkgs; [
-        barrier
-      ];
-
       etc = {
         "barrier.conf" = {
           text = cfg.config;
