@@ -25,9 +25,9 @@ in
     programs.steam = {
       enable = true;
       package = pkgs.steam.override {
-        extraEnv = mkIf cfg.enableHidpi {
-          GDK_SCALE = 2;
-        };
+        extraProfile = optionalString cfg.enableHidpi ''
+          export STEAM_FORCE_DESKTOPUI_SCALING=2;
+        '';
       };
 
       dedicatedServer.openFirewall = true;
