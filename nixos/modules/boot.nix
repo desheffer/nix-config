@@ -21,8 +21,6 @@ in
           consoleMode = "0";
         };
       };
-
-      plymouth.enable = true;
     };
   };
 }
