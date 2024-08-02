@@ -92,7 +92,7 @@ mount /dev/disk/by-label/BOOT /mnt/boot
 Create a swapfile (set `SIZE` to the desired size):
 
 ```sh
-SIZE=16GB
+SIZE="16GB"
 
 truncate -s 0 /mnt/swap/swapfile
 chattr +C /mnt/swap/swapfile
@@ -119,22 +119,25 @@ nixos-generate-config --root /mnt
 cat /mnt/etc/nixos/hardware-configuration.nix
 ```
 
-On the existing machine: Clone the `desheffer/nix-config` repository. Create a
+(On the existing machine) Clone the `desheffer/nix-config` repository. Create a
 new `BRANCH`. Create a configuration for the new machine and assign it a
 `HOSTNAME`. Use the hardware configuration from the previous step, as needed.
 
-On the existing machine: Clone the `desheffer/secrets` repository. Add the key
+(On the existing machine) Clone the `desheffer/secrets` repository. Add the key
 from the previous step. Follow the instructions in that repository to rekey
 secrets. Commit the changes and push.
 
-On the existing machine: Back in the `desheffer/nix-config` repository, pull in
-the changes using `nix flake lock --update-input secrets`. Commit the changes
-and push.
+(On the existing machine) Back in the `desheffer/nix-config` repository, pull
+in the changes using `nix flake lock --update-input secrets`. Commit the
+changes and push.
 
-Run the install (replace `BRANCH` and `HOSTNAME` using the values from above):
+Run the install (set `BRANCH` and `HOSTNAME` using the values from above):
 
 ```sh
-nixos-install --flake github:desheffer/nix-config/BRANCH#HOSTNAME
+BRANCH="main"
+HOSTNAME=""
+
+nixos-install --flake github:desheffer/nix-config/${BRANCH}#${HOSTNAME} --no-root-password
 ```
 
 Reboot when the installation is finished:
