@@ -33,6 +33,7 @@ in
         bash
         btop
         dnsutils
+        gnumake
         killall
         openssl
         python3
