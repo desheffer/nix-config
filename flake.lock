@@ -509,11 +509,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1719468648,
-        "narHash": "sha256-uNdsBw2fclefIJZxrTysjbIVrIMcyNR/vIvspaurkMg=",
+        "lastModified": 1723140123,
+        "narHash": "sha256-9ycQ67Kc+7RN10O2jz0CJ6RtT4lGP6e56FrJ4fGVjdc=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "f3ad2ee40abb39107dc150e4bb6f0290d568d982",
+        "rev": "f5d557ea34e6f8f90b80dd46fb87f845383aad86",
         "type": "github"
       },
       "original": {
@@ -555,11 +555,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1719254875,
-        "narHash": "sha256-ECni+IkwXjusHsm9Sexdtq8weAq/yUyt1TWIemXt3Ko=",
+        "lastModified": 1722813957,
+        "narHash": "sha256-IAoYyYnED7P8zrBFMnmp7ydaJfwTnwcnqxUElC1I26Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "2893f56de08021cffd9b6b6dfc70fd9ccd51eb60",
+        "rev": "cb9a96f23c491c081b38eab96d22fa958043c9fa",
         "type": "github"
       },
       "original": {
