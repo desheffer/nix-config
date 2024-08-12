@@ -16,7 +16,7 @@ in
 
     enableNvidia = mkOption {
       type = types.bool;
-      description = "Whether to enable nvidia-docker wrapper.";
+      description = "Whether to enable nvidia-container-toolkit.";
       default = config.modules.nvidia.enable;
     };
   };
@@ -24,7 +24,6 @@ in
   config = mkIf cfg.enable {
     virtualisation.docker = {
       enable = true;
-      enableNvidia = cfg.enableNvidia;
 
       daemon.settings = {
         features = {
@@ -33,6 +32,8 @@ in
         shutdown-timeout = 5;
       };
     };
+
+    hardware.nvidia-container-toolkit.enable = cfg.enableNvidia;
 
     environment.systemPackages = with pkgs; [
       ctop
