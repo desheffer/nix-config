@@ -47,6 +47,7 @@ in
       "org/gnome/desktop/peripherals/touchpad" = {
         disable-while-typing = false;
         speed = 0.5;
+        tap-to-click = false;
       };
 
       "org/gnome/desktop/privacy" = {
