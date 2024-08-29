@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "CopilotChat-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722914123,
+        "narHash": "sha256-rIWG88yU7AUgvjMqH4mSVaOFTFburPJFNYa1e/3UNKg=",
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "rev": "cfdf371cec954fccf5410315884e110d214d38fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CopilotC-Nvim",
+        "repo": "CopilotChat.nvim",
+        "type": "github"
+      }
+    },
     "FTerm-nvim": {
       "flake": false,
       "locked": {
@@ -56,11 +72,11 @@
     "auto-session": {
       "flake": false,
       "locked": {
-        "lastModified": 1718956501,
-        "narHash": "sha256-4uyRXOZykPyBP4kkVcKtsMZZQu1IGag/RAYyIwXoQ5w=",
+        "lastModified": 1724871087,
+        "narHash": "sha256-FyawmoHSlnRdpvE83rBe9NtUy0zJazMy4XlojtP4nkA=",
         "owner": "rmagatti",
         "repo": "auto-session",
-        "rev": "e5ffe230235c7d35c2f33078b7cd927a4fb579c4",
+        "rev": "0e9aa77525b5217e8eacb36007edd3d02bb2a91a",
         "type": "github"
       },
       "original": {
@@ -146,6 +162,22 @@
       "original": {
         "owner": "numToStr",
         "repo": "Comment.nvim",
+        "type": "github"
+      }
+    },
+    "copilot-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718412968,
+        "narHash": "sha256-HC1QZlqEg+RBz/8kjLadafc06UoMAjhh0UO/BWQGMY8=",
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
+        "rev": "86537b286f18783f8b67bccd78a4ef4345679625",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zbirenbaum",
+        "repo": "copilot.lua",
         "type": "github"
       }
     },
@@ -450,6 +482,7 @@
     },
     "neovim-config": {
       "inputs": {
+        "CopilotChat-nvim": "CopilotChat-nvim",
         "FTerm-nvim": "FTerm-nvim",
         "alpha-nvim": "alpha-nvim",
         "auto-session": "auto-session",
@@ -458,6 +491,7 @@
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
+        "copilot-lua": "copilot-lua",
         "efmls-configs-nvim": "efmls-configs-nvim",
         "flake-utils": "flake-utils_2",
         "friendly-snippets": "friendly-snippets",
@@ -490,11 +524,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1723140123,
-        "narHash": "sha256-9ycQ67Kc+7RN10O2jz0CJ6RtT4lGP6e56FrJ4fGVjdc=",
+        "lastModified": 1724949883,
+        "narHash": "sha256-EJ2FAqPcLl3OkbBSx0GJ7rHccBslFLHhBsKk6cBl9kA=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "f5d557ea34e6f8f90b80dd46fb87f845383aad86",
+        "rev": "ac2881bb7916e91829edebd9b5117681ea4c5d08",
         "type": "github"
       },
       "original": {
@@ -762,11 +796,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1723873759,
-        "narHash": "sha256-h2I5TQtOjFR/uce+coW8fzxiAicGwbqPBe8jfqvGMZE=",
+        "lastModified": 1724951987,
+        "narHash": "sha256-3BgMSi4ZnubxHHdIcRi7Jz74biun95KByUgsKaxwkx0=",
         "ref": "main",
-        "rev": "96301c14502e7f71af32cd99e69c43e1ef94dc18",
-        "revCount": 27,
+        "rev": "6362819b8bf14b1ef7326b0d2198855161bd6193",
+        "revCount": 28,
         "type": "git",
         "url": "ssh://git@github.com/desheffer/secrets"
       },
