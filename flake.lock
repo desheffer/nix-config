@@ -524,11 +524,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1724949883,
-        "narHash": "sha256-EJ2FAqPcLl3OkbBSx0GJ7rHccBslFLHhBsKk6cBl9kA=",
+        "lastModified": 1725066322,
+        "narHash": "sha256-Yp/3wAAdZO/7euzRcPSF9WZ7955XVrfI9RAYxtyb+Lg=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "ac2881bb7916e91829edebd9b5117681ea4c5d08",
+        "rev": "9add7240926ceef6f9565e0e2c34f603be541364",
         "type": "github"
       },
       "original": {
