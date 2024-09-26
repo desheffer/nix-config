@@ -36,7 +36,12 @@ in
         github.user = "desheffer";
         init.defaultBranch = "main";
         log.date = "iso-local";
+        rebase.autoSquash = true;
       };
     };
+
+    home.packages = with pkgs; [
+      git-absorb
+    ];
   };
 }
