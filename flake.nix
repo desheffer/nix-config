@@ -24,18 +24,17 @@
     secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
   };
 
-  outputs = inputs:
-    {
-      # NixOS with Home Manager:
-      nixosConfigurations = import ./nixos/configurations inputs;
+  outputs = inputs: {
+    # NixOS with Home Manager:
+    nixosConfigurations = import ./nixos/configurations inputs;
 
-      # Home Manager for non-NixOS systems:
-      homeConfigurations = import ./home/configurations inputs;
+    # Home Manager for non-NixOS systems:
+    homeConfigurations = import ./home/configurations inputs;
 
-      # Shell provided by `nix develop`:
-      devShell = import ./devShell inputs;
+    # Shell provided by `nix develop`:
+    devShell = import ./devShell inputs;
 
-      # Formatter provided by `nix fmt`:
-      formatter = import ./formatter inputs;
-    };
+    # Formatter provided by `nix fmt`:
+    formatter = import ./formatter inputs;
+  };
 }

@@ -1,6 +1,17 @@
-inputs@{ nixpkgs, home-manager, impermanence, secrets, ... }:
+inputs@{
+  nixpkgs,
+  home-manager,
+  impermanence,
+  secrets,
+  ...
+}:
 
-{ hostname, system, modules, ... }:
+{
+  hostname,
+  system,
+  modules,
+  ...
+}:
 
 let
   lib = import ../../lib inputs;
@@ -28,10 +39,7 @@ in
 
       secrets.nixosModules.secrets
 
-      {
-        networking.hostName = hostname;
-      }
-    ]
-    ++ modules;
+      { networking.hostName = hostname; }
+    ] ++ modules;
   };
 }

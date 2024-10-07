@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -18,32 +23,48 @@ in
       "/" = {
         device = mapperPrimary;
         fsType = "btrfs";
-        options = [ "subvol=@root" "compress=zstd" ];
+        options = [
+          "subvol=@root"
+          "compress=zstd"
+        ];
       };
 
       "/nix" = {
         device = mapperPrimary;
         fsType = "btrfs";
-        options = [ "subvol=@nix" "compress=zstd" "noatime" ];
+        options = [
+          "subvol=@nix"
+          "compress=zstd"
+          "noatime"
+        ];
       };
 
       "/persist" = {
         device = mapperPrimary;
         fsType = "btrfs";
-        options = [ "subvol=@persist" "compress=zstd" ];
+        options = [
+          "subvol=@persist"
+          "compress=zstd"
+        ];
         neededForBoot = true;
       };
 
       "/swap" = {
         device = mapperPrimary;
         fsType = "btrfs";
-        options = [ "subvol=@swap" "noatime" ];
+        options = [
+          "subvol=@swap"
+          "noatime"
+        ];
       };
 
       "/home" = {
         device = mapperPrimary;
         fsType = "btrfs";
-        options = [ "subvol=@home" "compress=zstd" ];
+        options = [
+          "subvol=@home"
+          "compress=zstd"
+        ];
       };
 
       "/boot" = {
@@ -52,11 +73,7 @@ in
       };
     };
 
-    swapDevices = [
-      {
-        device = "/swap/swapfile";
-      }
-    ];
+    swapDevices = [ { device = "/swap/swapfile"; } ];
 
     services.btrfs.autoScrub = {
       enable = true;
@@ -80,9 +97,7 @@ in
       ];
     };
 
-    age.identityPaths = [
-      "/persist/etc/ssh/ssh_host_ed25519_key"
-    ];
+    age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
     boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
       mkdir -p /mnt

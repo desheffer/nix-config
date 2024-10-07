@@ -9,17 +9,26 @@ lib.mkNixosConfiguration {
   hostname = "ethereal";
   system = "x86_64-linux";
   modules = [
-    ({ config, ... }: {
-      boot = {
-        initrd = {
-          availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-          kernelModules = [ ];
-        };
+    (
+      { config, ... }:
+      {
+        boot = {
+          initrd = {
+            availableKernelModules = [
+              "xhci_pci"
+              "nvme"
+              "usb_storage"
+              "sd_mod"
+              "rtsx_pci_sdmmc"
+            ];
+            kernelModules = [ ];
+          };
 
-        kernelModules = [ "kvm-intel" ];
-        extraModulePackages = [ ];
-      };
-    })
+          kernelModules = [ "kvm-intel" ];
+          extraModulePackages = [ ];
+        };
+      }
+    )
 
     nixos-hardware.nixosModules.dell-xps-13-9370
     nixos-hardware.nixosModules.common-hidpi
@@ -41,7 +50,11 @@ lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       initialHashedPassword = passwords.desheffer;
-      extraGroups = [ "docker" "networkmanager" "wheel" ];
+      extraGroups = [
+        "docker"
+        "networkmanager"
+        "wheel"
+      ];
       modules = [
         {
           modules.cli.enable = true;

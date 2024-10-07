@@ -1,7 +1,13 @@
-inputs@{ nixpkgs, flake-utils, devshell, ... }:
+inputs@{
+  nixpkgs,
+  flake-utils,
+  devshell,
+  ...
+}:
 
 let
-  mkDevShell = (system:
+  mkDevShell = (
+    system:
     let
       pkgs = import nixpkgs {
         inherit system;

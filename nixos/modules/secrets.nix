@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -15,7 +20,5 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    secrets.enable = true;
-  };
+  config = mkIf cfg.enable { secrets.enable = true; };
 }

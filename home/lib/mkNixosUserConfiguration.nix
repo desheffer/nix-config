@@ -1,21 +1,31 @@
 inputs@{ secrets, neovim-config, ... }:
 
-{ username, modules, initialHashedPassword, extraGroups ? [ ], authorizedKeys ? [ ], ... }:
+{
+  username,
+  modules,
+  initialHashedPassword,
+  extraGroups ? [ ],
+  authorizedKeys ? [ ],
+  ...
+}:
 
 {
   imports = [
-    ({ pkgs, ... }: {
-      users.users.${username} = {
-        inherit initialHashedPassword extraGroups;
+    (
+      { pkgs, ... }:
+      {
+        users.users.${username} = {
+          inherit initialHashedPassword extraGroups;
 
-        isNormalUser = true;
+          isNormalUser = true;
 
-        useDefaultShell = false;
-        shell = pkgs.zsh;
+          useDefaultShell = false;
+          shell = pkgs.zsh;
 
-        openssh.authorizedKeys.keys = authorizedKeys;
-      };
-    })
+          openssh.authorizedKeys.keys = authorizedKeys;
+        };
+      }
+    )
   ];
 
   home-manager.users.${username}.imports = [
@@ -25,6 +35,5 @@ inputs@{ secrets, neovim-config, ... }:
 
     secrets.homeManagerModules.secrets
     ../modules/secrets.nix
-  ]
-  ++ modules;
+  ] ++ modules;
 }

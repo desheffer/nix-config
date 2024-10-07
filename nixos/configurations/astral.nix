@@ -10,17 +10,27 @@ lib.mkNixosConfiguration {
   hostname = "astral";
   system = "x86_64-linux";
   modules = [
-    ({ pkgs, ... }: {
-      boot = {
-        initrd = {
-          availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-          kernelModules = [ ];
-        };
+    (
+      { pkgs, ... }:
+      {
+        boot = {
+          initrd = {
+            availableKernelModules = [
+              "nvme"
+              "xhci_pci"
+              "ahci"
+              "usbhid"
+              "usb_storage"
+              "sd_mod"
+            ];
+            kernelModules = [ ];
+          };
 
-        kernelModules = [ "kvm-amd" ];
-        extraModulePackages = [ ];
-      };
-    })
+          kernelModules = [ "kvm-amd" ];
+          extraModulePackages = [ ];
+        };
+      }
+    )
 
     nixos-hardware.nixosModules.common-cpu-amd
     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
@@ -68,7 +78,11 @@ lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       initialHashedPassword = passwords.desheffer;
-      extraGroups = [ "docker" "networkmanager" "wheel" ];
+      extraGroups = [
+        "docker"
+        "networkmanager"
+        "wheel"
+      ];
       modules = [
         {
           modules.cli.enable = true;
@@ -76,9 +90,7 @@ lib.mkNixosConfiguration {
           modules.secrets.enable = true;
         }
       ];
-      authorizedKeys = [
-        keys.users.desheffer
-      ];
+      authorizedKeys = [ keys.users.desheffer ];
     })
   ];
 }

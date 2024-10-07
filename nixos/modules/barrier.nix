@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -45,7 +50,10 @@ in
     networking.firewall.allowedTCPPorts = [ 24800 ];
 
     systemd.user.services.barrier-server = mkIf cfg.enableServer {
-      after = [ "network.target" "graphical-session.target" ];
+      after = [
+        "network.target"
+        "graphical-session.target"
+      ];
       description = "barrier server";
       wantedBy = [ "graphical-session.target" ];
       path = [ pkgs.barrier ];
@@ -54,7 +62,10 @@ in
     };
 
     systemd.user.services.barrier-client = mkIf cfg.enableClient {
-      after = [ "network.target" "graphical-session.target" ];
+      after = [
+        "network.target"
+        "graphical-session.target"
+      ];
       description = "barrier client";
       wantedBy = [ "graphical-session.target" ];
       path = [ pkgs.barrier ];

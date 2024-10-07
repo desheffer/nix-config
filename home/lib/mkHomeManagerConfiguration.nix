@@ -1,6 +1,12 @@
 inputs@{ home-manager, neovim-config, ... }:
 
-{ hostname, system, username, modules, ... }:
+{
+  hostname,
+  system,
+  username,
+  modules,
+  ...
+}:
 
 let
   lib = import ../../lib inputs;
@@ -22,7 +28,6 @@ in
       ../modules
 
       neovim-config.homeManagerModules.neovim
-    ]
-    ++ modules;
+    ] ++ modules;
   };
 }

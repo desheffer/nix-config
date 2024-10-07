@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -35,10 +40,11 @@ in
 
     hardware.nvidia-container-toolkit.enable = cfg.enableNvidia;
 
-    environment.systemPackages = with pkgs; [
-      ctop
-    ];
+    environment.systemPackages = with pkgs; [ ctop ];
 
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
   };
 }
