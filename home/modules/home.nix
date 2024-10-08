@@ -50,12 +50,14 @@ in
 
         d = "cd \"$(git rev-parse --show-toplevel || echo .)\"";
         ga = "git add";
+        gab = "git absorb";
         gap = "git add -p";
         gb = "git branch";
         gbd = "git branch -d";
         gbD = "git branch -D";
         gc = "git commit --verbose";
         gca = "git commit --verbose --amend --date=now";
+        gcf = "git commit --fixup";
         gclean = "git clean -d --force";
         gcm = "git commit --allow-empty -m";
         gco = "git checkout";
