@@ -69,8 +69,8 @@ in
         gd = "git diff";
         gdc = "git diff --cached";
         gf = "git fetch";
-        gl = "git log";
-        glo = "git log --oneline";
+        gl = "git log --graph --pretty=format:'%C(auto)%h %s %C(green)%cr%C(reset) %C(blue)%an%C(reset) %C(auto)%d'";
+        gll = "git log";
         glp = "git log -p";
         gls = "git log --stat";
         gm = "git merge";
