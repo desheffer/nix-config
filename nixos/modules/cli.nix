@@ -38,11 +38,8 @@ in
         bash
         btop
         dnsutils
-        gnumake
         killall
         openssl
-        python3
-        s-tui
         wget
       ];
 

@@ -27,8 +27,13 @@ in
 
     home.packages = with pkgs; [
       awscli2
+      gnumake
       jq
+      k9s
+      kubectl
+      python3
       ripgrep
+      s-tui
       yq-go
     ];
 
