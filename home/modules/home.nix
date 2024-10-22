@@ -52,7 +52,7 @@ in
         ga = "git add";
         gab = "git absorb";
         gap = "git add -p";
-        gb = "git branch";
+        gb = "git branch --sort=-committerdate";
         gbd = "git branch -d";
         gbD = "git branch -D";
         gc = "git commit --verbose";
