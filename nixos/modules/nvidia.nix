@@ -20,9 +20,5 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
-    environment = {
-      systemPackages = with pkgs; [ nvtopPackages.full ];
-    };
-  };
+  config = mkIf cfg.enable { environment.systemPackages = with pkgs; [ nvtopPackages.full ]; };
 }

@@ -15,7 +15,7 @@ in
   options.modules.cli = {
     enable = mkOption {
       type = types.bool;
-      description = "Whether to enable most CLI applications.";
+      description = "Whether to enable extra CLI applications.";
       default = true;
     };
   };
@@ -33,20 +33,14 @@ in
       enable = true;
     };
 
-    environment = {
-      systemPackages = with pkgs; [
-        bash
-        btop
-        dnsutils
-        killall
-        openssl
-        wget
-      ];
-
-      variables = {
-        NIXPKGS_ALLOW_UNFREE = "1";
-      };
-    };
+    environment.systemPackages = with pkgs; [
+      bash
+      btop
+      dnsutils
+      killall
+      openssl
+      wget
+    ];
 
     system.activationScripts.bin.text = ''
       mkdir -p /bin

@@ -28,6 +28,10 @@ in
       registry.nixpkgs.flake = flakeInputs.nixpkgs;
     };
 
+    environment.variables = {
+      NIXPKGS_ALLOW_UNFREE = "1";
+    };
+
     programs.ssh.knownHostsFiles = [
       (pkgs.writeText "github.keys" ''
         github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl

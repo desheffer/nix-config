@@ -16,7 +16,7 @@ in
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable Z shell (Zsh).";
-      default = config.modules.cli.enable;
+      default = true;
     };
   };
 
@@ -139,6 +139,10 @@ in
     };
 
     programs.eza = {
+      enable = true;
+    };
+
+    programs.fzf = {
       enable = true;
     };
 

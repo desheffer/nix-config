@@ -15,16 +15,12 @@ in
   options.modules.cli = {
     enable = mkOption {
       type = types.bool;
-      description = "Whether to enable most CLI applications.";
+      description = "Whether to enable extra CLI applications.";
       default = false;
     };
   };
 
   config = mkIf cfg.enable {
-    programs.fzf = {
-      enable = true;
-    };
-
     home.packages = with pkgs; [
       awscli2
       gh

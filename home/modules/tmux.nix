@@ -16,7 +16,7 @@ in
     enable = mkOption {
       type = types.bool;
       description = "Whether to enable tmux.";
-      default = config.modules.cli.enable;
+      default = true;
     };
   };
 
