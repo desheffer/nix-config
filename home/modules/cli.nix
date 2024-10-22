@@ -27,6 +27,7 @@ in
 
     home.packages = with pkgs; [
       awscli2
+      gh
       gnumake
       jq
       k9s
