@@ -42,6 +42,9 @@ in
       initExtra = ''
         PATH="''${PATH}:''${HOME}/.nix-profile/bin"
 
+        # Do not split on slash.
+        WORDCHARS=$WORDCHARS:s:/:
+
         # Append history, do not replace it.
         setopt APPEND_HISTORY
 
