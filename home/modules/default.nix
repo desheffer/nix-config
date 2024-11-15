@@ -20,8 +20,8 @@ with lib;
     ./home.nix
     ./kitty.nix
     ./libreoffice.nix
+    ./music.nix
     ./neovim.nix
-    ./spotify.nix
     ./tmux.nix
     ./zsh.nix
   ];
