@@ -85,6 +85,7 @@ in
         "/etc/NetworkManager/system-connections"
         "/var/lib/bluetooth"
         "/var/lib/docker"
+        "/var/lib/nixos"
         "/var/lib/systemd/coredump"
         "/var/log"
       ];

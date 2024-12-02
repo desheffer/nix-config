@@ -42,7 +42,7 @@ in
 
       users.upsmon = {
         passwordFile = "/etc/nut/password";
-        upsmon = "master";
+        upsmon = "primary";
       };
 
       upsmon.monitor."primary".user = "upsmon";

@@ -36,7 +36,7 @@ in
         wayland_titlebar_color = "#282828";
       };
 
-      theme = "Gruvbox Dark";
+      themeFile = "gruvbox-dark";
     };
   };
 }

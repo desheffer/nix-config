@@ -139,13 +139,13 @@ in
     };
 
     home.packages = with pkgs; [
+      dconf-editor
+      eog
       evince
-      gnome.dconf-editor
-      gnome.eog
-      gnome.file-roller
-      gnome.nautilus
+      file-roller
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-panel
+      nautilus
       roboto
       tela-icon-theme
     ];

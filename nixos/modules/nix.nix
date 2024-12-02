@@ -16,7 +16,6 @@ in
   config = {
     nix = {
       extraOptions = "experimental-features = nix-command flakes";
-      package = pkgs.nixFlakes;
 
       gc = {
         automatic = true;
