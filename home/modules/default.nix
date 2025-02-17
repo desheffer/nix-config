@@ -14,6 +14,7 @@ with lib;
     ./chrome.nix
     ./cli.nix
     ./communication.nix
+    ./games.nix
     ./git.nix
     ./gnome.nix
     ./gui.nix
