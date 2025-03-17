@@ -43,7 +43,7 @@ lib.mkNixosConfiguration {
 
       modules.barrier = {
         enableClient = true;
-        serverAddress = "192.168.1.32";
+        serverAddress = "192.168.1.100";
       };
     }
 
