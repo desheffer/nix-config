@@ -18,6 +18,7 @@ in
   config = {
     services.journald.extraConfig = ''
       SystemMaxUse=1G
+      MaxRetentionSec=1month
     '';
   };
 }
