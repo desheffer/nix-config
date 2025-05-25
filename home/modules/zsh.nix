@@ -39,7 +39,7 @@ in
 
       syntaxHighlighting.enable = true;
 
-      initExtra = ''
+      initContent = ''
         PATH="''${PATH}:''${HOME}/.nix-profile/bin"
 
         # Do not split on slash.
