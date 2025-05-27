@@ -50,7 +50,7 @@ in
       };
     };
 
-    services.gnome.core-utilities.enable = false;
+    services.gnome.core-apps.enable = false;
 
     services.accounts-daemon.enable = true;
   };
