@@ -98,6 +98,8 @@ in
 
         gh-https-to-ssh = "git remote set-url origin \"$(git remote get-url origin | sed 's|https://github.com/|git@github.com:|')\"";
 
+        jdtls-clean = "rm -rf ~/.cache/jdtls .classpath .gradle .project .settings build";
+
         ls = "eza --classify=always --git --group-directories-first";
         l = "ls -aahl";
         la = "ls -ah";
