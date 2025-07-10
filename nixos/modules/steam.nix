@@ -38,5 +38,10 @@ in
       dedicatedServer.openFirewall = true;
       remotePlay.openFirewall = true;
     };
+
+    networking.firewall.allowedUDPPorts = [
+      # Factorio:
+      34197
+    ];
   };
 }
