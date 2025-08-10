@@ -43,5 +43,7 @@ in
       # Factorio:
       34197
     ];
+
+    environment.systemPackages = with pkgs; [ r2modman ];
   };
 }
