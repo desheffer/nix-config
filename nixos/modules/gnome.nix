@@ -48,10 +48,23 @@ in
           favorite-apps=[]
         '';
       };
+
+      excludePackages = with pkgs; [ xterm ];
     };
 
     services.gnome.core-apps.enable = false;
 
     services.accounts-daemon.enable = true;
+
+    environment.systemPackages = with pkgs; [ gnome-console ];
+
+    # TODO: Move to `home/modules/kitty.nix` after 25.11 upgrade.
+    xdg.terminal-exec = {
+      enable = true;
+      settings.default = [
+        "kitty.desktop"
+        "org.gnome.Console.desktop"
+      ];
+    };
   };
 }
