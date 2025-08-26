@@ -28,6 +28,7 @@ in
       ../modules
 
       neovim-config.homeManagerModules.neovim
-    ] ++ modules;
+    ]
+    ++ modules;
   };
 }

@@ -40,6 +40,7 @@ in
       secrets.nixosModules.secrets
 
       { networking.hostName = hostname; }
-    ] ++ modules;
+    ]
+    ++ modules;
   };
 }

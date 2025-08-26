@@ -35,5 +35,6 @@ inputs@{ secrets, neovim-config, ... }:
 
     secrets.homeManagerModules.secrets
     ../modules/secrets.nix
-  ] ++ modules;
+  ]
+  ++ modules;
 }
