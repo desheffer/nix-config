@@ -27,6 +27,7 @@ in
       aggressiveResize = true;
       baseIndex = 1;
       escapeTime = 0;
+      focusEvents = true;
       historyLimit = 50000;
       keyMode = "vi";
       shell = "${pkgs.zsh}/bin/zsh";
