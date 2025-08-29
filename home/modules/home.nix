@@ -51,6 +51,7 @@ in
         d = "cd \"$(git rev-parse --show-toplevel || echo .)\"";
         ga = "git add";
         gab = "git absorb";
+        gai = "git add --intent-to-add";
         gap = "git add -p";
         gb = "git branch --sort=-committerdate";
         gbd = "git branch -d";
