@@ -15,7 +15,10 @@ in
 {
   config = {
     nix = {
-      extraOptions = "experimental-features = nix-command flakes";
+      settings = {
+        experimental-features = "flakes nix-command";
+        download-buffer-size = 500000000;
+      };
 
       gc = {
         automatic = true;
