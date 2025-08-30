@@ -432,22 +432,6 @@
         "type": "github"
       }
     },
-    "indent-blankline-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742224677,
-        "narHash": "sha256-0q/V+b4UrDRnaC/eRWOi9HU9a61vQSAM9/C8ZQyKt+Y=",
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "rev": "005b56001b2cb30bfa61b7986bc50657816ba4ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lukas-reineke",
-        "repo": "indent-blankline.nvim",
-        "type": "github"
-      }
-    },
     "lualine-nvim": {
       "flake": false,
       "locked": {
@@ -498,7 +482,6 @@
         "gitsigns-nvim": "gitsigns-nvim",
         "gruvbox-material": "gruvbox-material",
         "hop-nvim": "hop-nvim",
-        "indent-blankline-nvim": "indent-blankline-nvim",
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
         "nixpkgs": "nixpkgs_2",
@@ -525,11 +508,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1756263042,
-        "narHash": "sha256-I3CjyL3Oeq8afMMptM9fInRhRyobZm8ysCZfT65Syjo=",
+        "lastModified": 1756497397,
+        "narHash": "sha256-fILoMgvcXrtla+L0CYbc/tiKSP64Wp8D8hXOeQVF9Zc=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "d0e8572607ba0b5ba6bd8a712ab89eaf894a65bf",
+        "rev": "5b0cfd80f87110b95fc12dd14b882a1246e9ca7b",
         "type": "github"
       },
       "original": {
