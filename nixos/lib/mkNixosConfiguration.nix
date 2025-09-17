@@ -9,6 +9,7 @@ inputs@{
 {
   hostname,
   system,
+  permittedInsecurePackages ? [ ],
   modules,
   ...
 }:
@@ -21,7 +22,10 @@ in
   ${hostname} = nixpkgs.lib.nixosSystem {
     inherit system;
 
-    pkgs = lib.mkPkgs system;
+    pkgs = lib.mkPkgs {
+      inherit system permittedInsecurePackages;
+    };
+
     specialArgs = {
       flakeInputs = inputs;
     };

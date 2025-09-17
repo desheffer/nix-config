@@ -14,7 +14,9 @@ let
 in
 {
   "${username}@${hostname}" = home-manager.lib.homeManagerConfiguration {
-    pkgs = lib.mkPkgs system;
+    pkgs = lib.mkPkgs {
+      inherit system;
+    };
 
     modules = [
       {

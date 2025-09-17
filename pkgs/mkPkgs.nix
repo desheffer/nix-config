@@ -1,11 +1,17 @@
 inputs@{ nixpkgs, ... }:
 
-system:
+{
+  system,
+  permittedInsecurePackages ? [ ],
+  ...
+}:
 
 let
   pkgs = import nixpkgs { inherit system config overlays; };
 
   config = {
+    inherit permittedInsecurePackages;
+
     allowUnfree = true;
   };
 
