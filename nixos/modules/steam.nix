@@ -39,11 +39,6 @@ in
       remotePlay.openFirewall = true;
     };
 
-    networking.firewall.allowedUDPPorts = [
-      # Factorio:
-      34197
-    ];
-
     environment.systemPackages = with pkgs; [ r2modman ];
   };
 }
