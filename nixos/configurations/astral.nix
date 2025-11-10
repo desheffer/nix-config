@@ -39,6 +39,7 @@ lib.mkNixosConfiguration {
 
     {
       modules.docker.enable = true;
+      modules.flatpak.enable = true;
       modules.gnome.enable = true;
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
