@@ -58,6 +58,7 @@ lib.mkNixosConfiguration {
       username = "desheffer";
       initialHashedPassword = passwords.desheffer;
       extraGroups = [
+        "dialout"
         "docker"
         "networkmanager"
         "wheel"
