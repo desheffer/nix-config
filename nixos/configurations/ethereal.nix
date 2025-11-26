@@ -41,7 +41,7 @@ lib.mkNixosConfiguration {
       modules.printing.enable = true;
       modules.secrets.enable = true;
 
-      modules.barrier = {
+      modules.inputLeap = {
         enableClient = true;
         serverAddress = "192.168.1.100";
       };

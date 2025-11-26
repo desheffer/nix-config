@@ -24,24 +24,27 @@ in
     programs.git = {
       enable = true;
 
-      delta = {
-        enable = true;
-
-        options = {
-          navigate = true;
-          side-by-side = true;
-          syntax-theme = "gruvbox-dark";
+      settings = {
+        user = {
+          email = "desheffer@gmail.com";
+          name = "Doug Sheffer";
         };
-      };
 
-      userEmail = "desheffer@gmail.com";
-      userName = "Doug Sheffer";
-
-      extraConfig = {
         github.user = "desheffer";
         init.defaultBranch = "main";
         log.date = "iso-local";
         rebase.autoSquash = true;
+      };
+    };
+
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+
+      options = {
+        navigate = true;
+        side-by-side = true;
+        syntax-theme = "gruvbox-dark";
       };
     };
 

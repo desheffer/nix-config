@@ -50,7 +50,7 @@ lib.mkNixosConfiguration {
         password = passwords.upsmon;
       };
 
-      modules.barrier = {
+      modules.inputLeap = {
         enableServer = true;
         config = ''
           section: screens

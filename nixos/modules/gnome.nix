@@ -18,38 +18,30 @@ in
       description = "Whether to enable GNOME desktop environment.";
       default = false;
     };
-    wayland = mkOption {
-      type = types.bool;
-      description = "Whether to enable Wayland.";
-      default = false;
-    };
   };
 
   config = mkIf cfg.enable {
-    services.displayManager = {
-      defaultSession = if cfg.wayland then "gnome" else "gnome-xorg";
-    };
-
     services.xserver = {
       enable = true;
-
-      displayManager = {
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
-      };
-
-      desktopManager.gnome = {
-        enable = true;
-
-        favoriteAppsOverride = ''
-          [org.gnome.shell]
-          favorite-apps=[]
-        '';
-      };
-
       excludePackages = with pkgs; [ xterm ];
+    };
+
+    services.displayManager = {
+      defaultSession = "gnome";
+
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+
+    services.desktopManager.gnome = {
+      enable = true;
+
+      favoriteAppsOverride = ''
+        [org.gnome.shell]
+        favorite-apps=[]
+      '';
     };
 
     services.gnome.core-apps.enable = false;
@@ -57,14 +49,5 @@ in
     services.accounts-daemon.enable = true;
 
     environment.systemPackages = with pkgs; [ gnome-console ];
-
-    # TODO: Move to `home/modules/kitty.nix` after 25.11 upgrade.
-    xdg.terminal-exec = {
-      enable = true;
-      settings.default = [
-        "kitty.desktop"
-        "org.gnome.Console.desktop"
-      ];
-    };
   };
 }

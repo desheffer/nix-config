@@ -85,6 +85,10 @@ in
         night-light-temperature = hm.gvariant.mkUint32 3000;
       };
 
+      "org/gnome/settings-daemon/plugins/housekeeping" = {
+        donation-reminder-enabled = false;
+      };
+
       "org/gnome/settings-daemon/plugins/power" = {
         power-button-action = "interactive";
         sleep-inactive-ac-type = "nothing";

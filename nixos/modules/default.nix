@@ -12,7 +12,6 @@ with lib;
 
   imports = [
     ./autoUpgrade.nix
-    ./barrier.nix
     ./boot.nix
     ./cli.nix
     ./docker.nix
@@ -21,6 +20,7 @@ with lib;
     ./gnome.nix
     ./gui.nix
     ./hardware.nix
+    ./inputLeap.nix
     ./journald.nix
     ./locale.nix
     ./nix.nix

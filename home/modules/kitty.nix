@@ -38,5 +38,13 @@ in
 
       themeFile = "gruvbox-dark";
     };
+
+    xdg.terminal-exec = {
+      enable = true;
+      settings.default = [
+        "kitty.desktop"
+        "org.gnome.Console.desktop"
+      ];
+    };
   };
 }
