@@ -99,6 +99,7 @@ in
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "dash-to-panel@jderose9.github.com"
+          "just-perfection-desktop@just-perfection"
         ];
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
@@ -137,6 +138,10 @@ in
         trans-use-dynamic-opacity = true;
       };
 
+      "org/gnome/shell/extensions/just-perfection" = {
+        screen-sharing-indicator = false;
+      };
+
       "org/gnome/system/location" = {
         enabled = true;
       };
@@ -149,6 +154,7 @@ in
       file-roller
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-panel
+      gnomeExtensions.just-perfection
       nautilus
       roboto
       tela-icon-theme
