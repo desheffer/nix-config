@@ -21,8 +21,6 @@ let
 in
 {
   ${hostname} = nixpkgs.lib.nixosSystem {
-    inherit system;
-
     pkgs = lib.mkPkgs {
       inherit system permittedInsecurePackages;
     };
