@@ -38,8 +38,8 @@ lib.mkNixosConfiguration {
     nixos-hardware.nixosModules.common-pc-ssd
 
     {
+      modules.bambu-studio.enable = true;
       modules.docker.enable = true;
-      modules.flatpak.enable = true;
       modules.gnome.enable = true;
       modules.nvidia.enable = true;
       modules.secrets.enable = true;

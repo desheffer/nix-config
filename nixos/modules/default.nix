@@ -12,11 +12,11 @@ with lib;
 
   imports = [
     ./autoUpgrade.nix
+    ./bambu.nix
     ./boot.nix
     ./cli.nix
     ./docker.nix
     ./fileSystems.nix
-    ./flatpak.nix
     ./gnome.nix
     ./gui.nix
     ./hardware.nix

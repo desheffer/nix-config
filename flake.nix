@@ -22,6 +22,8 @@
     neovim-config.url = "github:desheffer/neovim-config";
 
     secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs = inputs: {

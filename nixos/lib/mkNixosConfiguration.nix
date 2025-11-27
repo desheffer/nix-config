@@ -3,6 +3,7 @@ inputs@{
   home-manager,
   impermanence,
   secrets,
+  nix-flatpak,
   ...
 }:
 
@@ -42,6 +43,8 @@ in
       impermanence.nixosModules.impermanence
 
       secrets.nixosModules.secrets
+
+      nix-flatpak.nixosModules.nix-flatpak
 
       { networking.hostName = hostname; }
     ]
