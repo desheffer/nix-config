@@ -15,12 +15,12 @@ with lib;
     ./bambu.nix
     ./boot.nix
     ./cli.nix
+    ./deskflow.nix
     ./docker.nix
     ./fileSystems.nix
     ./gnome.nix
     ./gui.nix
     ./hardware.nix
-    ./inputLeap.nix
     ./journald.nix
     ./locale.nix
     ./nix.nix

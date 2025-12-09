@@ -41,7 +41,7 @@ lib.mkNixosConfiguration {
       modules.printing.enable = true;
       modules.secrets.enable = true;
 
-      modules.inputLeap = {
+      modules.deskflow = {
         enableClient = true;
         serverAddress = "192.168.1.100";
       };
