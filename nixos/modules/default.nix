@@ -12,8 +12,8 @@ with lib;
 
   imports = [
     ./autoUpgrade.nix
-    ./bambu.nix
     ./boot.nix
+    ./cad.nix
     ./cli.nix
     ./docker.nix
     ./fileSystems.nix
