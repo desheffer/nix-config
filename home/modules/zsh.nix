@@ -39,12 +39,10 @@ in
 
       syntaxHighlighting.enable = true;
 
-      sessionVariables = {
-        EDITOR = "nvim";
-      };
-
       initContent = ''
         PATH="''${PATH}:''${HOME}/.nix-profile/bin"
+
+        EDITOR=nvim
 
         # Do not split on slash.
         WORDCHARS=$WORDCHARS:s:/:
