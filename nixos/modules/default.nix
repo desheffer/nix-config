@@ -17,6 +17,7 @@ with lib;
     ./cli.nix
     ./docker.nix
     ./fileSystems.nix
+    ./fonts.nix
     ./gnome.nix
     ./gui.nix
     ./hardware.nix
