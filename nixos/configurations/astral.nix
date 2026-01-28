@@ -50,6 +50,15 @@ lib.mkNixosConfiguration {
         password = passwords.upsmon;
       };
 
+      modules.lanMouse = {
+        enable = true;
+        config = ''
+          [left]
+          hostname = "ethereal"
+          activate_on_startup = true
+        '';
+      };
+
       # BUG: NetworkManager-wait-online.service can prevent nixos-rebuild
       # switch from succeeding.
       # See https://github.com/NixOS/nixpkgs/issues/180175
