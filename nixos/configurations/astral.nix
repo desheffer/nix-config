@@ -50,26 +50,6 @@ lib.mkNixosConfiguration {
         password = passwords.upsmon;
       };
 
-      modules.inputLeap = {
-        enableServer = true;
-        config = ''
-          section: screens
-            astral:
-            ethereal:
-          end
-
-          section: aliases
-          end
-
-          section: links
-            astral:
-              left = ethereal
-            ethereal:
-              right = astral
-          end
-        '';
-      };
-
       # BUG: NetworkManager-wait-online.service can prevent nixos-rebuild
       # switch from succeeding.
       # See https://github.com/NixOS/nixpkgs/issues/180175

@@ -21,7 +21,6 @@ with lib;
     ./gnome.nix
     ./gui.nix
     ./hardware.nix
-    ./inputLeap.nix
     ./journald.nix
     ./locale.nix
     ./nix.nix

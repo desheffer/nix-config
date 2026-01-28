@@ -40,11 +40,6 @@ lib.mkNixosConfiguration {
       modules.gnome.enable = true;
       modules.printing.enable = true;
       modules.secrets.enable = true;
-
-      modules.inputLeap = {
-        enableClient = true;
-        serverAddress = "192.168.1.100";
-      };
     }
 
     (lib.mkNixosUserConfiguration {
