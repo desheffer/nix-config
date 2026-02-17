@@ -76,6 +76,7 @@ lib.mkNixosConfiguration {
       ];
       modules = [
         {
+          modules.ai.enable = true;
           modules.cli.enable = true;
           modules.gnome.enable = true;
           modules.secrets.enable = true;

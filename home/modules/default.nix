@@ -11,6 +11,7 @@ with lib;
   home.stateVersion = mkForce "21.11";
 
   imports = [
+    ./ai.nix
     ./chrome.nix
     ./cli.nix
     ./communication.nix
