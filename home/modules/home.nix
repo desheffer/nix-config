@@ -37,6 +37,8 @@ in
 
         cat = "bat --style=plain";
 
+        cc = "claude";
+
         "chown." = "sudo chown -R \"\${USER}\": .";
 
         df = "df -hT";
