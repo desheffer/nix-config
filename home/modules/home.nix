@@ -37,8 +37,6 @@ in
 
         cat = "bat --style=plain";
 
-        cc = "claude";
-
         "chown." = "sudo chown -R \"\${USER}\": .";
 
         df = "df -hT";
@@ -109,6 +107,8 @@ in
         ll = "ls -hl";
         lla = "ls -ahl";
         lt = "ls --tree";
+
+        oc = "opencode";
 
         # "If the last character of the alias value is a space or tab
         # character, then the next command word following the alias is also
