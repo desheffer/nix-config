@@ -1,4 +1,4 @@
-inputs@{ nixpkgs, ... }:
+inputs@{ nixpkgs, nixpkgs-unstable, ... }:
 
 {
   system,
@@ -9,6 +9,8 @@ inputs@{ nixpkgs, ... }:
 let
   pkgs = import nixpkgs { inherit system config overlays; };
 
+  pkgs-unstable = import nixpkgs-unstable { inherit system config; };
+
   config = {
     inherit permittedInsecurePackages;
 
@@ -16,8 +18,9 @@ let
   };
 
   overlays = [
-    # (final: prev: {
-    # })
+    (final: prev: {
+      opencode = pkgs-unstable.opencode;
+    })
   ];
 
 in
