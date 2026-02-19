@@ -45,7 +45,7 @@ in
       description = "lan-mouse";
       wantedBy = [ "graphical-session.target" ];
       path = [ pkgs.lan-mouse ];
-      serviceConfig.ExecStart = ''${pkgs.lan-mouse}/bin/lan-mouse --config /etc/lan-mouse.conf --daemon'';
+      serviceConfig.ExecStart = "${pkgs.lan-mouse}/bin/lan-mouse --config /etc/lan-mouse.conf --daemon";
       serviceConfig.Restart = "on-failure";
     };
   };
