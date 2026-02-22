@@ -58,8 +58,7 @@ in
 
     programs.dconf.profiles.gdm.databases = [
       {
-        settings."org/gnome/desktop/interface".scaling-factor =
-          lib.gvariant.mkUint32 cfg.gdmScalingFactor;
+        settings."org/gnome/desktop/interface".scaling-factor = lib.gvariant.mkUint32 cfg.gdmScalingFactor;
       }
     ];
   };

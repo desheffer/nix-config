@@ -4,6 +4,7 @@ inputs@{ secrets, neovim-config, ... }:
   username,
   modules,
   initialHashedPassword,
+  avatar,
   extraGroups ? [ ],
   authorizedKeys ? [ ],
   ...
@@ -24,6 +25,11 @@ inputs@{ secrets, neovim-config, ... }:
 
           openssh.authorizedKeys.keys = authorizedKeys;
         };
+
+        systemd.tmpfiles.rules = [
+          "L+ /var/lib/AccountsService/icons/${username} 0444 root root - ${pkgs.gnome-control-center}/share/pixmaps/faces/${avatar}"
+          "f+ /var/lib/AccountsService/users/${username} 0600 root root - [User]\\nIcon=/var/lib/AccountsService/icons/${username}\\n"
+        ];
       }
     )
   ];

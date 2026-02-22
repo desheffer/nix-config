@@ -72,6 +72,7 @@ lib.mkNixosConfiguration {
     (lib.mkNixosUserConfiguration {
       username = "desheffer";
       initialHashedPassword = passwords.desheffer;
+      avatar = "headphones.jpg";
       extraGroups = [
         "dialout"
         "docker"
