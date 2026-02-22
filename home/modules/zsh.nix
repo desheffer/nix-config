@@ -117,6 +117,10 @@ in
           git add -A || return
           git commit --no-verify --no-gpg-sign -m 'WIP [skip ci]' || true
         }
+
+        function ta {
+          tmux new-session -A -s "''${1:-default}"
+        }
       '';
 
       dirHashes = {

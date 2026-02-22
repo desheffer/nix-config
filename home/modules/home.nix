@@ -115,7 +115,6 @@ in
         # checked for alias expansion."
         sudo = "sudo -E ";
 
-        ta = "tmux new-session -A -s";
         tmux = "tmux -2u";
       };
     };
