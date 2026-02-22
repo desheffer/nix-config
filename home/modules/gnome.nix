@@ -105,7 +105,7 @@ in
           "org.gnome.Nautilus.desktop"
           "google-chrome.desktop"
           "spotify.desktop"
-          "kitty.desktop"
+          "com.mitchellh.ghostty.desktop"
         ];
         welcome-dialog-last-shown-version = "999";
       };

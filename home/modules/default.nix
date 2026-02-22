@@ -16,10 +16,10 @@ with lib;
     ./cli.nix
     ./communication.nix
     ./git.nix
+    ./ghostty.nix
     ./gnome.nix
     ./gui.nix
     ./home.nix
-    ./kitty.nix
     ./libreoffice.nix
     ./music.nix
     ./neovim.nix
