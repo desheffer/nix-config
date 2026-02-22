@@ -24,6 +24,10 @@ in
     programs.git = {
       enable = true;
 
+      ignores = [
+        ".opencode"
+      ];
+
       settings = {
         user = {
           email = "desheffer@gmail.com";
