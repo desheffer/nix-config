@@ -40,10 +40,14 @@ lib.mkNixosConfiguration {
     {
       modules.cad.enable = true;
       modules.docker.enable = true;
-      modules.gnome.enable = true;
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
       modules.virtualbox.enable = true;
+
+      modules.gnome = {
+        enable = true;
+        gdmScalingFactor = 2;
+      };
 
       modules.ups = {
         enable = true;

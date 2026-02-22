@@ -18,6 +18,12 @@ in
       description = "Whether to enable GNOME desktop environment.";
       default = false;
     };
+
+    gdmScalingFactor = mkOption {
+      type = types.ints.unsigned;
+      description = "Scaling factor for the GDM login screen.";
+      default = 1;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -49,5 +55,12 @@ in
     services.accounts-daemon.enable = true;
 
     environment.systemPackages = with pkgs; [ gnome-console ];
+
+    programs.dconf.profiles.gdm.databases = [
+      {
+        settings."org/gnome/desktop/interface".scaling-factor =
+          lib.gvariant.mkUint32 cfg.gdmScalingFactor;
+      }
+    ];
   };
 }
