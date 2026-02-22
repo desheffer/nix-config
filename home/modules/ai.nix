@@ -32,8 +32,31 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      opencode-wrapped
-    ];
+    programs.opencode = {
+      enable = true;
+      package = opencode-wrapped;
+
+      settings = {
+        share = "disabled";
+        permission = {
+          bash = {
+            "*" = "ask";
+            "find *" = "allow";
+            "git add *" = "allow";
+            "git diff *" = "allow";
+            "git log *" = "allow";
+            "git show *" = "allow";
+            "git status *" = "allow";
+            "grep *" = "allow";
+            "head *" = "allow";
+            "ls *" = "allow";
+            "pwd" = "allow";
+            "rg *" = "allow";
+            "sort *" = "allow";
+            "tail *" = "allow";
+          };
+        };
+      };
+    };
   };
 }
