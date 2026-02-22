@@ -10,6 +10,17 @@ with lib;
 let
   cfg = config.modules.ai;
 
+  opencode-wrapped = pkgs.symlinkJoin {
+    name = "opencode";
+    paths = [ pkgs.opencode ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/opencode \
+        --set OPENCODE_ENABLE_EXA 1 \
+        --set OPENCODE_EXPERIMENTAL true
+    '';
+  };
+
 in
 {
   options.modules.ai = {
@@ -21,8 +32,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      opencode
+    home.packages = [
+      opencode-wrapped
     ];
   };
 }
