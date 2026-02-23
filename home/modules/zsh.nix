@@ -21,6 +21,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.nix-index-database.comma.enable = true;
+
+    programs.nix-index.enableZshIntegration = false;
+
     programs.zsh = {
       enable = true;
 
@@ -81,21 +85,7 @@ in
         bindkey '^[[5;5~' beep                # Ctrl + PageDown (no-op)
         bindkey '^[[6;5~' beep                # Ctrl + PageUp (no-op)
 
-        function $ {
-          if [ ''${#} -lt 1 ]; then
-            return 1
-          fi
-          pkg=''${1}
-          shift 1
-          nix run "nixpkgs#''${pkg}" --impure -- "''${@}"
-        }
-
-        function + {
-          if [ ''${#} -lt 1 ]; then
-            return 1
-          fi
-          nix shell "''${@/#/nixpkgs#}" --impure
-        }
+        source ${pkgs.comma}/share/comma/command-not-found.sh
 
         function gmain {
           git fetch

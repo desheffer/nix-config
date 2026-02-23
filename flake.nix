@@ -23,6 +23,11 @@
 
     neovim-config.url = "github:desheffer/neovim-config";
 
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     secrets.url = "git+ssh://git@github.com/desheffer/secrets?ref=main";
   };
 

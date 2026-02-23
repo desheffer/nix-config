@@ -1,4 +1,4 @@
-inputs@{ secrets, neovim-config, ... }:
+inputs@{ secrets, neovim-config, nix-index-database, ... }:
 
 {
   username,
@@ -38,6 +38,8 @@ inputs@{ secrets, neovim-config, ... }:
     ../modules
 
     neovim-config.homeManagerModules.neovim
+
+    nix-index-database.homeModules.nix-index
 
     secrets.homeManagerModules.secrets
     ../modules/secrets.nix

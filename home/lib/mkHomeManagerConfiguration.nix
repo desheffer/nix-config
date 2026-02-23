@@ -1,4 +1,4 @@
-inputs@{ home-manager, neovim-config, ... }:
+inputs@{ home-manager, neovim-config, nix-index-database, ... }:
 
 {
   hostname,
@@ -30,6 +30,8 @@ in
       ../modules
 
       neovim-config.homeManagerModules.neovim
+
+      nix-index-database.homeModules.nix-index
     ]
     ++ modules;
   };
