@@ -13,7 +13,7 @@ let
   mkIcon =
     size: hash:
     pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/lukejanicke/ghostty-app-icons/c8e41bff657cd5168ab6217998141288b387b64f/iconsets/ghostty-original.iconset/icon_${size}.png";
+      url = "https://raw.githubusercontent.com/lukejanicke/ghostty-app-icons/c8e41bff657cd5168ab6217998141288b387b64f/iconsets/ghostty-black.iconset/icon_${size}.png";
       sha256 = hash;
     };
 
@@ -45,15 +45,15 @@ in
 
     xdg.dataFile = {
       "icons/hicolor/16x16/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "16x16" "1k4aajwk971m56cszz2vp5bv0xymgarw066lmpbsj1xb54g1aqxn";
+        mkIcon "16x16" "0nwwckkgid12jbp5d64sp97rmwlyl8yprqmv41ckapcmcgb04698";
       "icons/hicolor/32x32/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "32x32" "0clyxzm9z9023b34xgshin2c1ka6ak5y6g7fpb9a7vk29sa7a8fx";
+        mkIcon "32x32" "1vm2gq78065484iyp26rc198hm9k3z3z365khcpbzyy97fc1l1bl";
       "icons/hicolor/128x128/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "128x128" "1pm9q2ly6p1a8fdxk5wf3jk2x9lfbb6sb33bda6ijwb7y4296f39";
+        mkIcon "128x128" "0bc73xqgi8d2v95z4wa4zc9smgmhsbcmj8d65qx97jidxj67g2vh";
       "icons/hicolor/256x256/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "256x256" "08gw2mv69zr5dq71d54hdahx3jz3s7fs50y8xk4v8vvaz0zcxzqw";
+        mkIcon "256x256" "1yfp6s5gia9jlk0pvhcmlj7r30s21si3y3rv45niqwc6008ayz8d";
       "icons/hicolor/512x512/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "512x512" "1lf5h9yirqnx8c2qmvk29nq166cq3vgi7r6apbw3l05b8qab4sap";
+        mkIcon "512x512" "1gwnhcxb98scx7rnj18kp03m6q6i3097xfc8a0xkzbkq8nf83706";
     };
 
     xdg.terminal-exec = {
