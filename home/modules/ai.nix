@@ -41,6 +41,8 @@ in
         permission = {
           bash = {
             "*" = "ask";
+
+            "docker compose exec * ./gradlew *" = "allow";
             "find *" = "allow";
             "git add *" = "allow";
             "git diff *" = "allow";
