@@ -38,6 +38,11 @@ in
 
       settings = {
         share = "disabled";
+        keybinds = {
+          session_child_cycle = "<leader>right,ctrl+pagedown";
+          session_child_cycle_reverse = "<leader>left,ctrl+pageup";
+          session_parent = "<leader>up,ctrl+home";
+        };
         permission = {
           bash = {
             "*" = "ask";

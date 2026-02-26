@@ -42,6 +42,9 @@ in
         bind-key -n Home send Escape '[H'
         bind-key -n End  send Escape '[F'
 
+        # Enable extended keys.
+        set -g extended-keys on
+
         # Allow true colors.
         set-option -ga terminal-overrides ',*256col*:Tc'
 

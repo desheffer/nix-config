@@ -40,6 +40,10 @@ in
         theme = "Gruvbox Dark";
         maximize = true;
         bell-features = "no-audio";
+        keybind = [
+          "ctrl+enter=unbind"
+          "super+enter=toggle_fullscreen"
+        ];
       };
     };
 
