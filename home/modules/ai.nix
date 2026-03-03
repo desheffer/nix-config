@@ -49,7 +49,6 @@ in
 
             "docker compose exec * ./gradlew *" = "allow";
             "find *" = "allow";
-            "git add *" = "allow";
             "git diff *" = "allow";
             "git log *" = "allow";
             "git show *" = "allow";
@@ -57,6 +56,11 @@ in
             "grep *" = "allow";
             "head *" = "allow";
             "ls *" = "allow";
+            "make down" = "allow";
+            "make restart" = "allow";
+            "make start" = "allow";
+            "make stop" = "allow";
+            "make up" = "allow";
             "pwd" = "allow";
             "rg *" = "allow";
             "sort *" = "allow";
