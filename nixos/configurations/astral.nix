@@ -58,7 +58,7 @@ lib.mkNixosConfiguration {
         enable = true;
         config = ''
           [left]
-          hostname = "ethereal"
+          hostname = "argent"
           activate_on_startup = true
         '';
       };

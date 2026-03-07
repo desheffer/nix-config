@@ -40,15 +40,6 @@ lib.mkNixosConfiguration {
       modules.gnome.enable = true;
       modules.printing.enable = true;
       modules.secrets.enable = true;
-
-      modules.lanMouse = {
-        enable = true;
-        config = ''
-          [right]
-          hostname = "astral"
-          activate_on_startup = true
-        '';
-      };
     }
 
     (lib.mkNixosUserConfiguration {
