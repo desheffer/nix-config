@@ -66,6 +66,13 @@ in
             "sort *" = "allow";
             "tail *" = "allow";
           };
+          external_directory = {
+            "~/Code/**" = "allow";
+            "~/Code/secrets" = "deny";
+          };
+          edit = {
+            "~/Code/**" = "deny";
+          };
         };
       };
     };
