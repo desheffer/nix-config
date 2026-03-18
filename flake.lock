@@ -448,6 +448,22 @@
         "type": "github"
       }
     },
+    "markdown-preview-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1697511247,
+        "narHash": "sha256-TBXdG/Ih5DusAYZJyn37zVqHcMD85VkjrCoLyTo/KBg=",
+        "owner": "iamcco",
+        "repo": "markdown-preview.nvim",
+        "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iamcco",
+        "repo": "markdown-preview.nvim",
+        "type": "github"
+      }
+    },
     "neovim-config": {
       "inputs": {
         "CopilotChat-nvim": "CopilotChat-nvim",
@@ -467,6 +483,7 @@
         "hop-nvim": "hop-nvim",
         "lualine-nvim": "lualine-nvim",
         "luasnip": "luasnip",
+        "markdown-preview-nvim": "markdown-preview-nvim",
         "nixpkgs": "nixpkgs_2",
         "nvim-cmp": "nvim-cmp",
         "nvim-hlslens": "nvim-hlslens",
@@ -491,11 +508,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1756918867,
-        "narHash": "sha256-QvfqmaJT3ZjH6VMrzdyqm87qk4SixQMUP0LlrYditMI=",
+        "lastModified": 1773853455,
+        "narHash": "sha256-PgzQUXsynRnQ4MR9/k/7lU5z6Q1ISgv+As3K2jrkadE=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "9b0533a459e3583c3bdb229ae1b493bda6edadfe",
+        "rev": "442d6d3c43b4785585d820b083636cc4889c3b22",
         "type": "github"
       },
       "original": {
