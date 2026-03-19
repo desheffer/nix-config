@@ -38,6 +38,13 @@ in
 
       settings = {
         share = "disabled";
+        mcp = {
+          atlassian-rovo-mcp = {
+            type = "remote";
+            url = "https://mcp.atlassian.com/v1/mcp";
+            enabled = true;
+          };
+        };
         keybinds = {
           session_child_cycle = "<leader>right,ctrl+pagedown";
           session_child_cycle_reverse = "<leader>left,ctrl+pageup";
