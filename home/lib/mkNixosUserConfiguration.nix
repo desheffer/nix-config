@@ -1,4 +1,9 @@
-inputs@{ secrets, neovim-config, nix-index-database, ... }:
+inputs@{
+  secrets,
+  neovim-config,
+  nix-index-database,
+  ...
+}:
 
 {
   username,

@@ -28,6 +28,7 @@ in
       };
 
       registry.nixpkgs.flake = flakeInputs.nixpkgs;
+      registry.nixpkgs-unstable.flake = flakeInputs.nixpkgs-unstable;
     };
 
     environment.variables = {

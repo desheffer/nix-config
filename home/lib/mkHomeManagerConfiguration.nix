@@ -1,4 +1,9 @@
-inputs@{ home-manager, neovim-config, nix-index-database, ... }:
+inputs@{
+  home-manager,
+  neovim-config,
+  nix-index-database,
+  ...
+}:
 
 {
   hostname,
