@@ -19,6 +19,7 @@ let
 
   overlays = [
     (final: prev: {
+      claude-code = pkgs-unstable.claude-code;
       opencode = pkgs-unstable.opencode;
     })
   ];

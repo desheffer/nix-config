@@ -34,6 +34,56 @@ in
   config = mkIf cfg.enable {
     programs.claude-code = {
       enable = true;
+
+      settings = {
+        mcpServers = {
+          atlassian-rovo-mcp = {
+            type = "http";
+            url = "https://mcp.atlassian.com/v1/mcp";
+          };
+        };
+        permissions = {
+          additionalDirectories = [
+            "~/Code"
+          ];
+          allow = [
+            "Edit"
+            "WebFetch"
+            "WebSearch"
+            "Write"
+
+            "Bash(docker compose exec * ./gradlew *)"
+            "Bash(find *)"
+            "Bash(git diff *)"
+            "Bash(git log *)"
+            "Bash(git show *)"
+            "Bash(git status *)"
+            "Bash(grep *)"
+            "Bash(head *)"
+            "Bash(ls *)"
+            "Bash(make down *)"
+            "Bash(make restart *)"
+            "Bash(make start *)"
+            "Bash(make stop *)"
+            "Bash(make up *)"
+            "Bash(pwd *)"
+            "Bash(rg *)"
+            "Bash(sort *)"
+            "Bash(tail *)"
+          ];
+          deny = [
+            "Edit(~/Code/secrets/**)"
+            "Read(~/Code/secrets/**)"
+            "Write(~/Code/secrets/**)"
+          ];
+        };
+        showTurnDuration = false;
+        spinnerTipsEnabled = false;
+        spinnerVerbs = {
+          mode = "replace";
+          verbs = [ "Processing" ];
+        };
+      };
     };
 
     programs.opencode = {
@@ -42,13 +92,6 @@ in
 
       settings = {
         share = "disabled";
-        mcp = {
-          atlassian-rovo-mcp = {
-            type = "remote";
-            url = "https://mcp.atlassian.com/v1/mcp";
-            enabled = true;
-          };
-        };
         keybinds = {
           session_child_cycle = "<leader>right,ctrl+pagedown";
           session_child_cycle_reverse = "<leader>left,ctrl+pageup";
@@ -57,7 +100,6 @@ in
         permission = {
           bash = {
             "*" = "ask";
-
             "docker compose exec * ./gradlew *" = "allow";
             "find *" = "allow";
             "git diff *" = "allow";
