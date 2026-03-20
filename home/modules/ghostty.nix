@@ -40,7 +40,23 @@ in
         theme = "Gruvbox Dark";
         maximize = true;
         bell-features = "no-audio";
+        window-inherit-working-directory = true;
         keybind = [
+          "ctrl+b>c=new_tab"
+          "alt+page_down=next_tab"
+          "alt+page_up=previous_tab"
+
+          "ctrl+b>shift+backslash=new_split:right"
+          "ctrl+b>minus=new_split:down"
+          "alt+left=goto_split:left"
+          "alt+right=goto_split:right"
+          "alt+up=goto_split:top"
+          "alt+down=goto_split:bottom"
+
+          "ctrl+b>p=toggle_command_palette"
+          "ctrl+b>x=close_surface"
+          "ctrl+b>z=toggle_split_zoom"
+
           "ctrl+enter=unbind"
           "super+enter=toggle_fullscreen"
         ];
