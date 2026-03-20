@@ -28,6 +28,7 @@ jobs:
         nix flake update nixpkgs
         nix flake update nixpkgs-unstable
         nix flake update home-manager
+        nix flake update llm-agents
 
     - name: Commit and push flake.lock
       run: |

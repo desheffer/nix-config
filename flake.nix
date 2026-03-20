@@ -23,6 +23,8 @@
 
     neovim-config.url = "github:desheffer/neovim-config";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

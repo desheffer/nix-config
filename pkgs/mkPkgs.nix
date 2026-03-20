@@ -1,4 +1,9 @@
-inputs@{ nixpkgs, nixpkgs-unstable, ... }:
+inputs@{
+  nixpkgs,
+  nixpkgs-unstable,
+  llm-agents,
+  ...
+}:
 
 {
   system,
@@ -19,8 +24,9 @@ let
 
   overlays = [
     (final: prev: {
-      claude-code = pkgs-unstable.claude-code;
-      opencode = pkgs-unstable.opencode;
+      # Example: some-pkg = pkgs-unstable.some.pkg;
+      claude-code = llm-agents.packages.${system}.claude-code;
+      opencode = llm-agents.packages.${system}.opencode;
     })
   ];
 
