@@ -77,6 +77,7 @@ in
             "Write(~/Code/secrets/**)"
           ];
         };
+        feedbackSurveyRate = 0.0;
         showTurnDuration = false;
         spinnerTipsEnabled = false;
         spinnerVerbs = {
