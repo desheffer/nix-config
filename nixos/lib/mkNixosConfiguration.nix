@@ -10,6 +10,7 @@ inputs@{
   hostname,
   system,
   permittedInsecurePackages ? [ ],
+  allowInsecurePredicate ? null,
   modules,
   ...
 }:
@@ -21,7 +22,7 @@ in
 {
   ${hostname} = nixpkgs.lib.nixosSystem {
     pkgs = lib.mkPkgs {
-      inherit system permittedInsecurePackages;
+      inherit system permittedInsecurePackages allowInsecurePredicate;
     };
 
     specialArgs = {

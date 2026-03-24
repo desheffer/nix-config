@@ -8,9 +8,7 @@ in
 lib.mkNixosConfiguration {
   hostname = "argent";
   system = "x86_64-linux";
-  permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-59-6.12.74"
-  ];
+  allowInsecurePredicate = pkg: (builtins.substring 0 13 pkg.name) == "broadcom-sta-";
   modules = [
     (
       { config, ... }:
@@ -32,6 +30,11 @@ lib.mkNixosConfiguration {
             "wl"
           ];
           extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
+
+          blacklistedKernelModules = [
+            "b43"
+            "bcma"
+          ];
         };
       }
     )

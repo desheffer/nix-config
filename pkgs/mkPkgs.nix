@@ -8,6 +8,7 @@ inputs@{
 {
   system,
   permittedInsecurePackages ? [ ],
+  allowInsecurePredicate ? null,
   ...
 }:
 
@@ -17,7 +18,7 @@ let
   pkgs-unstable = import nixpkgs-unstable { inherit system config; };
 
   config = {
-    inherit permittedInsecurePackages;
+    inherit permittedInsecurePackages allowInsecurePredicate;
 
     allowUnfree = true;
   };
