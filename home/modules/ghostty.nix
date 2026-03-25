@@ -43,7 +43,9 @@ in
         window-inherit-working-directory = true;
         keybind = [
           "ctrl+b>c=new_tab"
+          "ctrl+page_down=unbind"
           "alt+page_down=next_tab"
+          "ctrl+page_up=unbind"
           "alt+page_up=previous_tab"
 
           "ctrl+b>shift+backslash=new_split:right"
