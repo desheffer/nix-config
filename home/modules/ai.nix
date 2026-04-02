@@ -61,13 +61,15 @@ in
             "Bash(grep *)"
             "Bash(head *)"
             "Bash(ls *)"
-            "Bash(make down *)"
-            "Bash(make restart *)"
-            "Bash(make start *)"
-            "Bash(make stop *)"
-            "Bash(make up *)"
+            "Bash(make down)"
+            "Bash(make restart)"
+            "Bash(make start)"
+            "Bash(make stop)"
+            "Bash(make up)"
+            "Bash(mkdir *)"
             "Bash(pwd *)"
             "Bash(rg *)"
+            "Bash(rmdir *)"
             "Bash(sort *)"
             "Bash(tail *)"
           ];
@@ -115,8 +117,10 @@ in
             "make start" = "allow";
             "make stop" = "allow";
             "make up" = "allow";
+            "mkdir *" = "allow";
             "pwd" = "allow";
             "rg *" = "allow";
+            "rmdir *" = "allow";
             "sort *" = "allow";
             "tail *" = "allow";
           };
