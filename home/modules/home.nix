@@ -37,7 +37,7 @@ in
 
         cat = "bat --style=plain";
 
-        cc = "claude --append-system-prompt 'Read @AGENTS.md'";
+        cc = "claude";
         oc = "opencode";
 
         "chown." = "sudo chown -R \"\${USER}\": .";
