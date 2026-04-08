@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "CopilotChat-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1756164141,
-        "narHash": "sha256-TBC7Y1GOlAJjsgqY1PkfodI8W+3e7WfMY5pDA/GJ61g=",
-        "owner": "CopilotC-Nvim",
-        "repo": "CopilotChat.nvim",
-        "rev": "f4ff91e32893c89e5970c1a9cd5196c57596321a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "CopilotC-Nvim",
-        "repo": "CopilotChat.nvim",
-        "type": "github"
-      }
-    },
     "FTerm-nvim": {
       "flake": false,
       "locked": {
@@ -205,22 +189,6 @@
       "original": {
         "owner": "numToStr",
         "repo": "Comment.nvim",
-        "type": "github"
-      }
-    },
-    "copilot-lua": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1755885766,
-        "narHash": "sha256-FC3Dgyk38+92Gu+KYlVLxVh7yC86NTr2qU/AS5IhUXI=",
-        "owner": "zbirenbaum",
-        "repo": "copilot.lua",
-        "rev": "f0c0d981de2737abc50bd7b5bb034ae440826827",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zbirenbaum",
-        "repo": "copilot.lua",
         "type": "github"
       }
     },
@@ -584,7 +552,6 @@
     },
     "neovim-config": {
       "inputs": {
-        "CopilotChat-nvim": "CopilotChat-nvim",
         "FTerm-nvim": "FTerm-nvim",
         "alpha-nvim": "alpha-nvim",
         "bufferline-nvim": "bufferline-nvim",
@@ -592,7 +559,6 @@
         "cmp-nvim-lsp": "cmp-nvim-lsp",
         "cmp_luasnip": "cmp_luasnip",
         "comment-nvim": "comment-nvim",
-        "copilot-lua": "copilot-lua",
         "efmls-configs-nvim": "efmls-configs-nvim",
         "flake-utils": "flake-utils_2",
         "friendly-snippets": "friendly-snippets",
@@ -611,6 +577,7 @@
         "nvim-web-devicons": "nvim-web-devicons",
         "plenary-nvim": "plenary-nvim",
         "registers-nvim": "registers-nvim",
+        "telescope-insert-path-nvim": "telescope-insert-path-nvim",
         "telescope-nvim": "telescope-nvim",
         "telescope-ui-select-nvim": "telescope-ui-select-nvim",
         "treefmt-nix": "treefmt-nix_2",
@@ -626,11 +593,11 @@
         "which-key-nvim": "which-key-nvim"
       },
       "locked": {
-        "lastModified": 1774412005,
-        "narHash": "sha256-mYJfY/bXdr0rqMmPDxAU0QNeSKY0xrFXWfRChx/9QqI=",
+        "lastModified": 1775677767,
+        "narHash": "sha256-+4kON4QDE8FxYVW/1dFG8kkaWAC42mS6SeszRPl0z1o=",
         "owner": "desheffer",
         "repo": "neovim-config",
-        "rev": "b4af543abbcae16efdc6b0bc57e308f4a0dbd1ee",
+        "rev": "cefac86c64c85d20a1efc11f1b69c05bd750104a",
         "type": "github"
       },
       "original": {
@@ -1089,6 +1056,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "telescope-insert-path-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1766216071,
+        "narHash": "sha256-szUnmf2kKqR8p69/Y+7dlstfrMfaXZTQyKkZPldopJI=",
+        "owner": "kiyoon",
+        "repo": "telescope-insert-path.nvim",
+        "rev": "286815cf0cd743f21c705466203dc19cc02f1144",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kiyoon",
+        "repo": "telescope-insert-path.nvim",
         "type": "github"
       }
     },
