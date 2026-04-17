@@ -36,6 +36,10 @@ in
       enable = true;
 
       settings = {
+        enabledPlugins = {
+          "code-simplifier@claude-plugins-official" = true;
+          "superpowers@claude-plugins-official" = true;
+        };
         mcpServers = {
           atlassian-rovo-mcp = {
             type = "http";
