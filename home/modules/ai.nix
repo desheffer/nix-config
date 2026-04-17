@@ -21,6 +21,31 @@ let
     '';
   };
 
+  claude-plugins-official = pkgs.fetchFromGitHub {
+    owner = "anthropics";
+    repo = "claude-plugins-official";
+    rev = "b664e152af5742dd11b6a6e5d7a65848a8c5a261";
+    hash = "sha256-Dd3AZzGvVsXACixRdmQcEHT7FwPxOyGnvI67ypj+i+Y=";
+  };
+
+  superpowers = pkgs.fetchFromGitHub {
+    owner = "obra";
+    repo = "superpowers";
+    rev = "b55764852ac78870e65c6565fb585b6cd8b3c5c9";
+    hash = "sha256-cobQloF7Y6K0IC0/6xSnA2Io+fKgk2SRmCwoZZtVCco=";
+  };
+
+  claude-code-wrapped = pkgs.symlinkJoin {
+    name = "claude-code";
+    paths = [ pkgs.claude-code ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/claude \
+        --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
+        --add-flags "--plugin-dir ${superpowers}"
+    '';
+  };
+
 in
 {
   options.modules.ai = {
@@ -34,12 +59,9 @@ in
   config = mkIf cfg.enable {
     programs.claude-code = {
       enable = true;
+      package = claude-code-wrapped;
 
       settings = {
-        enabledPlugins = {
-          "code-simplifier@claude-plugins-official" = true;
-          "superpowers@claude-plugins-official" = true;
-        };
         mcpServers = {
           atlassian-rovo-mcp = {
             type = "http";
