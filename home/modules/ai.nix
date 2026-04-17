@@ -61,6 +61,7 @@ in
             "Bash(git diff *)"
             "Bash(git log *)"
             "Bash(git ls-files *)"
+            "Bash(git ls-remote *)"
             "Bash(git ls-tree *)"
             "Bash(git show *)"
             "Bash(git status *)"
