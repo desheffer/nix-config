@@ -10,17 +10,6 @@ with lib;
 let
   cfg = config.modules.ai;
 
-  opencode-wrapped = pkgs.symlinkJoin {
-    name = "opencode";
-    paths = [ pkgs.opencode ];
-    buildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/opencode \
-        --set OPENCODE_ENABLE_EXA 1 \
-        --set OPENCODE_EXPERIMENTAL true
-    '';
-  };
-
   claude-plugins-official = pkgs.fetchFromGitHub {
     owner = "anthropics";
     repo = "claude-plugins-official";
@@ -126,50 +115,5 @@ in
       };
     };
 
-    programs.opencode = {
-      enable = true;
-      package = opencode-wrapped;
-
-      settings = {
-        share = "disabled";
-        keybinds = {
-          session_child_cycle = "<leader>right,ctrl+pagedown";
-          session_child_cycle_reverse = "<leader>left,ctrl+pageup";
-          session_parent = "<leader>up,ctrl+home";
-        };
-        permission = {
-          bash = {
-            "*" = "ask";
-            "docker compose exec * ./gradlew *" = "allow";
-            "find *" = "allow";
-            "git diff *" = "allow";
-            "git log *" = "allow";
-            "git show *" = "allow";
-            "git status *" = "allow";
-            "grep *" = "allow";
-            "head *" = "allow";
-            "ls *" = "allow";
-            "make down" = "allow";
-            "make restart" = "allow";
-            "make start" = "allow";
-            "make stop" = "allow";
-            "make up" = "allow";
-            "mkdir *" = "allow";
-            "pwd" = "allow";
-            "rg *" = "allow";
-            "rmdir *" = "allow";
-            "sort *" = "allow";
-            "tail *" = "allow";
-          };
-          external_directory = {
-            "~/Code/**" = "allow";
-            "~/Code/secrets" = "deny";
-          };
-          edit = {
-            "~/Code/**" = "deny";
-          };
-        };
-      };
-    };
   };
 }
