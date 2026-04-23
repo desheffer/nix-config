@@ -80,6 +80,24 @@ in
       fileSystems = [ "/" ];
     };
 
+    systemd.services.btrfs-balance = {
+      description = "Btrfs data balance";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${pkgs.btrfs-progs}/bin/btrfs balance start -dusage=50 /";
+        IOSchedulingClass = "idle";
+      };
+    };
+
+    systemd.timers.btrfs-balance = {
+      description = "Weekly btrfs data balance";
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "Sat *-*-* 06:30:00 US/Eastern";
+        Persistent = true;
+      };
+    };
+
     environment.persistence."/persist" = {
       directories = [
         "/etc/NetworkManager/system-connections"
