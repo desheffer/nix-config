@@ -60,8 +60,8 @@ in
         permissions = {
           allow = [
             "Edit"
-            "Read(/nix/store/*)"
-            "Read(~/Code/*)"
+            "Read(/nix/store/**)"
+            "Read(~/Code/**)"
             "WebFetch"
             "WebSearch"
             "Write"
