@@ -31,7 +31,8 @@ let
     postBuild = ''
       wrapProgram $out/bin/claude \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
-        --add-flags "--plugin-dir ${superpowers}"
+        --add-flags "--plugin-dir ${superpowers}" \
+        --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/llm-plugins/plugins/gudea-eng"
     '';
   };
 
