@@ -129,6 +129,7 @@ in
           ];
         };
         feedbackSurveyRate = 0.0;
+        promptSuggestionEnabled = false;
         showTurnDuration = false;
         spinnerTipsEnabled = false;
         spinnerVerbs = {
