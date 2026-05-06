@@ -27,10 +27,11 @@ in
           name = "BambuStudio";
           pname = "bambu-studio";
           version = "02.05.03.61";
+          releaseTag = "02.05.03.62";
           timestamp = "20260414220857";
 
           src = fetchurl {
-            url = "https://github.com/bambulab/BambuStudio/releases/download/v${version}/BambuStudio_ubuntu-24.04-v${version}-${timestamp}.AppImage";
+            url = "https://github.com/bambulab/BambuStudio/releases/download/v${releaseTag}/BambuStudio_ubuntu-24.04-v${version}-${timestamp}.AppImage";
             sha256 = "sha256-6vy43pwZ1mLCteHBCkJIHzY/tzjmzEWh6aohY4l9yCY=";
           };
 
