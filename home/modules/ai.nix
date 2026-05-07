@@ -51,13 +51,14 @@ in
       enable = true;
       package = claude-code-wrapped;
 
-      settings = {
-        mcpServers = {
-          atlassian-rovo-mcp = {
-            type = "http";
-            url = "https://mcp.atlassian.com/v1/mcp";
-          };
+      mcpServers = {
+        atlassian-rovo-mcp = {
+          type = "http";
+          url = "https://mcp.atlassian.com/v1/mcp";
         };
+      };
+
+      settings = {
         permissions = {
           allow = [
             "Edit"
