@@ -60,9 +60,11 @@ in
 
       settings = {
         permissions = {
+          additionalDirectories = [
+            "/nix/store"
+          ];
           allow = [
             "Edit"
-            "Read(/nix/store/**)"
             "Read(~/Code/**)"
             "WebFetch"
             "WebSearch"
