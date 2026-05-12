@@ -42,7 +42,6 @@ lib.mkNixosConfiguration {
       modules.docker.enable = true;
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
-      modules.virtualbox.enable = true;
 
       modules.gnome = {
         enable = true;
