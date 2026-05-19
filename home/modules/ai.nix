@@ -17,6 +17,13 @@ let
     hash = "sha256-Dd3AZzGvVsXACixRdmQcEHT7FwPxOyGnvI67ypj+i+Y=";
   };
 
+  claude-temporal-plugin = pkgs.fetchFromGitHub {
+    owner = "temporalio";
+    repo = "claude-temporal-plugin";
+    rev = "bb095dbd4483b8b29a6953667677dbca8a85a18e";
+    hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
+  };
+
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -31,6 +38,7 @@ let
     postBuild = ''
       wrapProgram $out/bin/claude \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
+        --add-flags "--plugin-dir ${claude-temporal-plugin}" \
         --add-flags "--plugin-dir ${superpowers}" \
         --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/llm-plugins/plugins/gudea-eng"
     '';
