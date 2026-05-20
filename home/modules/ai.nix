@@ -74,6 +74,7 @@ in
           allow = [
             "Edit"
             "Read(~/Code/**)"
+            "Skill"
             "WebFetch"
             "WebSearch"
             "Write"
