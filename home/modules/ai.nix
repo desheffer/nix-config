@@ -105,6 +105,7 @@ in
             "Bash(git commit *)"
             "Bash(git describe *)"
             "Bash(git diff *)"
+            "Bash(git grep *)"
             "Bash(git log *)"
             "Bash(git ls-files *)"
             "Bash(git ls-remote *)"
@@ -142,10 +143,25 @@ in
           ];
           deny = [
             "Read(~/Code/secrets/**)"
+
+            "Bash(git -C *)"
           ];
         };
         feedbackSurveyRate = 0.0;
         promptSuggestionEnabled = false;
+        sandbox = {
+          enabled = true;
+          allowUnsandboxedCommands = false;
+          excludedCommands = [
+            "docker compose exec * ./gradlew *"
+            "make down"
+            "make restart"
+            "make start"
+            "make stop"
+            "make up"
+          ];
+          failIfUnavailable = true;
+        };
         showTurnDuration = false;
         spinnerTipsEnabled = false;
         spinnerVerbs = {
