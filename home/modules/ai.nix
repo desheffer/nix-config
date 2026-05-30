@@ -148,6 +148,7 @@ in
           ];
         };
         feedbackSurveyRate = 0.0;
+        includeCoAuthoredBy = false;
         promptSuggestionEnabled = false;
         sandbox = {
           enabled = true;
