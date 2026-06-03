@@ -122,22 +122,33 @@ in
 
     age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
-    boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-      mkdir -p /mnt
-      mount -t btrfs ${mapperPrimary} /mnt
+    # Wipe the @root subvolume on every boot ("erase your darlings"). Under
+    # systemd stage 1 this runs as a service ordered after the LUKS device is
+    # opened and before the root filesystem is mounted.
+    boot.initrd.systemd.services.rollback-root = {
+      description = "Rollback @root btrfs subvolume to a pristine state";
+      wantedBy = [ "initrd.target" ];
+      after = [ "systemd-cryptsetup@primary.service" ];
+      before = [ "sysroot.mount" ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+        mkdir -p /mnt
+        mount -t btrfs ${mapperPrimary} /mnt
 
-      btrfs subvolume list -o /mnt/@root | cut -d' ' -f9 | while read subvolume; do
-        echo "Deleting ''${subvolume} subvolume..."
-        btrfs subvolume delete "/mnt/''${subvolume}"
-      done
+        btrfs subvolume list -o /mnt/@root | cut -d' ' -f9 | while read subvolume; do
+          echo "Deleting $subvolume subvolume..."
+          btrfs subvolume delete "/mnt/$subvolume"
+        done
 
-      echo "Deleting @root subvolume..."
-      btrfs subvolume delete /mnt/@root
+        echo "Deleting @root subvolume..."
+        btrfs subvolume delete /mnt/@root
 
-      echo "Restoring blank @root subvolume..."
-      btrfs subvolume snapshot /mnt/@root-blank /mnt/@root
+        echo "Restoring blank @root subvolume..."
+        btrfs subvolume snapshot /mnt/@root-blank /mnt/@root
 
-      umount /mnt
-    '';
+        umount /mnt
+      '';
+    };
   };
 }
