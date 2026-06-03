@@ -87,6 +87,24 @@ in
 
         source ${pkgs.comma}/share/comma/command-not-found.sh
 
+        function gcopy {
+          if [ ''${#} -lt 1 ]; then
+            echo "usage: gcopy name" >&2
+            return 1
+          fi
+          origin=$(git remote get-url origin) || return
+          repo=''${origin##*/}
+          repo=''${repo%.git}
+          target="$(dirname "''${PWD}")/''${repo}-''${1//\//-}"
+          if [ -e "''${target}" ]; then
+            echo "gcopy: ''${target} already exists" >&2
+            return 1
+          fi
+          git clone "''${origin}" "''${target}" || return
+          cd "''${target}" || return
+          git checkout -b "''${1}" || return
+        }
+
         function gmain {
           git fetch
           gwip || return
@@ -97,6 +115,7 @@ in
 
         function gPod {
           if [ ''${#} -lt 1 ]; then
+            echo "usage: gPod name" >&2
             return 1
           fi
           branch=''${1}
