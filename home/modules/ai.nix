@@ -68,6 +68,7 @@ in
 
       settings = {
         permissions = {
+          defaultMode = "auto";
           additionalDirectories = [
             "/nix/store"
           ];
@@ -142,9 +143,9 @@ in
             "Bash(which *)"
           ];
           deny = [
+            "Edit(~/Code/secrets/**)"
             "Read(~/Code/secrets/**)"
-
-            "Bash(git -C *)"
+            "Write(~/Code/secrets/**)"
           ];
         };
         feedbackSurveyRate = 0.0;
@@ -161,6 +162,15 @@ in
             "make up"
           ];
           failIfUnavailable = true;
+          filesystem.denyRead = [
+            "~/.aws"
+            "~/.ssh"
+            "~/Code/secrets"
+          ];
+          network.allowedDomains = [
+            "api.github.com"
+            "github.com"
+          ];
         };
         showTurnDuration = false;
         spinnerTipsEnabled = false;
