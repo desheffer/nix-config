@@ -39,6 +39,7 @@ in
         clock-show-seconds = true;
         clock-show-weekday = true;
         color-scheme = "prefer-dark";
+        gtk-enable-primary-paste = true;
         gtk-theme = "Adwaita-dark";
         icon-theme = "Tela";
         show-battery-percentage = true;
