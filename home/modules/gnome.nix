@@ -100,7 +100,6 @@ in
         enabled-extensions = [
           "appindicatorsupport@rgcjonas.gmail.com"
           "dash-to-panel@jderose9.github.com"
-          "just-perfection-desktop@just-perfection"
         ];
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
@@ -137,10 +136,6 @@ in
         trans-use-custom-gradient = true;
         trans-use-custom-opacity = true;
         trans-use-dynamic-opacity = true;
-      };
-
-      "org/gnome/shell/extensions/just-perfection" = {
-        screen-sharing-indicator = false;
       };
 
       "org/gnome/system/location" = {
