@@ -181,5 +181,6 @@ in
       };
     };
 
+    home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/CLAUDE.md";
   };
 }
