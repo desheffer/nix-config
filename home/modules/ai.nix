@@ -24,6 +24,13 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
+  ponytail = pkgs.fetchFromGitHub {
+    owner = "DietrichGebert";
+    repo = "ponytail";
+    rev = "515fb4c5a4d46d3727c12f42e5262a65407023da";
+    hash = "sha256-ZWXUhlIOHDv0+bMNLanv+BpPiD9tXPJENdUNhfgrXqY=";
+  };
+
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -39,6 +46,7 @@ let
       wrapProgram $out/bin/claude \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
         --add-flags "--plugin-dir ${claude-temporal-plugin}" \
+        --add-flags "--plugin-dir ${ponytail}" \
         --add-flags "--plugin-dir ${superpowers}" \
         --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/llm-plugins/plugins/gudea-eng"
     '';
