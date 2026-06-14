@@ -26,13 +26,13 @@ in
         let
           name = "BambuStudio";
           pname = "bambu-studio";
-          version = "02.05.03.61";
-          releaseTag = "02.05.03.62";
-          timestamp = "20260414220857";
+          version = "02.07.01.57";
+          releaseTag = "02.07.01.57";
+          timestamp = "20260601192128";
 
           src = fetchurl {
             url = "https://github.com/bambulab/BambuStudio/releases/download/v${releaseTag}/BambuStudio_ubuntu-24.04-v${version}-${timestamp}.AppImage";
-            sha256 = "sha256-6vy43pwZ1mLCteHBCkJIHzY/tzjmzEWh6aohY4l9yCY=";
+            sha256 = "sha256-hbBThT8aI4d1zXri1NGVRONSYFkkKNInbKJ9y9X461M=";
           };
 
           appimageContents = appimageTools.extractType2 { inherit pname version src; };
