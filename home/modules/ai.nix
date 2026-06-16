@@ -27,8 +27,8 @@ let
   ponytail = pkgs.fetchFromGitHub {
     owner = "DietrichGebert";
     repo = "ponytail";
-    rev = "515fb4c5a4d46d3727c12f42e5262a65407023da";
-    hash = "sha256-ZWXUhlIOHDv0+bMNLanv+BpPiD9tXPJENdUNhfgrXqY=";
+    rev = "687c1b339872289d70f65c5eaabce850b1663867";
+    hash = "sha256-gYsBgdseXO7ZE3RKriaHU0L6bkdvUEF4AgZpGkRWVGc=";
   };
 
   superpowers = pkgs.fetchFromGitHub {
@@ -44,6 +44,7 @@ let
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/claude \
+        --prefix PATH : ${pkgs.nodejs}/bin \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
         --add-flags "--plugin-dir ${claude-temporal-plugin}" \
         --add-flags "--plugin-dir ${ponytail}" \
