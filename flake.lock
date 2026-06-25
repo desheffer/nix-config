@@ -1011,11 +1011,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1778786967,
-        "narHash": "sha256-bzHbdqmEvnRG0T9pMOLd68VKIEa2QS1s8Lrnzprhl/s=",
+        "lastModified": 1782412533,
+        "narHash": "sha256-hYiXXd2KAw++ll4ttag568I0twqbJiVrIZhfnHDtxyk=",
         "ref": "main",
-        "rev": "0224bf69325d0d7188c441f190f07ab8b997b74f",
-        "revCount": 33,
+        "rev": "dda7145203dc3bc98119fb85a4e8947f4a51cb92",
+        "revCount": 34,
         "type": "git",
         "url": "ssh://git@github.com/desheffer/secrets"
       },
