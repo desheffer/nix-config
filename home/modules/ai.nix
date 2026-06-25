@@ -187,6 +187,7 @@ in
           mode = "replace";
           verbs = [ "Processing" ];
         };
+        tui = "fullscreen";
       };
     };
 
