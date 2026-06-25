@@ -21,8 +21,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.nvidia.open = false;
-
     environment.systemPackages = with pkgs; [ nvtopPackages.full ];
   };
 }
