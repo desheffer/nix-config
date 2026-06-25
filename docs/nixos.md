@@ -86,7 +86,7 @@ mkdir -p /mnt/home
 mount -t btrfs -o subvol=@home,compress=zstd /dev/mapper/primary /mnt/home
 
 mkdir -p /mnt/boot
-mount /dev/disk/by-label/BOOT /mnt/boot
+mount -o fmask=0077,dmask=0077 /dev/disk/by-label/BOOT /mnt/boot
 ```
 
 Create a swapfile (set `SIZE` to the desired size):
