@@ -22,7 +22,6 @@ with lib;
     ./gui.nix
     ./hardware.nix
     ./journald.nix
-    ./lanMouse.nix
     ./locale.nix
     ./nix.nix
     ./nvidia.nix
