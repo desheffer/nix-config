@@ -24,13 +24,6 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
-  ponytail = pkgs.fetchFromGitHub {
-    owner = "DietrichGebert";
-    repo = "ponytail";
-    rev = "687c1b339872289d70f65c5eaabce850b1663867";
-    hash = "sha256-gYsBgdseXO7ZE3RKriaHU0L6bkdvUEF4AgZpGkRWVGc=";
-  };
-
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -47,8 +40,8 @@ let
         --prefix PATH : ${pkgs.nodejs}/bin \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
         --add-flags "--plugin-dir ${claude-temporal-plugin}" \
-        --add-flags "--plugin-dir ${ponytail}" \
         --add-flags "--plugin-dir ${superpowers}" \
+        --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude" \
         --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/llm-plugins/plugins/gudea-eng"
     '';
   };
@@ -192,6 +185,7 @@ in
       };
     };
 
-    home.file.".claude/CLAUDE.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/CLAUDE.md";
+    home.file.".claude/CLAUDE.md".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude/CLAUDE.md";
   };
 }
