@@ -34,12 +34,14 @@ lib.mkNixosConfiguration {
 
     nixos-hardware.nixosModules.framework-16-amd-ai-300-series-nvidia
     {
-      hardware.nvidia = {
-        open = true;
-        prime = {
-          amdgpuBusId = "PCI:194:0:0"; # c2:00.0
-          nvidiaBusId = "PCI:193:0:0"; # c1:00.0
-        };
+      hardware.nvidia.prime = {
+        amdgpuBusId = "PCI:194:0:0"; # c2:00.0
+        nvidiaBusId = "PCI:193:0:0"; # c1:00.0
+      };
+
+      networking.networkmanager.wifi = {
+        backend = "iwd";
+        powersave = false;
       };
     }
 

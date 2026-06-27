@@ -36,9 +36,6 @@ lib.mkNixosConfiguration {
     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
     nixos-hardware.nixosModules.common-hidpi
     nixos-hardware.nixosModules.common-pc-ssd
-    {
-      hardware.nvidia.open = false;
-    }
 
     {
       modules.cad.enable = true;
