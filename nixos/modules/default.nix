@@ -11,7 +11,6 @@ with lib;
   system.stateVersion = mkForce "21.11";
 
   imports = [
-    ./autoUpgrade.nix
     ./boot.nix
     ./cad.nix
     ./cli.nix
