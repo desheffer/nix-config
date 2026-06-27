@@ -20,15 +20,16 @@ in
         download-buffer-size = 500000000;
       };
 
-      gc = {
-        automatic = true;
-        dates = "Sat *-*-* 06:00:00 US/Eastern";
-        options = "--delete-older-than 7d";
-        persistent = true;
-      };
-
       registry.nixpkgs.flake = flakeInputs.nixpkgs;
       registry.nixpkgs-unstable.flake = flakeInputs.nixpkgs-unstable;
+    };
+
+    programs.nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 7d";
+      };
     };
 
     environment.variables = {

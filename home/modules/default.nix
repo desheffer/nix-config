@@ -23,6 +23,7 @@ with lib;
     ./libreoffice.nix
     ./music.nix
     ./neovim.nix
+    ./nh.nix
     ./tmux.nix
     ./zsh.nix
   ];
