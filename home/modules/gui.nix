@@ -21,9 +21,13 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.qalculate = {
+      enable = true;
+      package = pkgs.qalculate-gtk;
+    };
+
     home.packages = with pkgs; [
       gimp
-      qalculate-gtk
       vlc
       xsel
     ];

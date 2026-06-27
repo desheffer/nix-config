@@ -21,20 +21,14 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.discord = {
+      enable = true;
+      settings.SKIP_HOST_UPDATE = true;
+    };
+
     home.packages = with pkgs; [
-      discord
       slack
       zoom-us
     ];
-
-    xdg.configFile = {
-      "discord/settings.json" = {
-        text = ''
-          {
-            "SKIP_HOST_UPDATE": true
-          }
-        '';
-      };
-    };
   };
 }
