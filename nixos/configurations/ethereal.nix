@@ -3,6 +3,7 @@ inputs@{ nixos-hardware, secrets, ... }:
 let
   lib = import ../../lib inputs;
   passwords = secrets.nixosModules.passwords;
+  keys = secrets.nixosModules.keys;
 
 in
 lib.mkNixosConfiguration {
@@ -58,6 +59,7 @@ lib.mkNixosConfiguration {
           modules.secrets.enable = true;
         }
       ];
+      authorizedKeys = [ keys.users.desheffer ];
     })
   ];
 }
