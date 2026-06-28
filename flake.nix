@@ -17,9 +17,20 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    devshell.url = "github:numtide/devshell";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     neovim-config.url = "github:desheffer/neovim-config";
 
