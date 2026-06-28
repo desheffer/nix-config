@@ -17,68 +17,6 @@ in
   options.modules.fileSystems = { };
 
   config = {
-    boot.initrd.luks.devices.primary.device = "/dev/disk/by-label/luks_primary";
-
-    fileSystems = {
-      "/" = {
-        device = mapperPrimary;
-        fsType = "btrfs";
-        options = [
-          "subvol=@root"
-          "compress=zstd"
-        ];
-      };
-
-      "/nix" = {
-        device = mapperPrimary;
-        fsType = "btrfs";
-        options = [
-          "subvol=@nix"
-          "compress=zstd"
-          "noatime"
-        ];
-      };
-
-      "/persist" = {
-        device = mapperPrimary;
-        fsType = "btrfs";
-        options = [
-          "subvol=@persist"
-          "compress=zstd"
-        ];
-        neededForBoot = true;
-      };
-
-      "/swap" = {
-        device = mapperPrimary;
-        fsType = "btrfs";
-        options = [
-          "subvol=@swap"
-          "noatime"
-        ];
-      };
-
-      "/home" = {
-        device = mapperPrimary;
-        fsType = "btrfs";
-        options = [
-          "subvol=@home"
-          "compress=zstd"
-        ];
-      };
-
-      "/boot" = {
-        device = "/dev/disk/by-label/BOOT";
-        fsType = "vfat";
-        options = [
-          "fmask=0077"
-          "dmask=0077"
-        ];
-      };
-    };
-
-    swapDevices = [ { device = "/swap/swapfile"; } ];
-
     services.btrfs.autoScrub = {
       enable = true;
       fileSystems = [ "/" ];

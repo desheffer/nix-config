@@ -40,6 +40,8 @@ lib.mkNixosConfiguration {
       modules.gnome.enable = true;
       modules.printing.enable = true;
       modules.secrets.enable = true;
+
+      modules.disko.device = "/dev/disk/by-id/nvme-PM981_NVMe_Samsung_512GB__S3ZHNY0K826714";
     }
 
     (lib.mkNixosUserConfiguration {

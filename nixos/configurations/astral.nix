@@ -43,6 +43,8 @@ lib.mkNixosConfiguration {
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
 
+      modules.disko.device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5P2NS0T339950Z";
+
       modules.gnome = {
         enable = true;
         gdmScalingFactor = 2;

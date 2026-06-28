@@ -2,6 +2,7 @@ inputs@{
   nixpkgs,
   home-manager,
   impermanence,
+  disko,
   secrets,
   ...
 }:
@@ -39,6 +40,8 @@ in
       }
 
       impermanence.nixosModules.impermanence
+
+      disko.nixosModules.disko
 
       secrets.nixosModules.secrets
 

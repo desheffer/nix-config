@@ -14,6 +14,7 @@ with lib;
     ./boot.nix
     ./cad.nix
     ./cli.nix
+    ./disko.nix
     ./docker.nix
     ./fileSystems.nix
     ./fonts.nix

@@ -55,6 +55,8 @@ lib.mkNixosConfiguration {
       modules.gnome.enable = true;
       modules.printing.enable = true;
       modules.secrets.enable = true;
+
+      modules.disko.device = "/dev/disk/by-id/ata-APPLE_SSD_SM0256F_S1K4NYBFA48528";
     }
 
     (lib.mkNixosUserConfiguration {

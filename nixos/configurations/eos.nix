@@ -50,6 +50,8 @@ lib.mkNixosConfiguration {
       modules.nvidia.enable = true;
       modules.secrets.enable = true;
 
+      modules.disko.device = "/dev/disk/by-id/nvme-WD_BLACK_SN7100_1TB_254764806766";
+
       modules.gnome = {
         enable = true;
         gdmScalingFactor = 2;
