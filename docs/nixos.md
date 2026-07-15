@@ -65,6 +65,14 @@ secrets. Commit the changes and push.
 in the changes using `nix flake lock --update-input secrets`. Commit the
 changes and push.
 
+Create the Secure Boot signing keys:
+
+```sh
+mkdir -p /mnt/persist/var/lib/sbctl /var/lib/sbctl
+mount --bind /mnt/persist/var/lib/sbctl /var/lib/sbctl
+nix run nixpkgs#sbctl -- create-keys
+```
+
 Run the install (reusing `BRANCH` and `HOSTNAME` from above):
 
 ```sh
@@ -75,6 +83,28 @@ Reboot when the installation is finished:
 
 ```sh
 reboot
+```
+
+Reboot into the firmware setup (BIOS), put Secure Boot into Setup Mode, and
+reboot. Enroll the keys and verify:
+
+```sh
+sudo sbctl enroll-keys --microsoft
+sudo sbctl verify
+```
+
+Reboot into the firmware setup (BIOS) again. Ensure that a BIOS/firmware
+password is set. Enable Secure Boot and reboot. Confirm that Secure Boot is
+enabled:
+
+```sh
+bootctl status
+```
+
+Enroll the TPM to auto-unlock the LUKS volume:
+
+```sh
+sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/disk/by-partlabel/primary
 ```
 
 Clone this repository to a more permanent location:

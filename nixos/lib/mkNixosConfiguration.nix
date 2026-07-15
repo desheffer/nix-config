@@ -3,6 +3,7 @@ inputs@{
   home-manager,
   impermanence,
   disko,
+  lanzaboote,
   secrets,
   ...
 }:
@@ -42,6 +43,8 @@ in
       impermanence.nixosModules.impermanence
 
       disko.nixosModules.disko
+
+      lanzaboote.nixosModules.lanzaboote
 
       secrets.nixosModules.secrets
 

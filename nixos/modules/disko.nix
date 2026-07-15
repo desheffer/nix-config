@@ -50,6 +50,7 @@ in
               type = "luks";
               name = "primary";
               extraFormatArgs = [ "--label=luks_primary" ];
+              settings.crypttabExtraOpts = [ "tpm2-device=auto" ];
               content = {
                 type = "btrfs";
                 extraArgs = [

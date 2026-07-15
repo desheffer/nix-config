@@ -15,14 +15,23 @@ in
   options.modules.boot = { };
 
   config = {
+    environment.systemPackages = with pkgs; [ sbctl ];
+
     boot = {
+      initrd.systemd.enable = true;
+
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/var/lib/sbctl";
+      };
+
       loader = {
         efi.canTouchEfiVariables = true;
         timeout = 3;
 
         systemd-boot = {
-          enable = true;
-          configurationLimit = 16;
+          enable = mkForce false;
+          configurationLimit = 8;
           consoleMode = "0";
         };
       };

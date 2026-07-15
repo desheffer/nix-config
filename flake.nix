@@ -22,6 +22,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote.url = "github:nix-community/lanzaboote";
+
     devshell = {
       url = "github:numtide/devshell";
       inputs.nixpkgs.follows = "nixpkgs";
