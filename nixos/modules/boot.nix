@@ -24,7 +24,18 @@ in
     environment.systemPackages = mkIf cfg.secureBoot.enable (with pkgs; [ sbctl ]);
 
     boot = {
-      initrd.systemd.enable = true;
+      initrd = {
+        systemd.enable = true;
+        verbose = false;
+      };
+
+      consoleLogLevel = 0;
+      kernelParams = [
+        "quiet"
+        "splash"
+      ];
+
+      plymouth.enable = true;
 
       lanzaboote = {
         enable = cfg.secureBoot.enable;
