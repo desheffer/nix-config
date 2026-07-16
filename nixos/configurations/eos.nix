@@ -14,6 +14,8 @@ lib.mkNixosConfiguration {
       { pkgs, ... }:
       {
         boot = {
+          kernelPackages = pkgs.linuxPackages_latest;
+
           initrd = {
             availableKernelModules = [
               "nvme"
