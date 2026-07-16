@@ -12,16 +12,22 @@ let
 
 in
 {
-  options.modules.boot = { };
+  options.modules.boot = {
+    secureBoot.enable = mkOption {
+      type = types.bool;
+      description = "Whether to enable Secure Boot with lanzaboote.";
+      default = true;
+    };
+  };
 
   config = {
-    environment.systemPackages = with pkgs; [ sbctl ];
+    environment.systemPackages = mkIf cfg.secureBoot.enable (with pkgs; [ sbctl ]);
 
     boot = {
       initrd.systemd.enable = true;
 
       lanzaboote = {
-        enable = true;
+        enable = cfg.secureBoot.enable;
         pkiBundle = "/var/lib/sbctl";
       };
 
@@ -30,7 +36,7 @@ in
         timeout = 3;
 
         systemd-boot = {
-          enable = mkForce false;
+          enable = mkForce (!cfg.secureBoot.enable);
           configurationLimit = 3;
           consoleMode = "0";
         };

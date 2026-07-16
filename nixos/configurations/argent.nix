@@ -51,6 +51,7 @@ lib.mkNixosConfiguration {
     }
 
     {
+      modules.boot.secureBoot.enable = false;
       modules.docker.enable = true;
       modules.gnome.enable = true;
       modules.printing.enable = true;
