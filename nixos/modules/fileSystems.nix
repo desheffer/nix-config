@@ -45,6 +45,7 @@ in
         "/etc/NetworkManager/system-connections"
         "/var/lib/bluetooth"
         "/var/lib/docker"
+        "/var/lib/iwd"
         "/var/lib/nixos"
         "/var/lib/sbctl"
         "/var/lib/systemd/coredump"
