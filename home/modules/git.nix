@@ -39,6 +39,8 @@ in
         init.defaultBranch = "main";
         log.date = "iso-local";
         rebase.autoSquash = true;
+
+        git-town.main-branch = "main";
       };
     };
 
@@ -53,6 +55,9 @@ in
       };
     };
 
-    home.packages = with pkgs; [ git-absorb ];
+    home.packages = with pkgs; [
+      git-absorb
+      git-town
+    ];
   };
 }
