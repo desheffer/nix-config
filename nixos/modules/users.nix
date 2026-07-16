@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakeInputs,
   ...
 }:
 
@@ -9,6 +10,7 @@ with lib;
 
 let
   cfg = config.modules.users;
+  passwords = flakeInputs.secrets.nixosModules.passwords;
 
 in
 {
@@ -16,5 +18,6 @@ in
 
   config = {
     users.mutableUsers = false;
+    users.users.root.initialHashedPassword = passwords.desheffer;
   };
 }
