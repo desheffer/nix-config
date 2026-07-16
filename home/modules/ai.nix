@@ -66,6 +66,10 @@ in
           type = "http";
           url = "https://mcp.atlassian.com/v1/mcp";
         };
+        sentry = {
+          type = "http";
+          url = "https://mcp.sentry.dev/mcp";
+        };
       };
 
       settings = {
