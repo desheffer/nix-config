@@ -31,7 +31,7 @@ in
 
         systemd-boot = {
           enable = mkForce false;
-          configurationLimit = 8;
+          configurationLimit = 3;
           consoleMode = "0";
         };
       };
