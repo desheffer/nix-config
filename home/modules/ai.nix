@@ -31,6 +31,14 @@ let
     hash = "sha256-cobQloF7Y6K0IC0/6xSnA2Io+fKgk2SRmCwoZZtVCco=";
   };
 
+  sandbox-warn = pkgs.writeShellScript "claude-sandbox-warn" ''
+    settings="$CLAUDE_PROJECT_DIR/.claude/settings.local.json"
+    [ -f "$settings" ] || exit 0
+    if ${pkgs.jq}/bin/jq -e '.sandbox.enabled == false' "$settings" >/dev/null 2>&1; then
+      ${pkgs.jq}/bin/jq -n '{systemMessage: "⚠️  Claude Code sandbox is DISABLED in this directory (.claude/settings.local.json)"}'
+    fi
+  '';
+
   claude-code-wrapped = pkgs.symlinkJoin {
     name = "claude-code";
     paths = [ pkgs.claude-code ];
@@ -155,6 +163,18 @@ in
           ];
         };
         feedbackSurveyRate = 0.0;
+        hooks = {
+          SessionStart = [
+            {
+              hooks = [
+                {
+                  type = "command";
+                  command = "${sandbox-warn}";
+                }
+              ];
+            }
+          ];
+        };
         promptSuggestionEnabled = false;
         sandbox = {
           enabled = true;
