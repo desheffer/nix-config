@@ -25,8 +25,18 @@ in
       enable = true;
 
       ignores = [
+        ".bash_profile"
+        ".bashrc"
         ".claude"
+        ".gitconfig"
+        ".gitmodules"
+        ".mcp.json"
         ".opencode"
+        ".profile"
+        ".ripgreprc"
+        ".vscode"
+        ".zprofile"
+        ".zshrc"
       ];
 
       settings = {
