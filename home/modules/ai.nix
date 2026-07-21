@@ -173,7 +173,6 @@ in
           deny = [
             "Edit(~/Code/secrets/**)"
             "Read(~/Code/secrets/**)"
-            "Write(~/Code/secrets/**)"
           ];
         };
         feedbackSurveyRate = 0.0;
