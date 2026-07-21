@@ -15,6 +15,9 @@ in
 {
   config = {
     nix = {
+      daemonCPUSchedPolicy = "batch";
+      daemonIOSchedClass = "idle";
+
       settings = {
         experimental-features = "flakes nix-command";
         download-buffer-size = 500000000;
