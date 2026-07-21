@@ -24,6 +24,13 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
+  difit-skills = pkgs.fetchFromGitHub {
+    owner = "yoshiko-pg";
+    repo = "difit";
+    rev = "v5.0.8";
+    hash = "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=";
+  };
+
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -65,9 +72,16 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ difit ];
+
     programs.claude-code = {
       enable = true;
       package = claude-code-wrapped;
+
+      skills = {
+        difit = "${difit-skills}/skills/difit";
+        difit-review = "${difit-skills}/skills/difit-review";
+      };
 
       mcpServers = {
         atlassian-rovo-mcp = {
