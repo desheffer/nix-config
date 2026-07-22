@@ -201,9 +201,15 @@ in
             "make up"
           ];
           failIfUnavailable = true;
+          filesystem.allowWrite = [
+            "~/Code"
+          ];
           filesystem.denyRead = [
             "~/.aws"
             "~/.ssh"
+            "~/Code/secrets"
+          ];
+          filesystem.denyWrite = [
             "~/Code/secrets"
           ];
           network.allowedDomains = [
