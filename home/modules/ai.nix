@@ -193,6 +193,8 @@ in
           enabled = true;
           allowUnsandboxedCommands = false;
           excludedCommands = [
+            "difit"
+            "difit *"
             "docker compose exec * ./gradlew *"
             "make down"
             "make restart"
