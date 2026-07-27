@@ -37,9 +37,6 @@ in
 
         cat = "bat --style=plain";
 
-        cc = "claude";
-        oc = "opencode";
-
         "chown." = "sudo chown -R \"\${USER}\": .";
 
         df = "df -hT";
