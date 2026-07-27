@@ -21,6 +21,17 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.shellAliases = {
+      cat = "bat --style=plain";
+
+      ls = "eza --classify=always --git --group-directories-first";
+      l = "ls -aahl";
+      la = "ls -ah";
+      ll = "ls -hl";
+      lla = "ls -ahl";
+      lt = "ls --tree";
+    };
+
     programs.nix-index-database.comma.enable = true;
 
     programs.nix-index.enableZshIntegration = false;

@@ -21,6 +21,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    home.shellAliases = {
+      tmux = "tmux -2u";
+    };
+
     programs.tmux = {
       enable = true;
 
