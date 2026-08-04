@@ -148,6 +148,7 @@ in
             "Bash(jq *)"
             "Bash(ls *)"
             "Bash(make down)"
+            "Bash(make build)"
             "Bash(make restart)"
             "Bash(make start)"
             "Bash(make stop)"
