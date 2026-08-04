@@ -112,6 +112,19 @@ in
       };
     };
 
+    programs.jujutsu = {
+      enable = true;
+
+      settings = {
+        user = {
+          email = "desheffer@gmail.com";
+          name = "Doug Sheffer";
+        };
+
+        ui.default-command = "log";
+      };
+    };
+
     programs.delta = {
       enable = true;
       enableGitIntegration = true;
