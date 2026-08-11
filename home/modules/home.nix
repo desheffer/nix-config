@@ -30,6 +30,7 @@ in
 
       sessionVariables = {
         EDITOR = "nvim";
+        LOCAL_INFRA = "${config.home.homeDirectory}/Code/gudea/local-infra";
       };
 
       shellAliases = {
