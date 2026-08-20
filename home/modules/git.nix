@@ -131,6 +131,7 @@ in
 
       options = {
         navigate = true;
+        paging = "always";
         side-by-side = true;
         syntax-theme = "gruvbox-dark";
       };
