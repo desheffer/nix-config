@@ -42,6 +42,8 @@ in
         bell-features = "no-audio";
         window-inherit-working-directory = true;
         keybind = [
+          "ctrl+b>ctrl+b=text:\\x02"
+
           "ctrl+b>c=new_tab"
           "ctrl+page_down=unbind"
           "alt+page_down=next_tab"
