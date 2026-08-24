@@ -216,6 +216,14 @@ in
       };
     };
 
+    home.file."${config.home.homeDirectory}/.claude/settings.json".enable = false;
+
+    home.activation.claudeSettings = hm.dag.entryAfter [ "linkGeneration" ] ''
+      run install -Dm444 \
+        ${config.home.file."${config.home.homeDirectory}/.claude/settings.json".source} \
+        ${config.home.homeDirectory}/.claude/settings.json
+    '';
+
     home.file.".claude/CLAUDE.md".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude/CLAUDE.md";
   };
