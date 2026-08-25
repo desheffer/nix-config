@@ -174,6 +174,7 @@ in
           ];
         };
         feedbackSurveyRate = 0.0;
+        outputStyle = "dev-desheffer:Skimmable";
         promptSuggestionEnabled = false;
         sandbox = {
           enabled = true;
