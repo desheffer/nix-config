@@ -88,6 +88,7 @@ in
         ".claude"
         ".gitconfig"
         ".gitmodules"
+        ".idea"
         ".mcp.json"
         ".opencode"
         ".profile"
