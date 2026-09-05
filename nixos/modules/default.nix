@@ -23,6 +23,7 @@ with lib;
     ./hardware.nix
     ./journald.nix
     ./locale.nix
+    ./networkmanager.nix
     ./nix.nix
     ./nvidia.nix
     ./printing.nix
