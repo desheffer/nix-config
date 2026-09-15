@@ -135,6 +135,7 @@ in
         paging = "always";
         side-by-side = true;
         syntax-theme = "gruvbox-dark";
+        wrap-max-lines = "unlimited";
       };
     };
   };
