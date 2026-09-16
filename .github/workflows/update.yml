@@ -9,29 +9,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      pull-requests: write
+
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Configure Git
-      run: |
-        git config --global user.email 'action@github.com'
-        git config --global user.name 'github-actions'
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
     - name: Install Nix
-      uses: DeterminateSystems/nix-installer-action@main
+      uses: DeterminateSystems/nix-installer-action@3138316df39ed29be04236d7ffc686fa525866aa # v23
+
+    - name: List inputs to update
+      id: list
+      run: |
+        EXCLUDED='["secrets"]'
+        INPUTS=$(jq -r --argjson excluded "${EXCLUDED}" '.nodes.root.inputs | keys - $excluded | join(" ")' flake.lock)
+        echo "inputs=${INPUTS}" >> "${GITHUB_OUTPUT}"
 
     - name: Update flake.lock
-      run: |
-        nix flake update nixpkgs
-        nix flake update nixpkgs-unstable
-        nix flake update home-manager
-        nix flake update llm-agents
-
-    - name: Commit and push flake.lock
-      run: |
-        git add flake.lock
-        git commit -m 'Update flake.lock'
-        git push
+      uses: DeterminateSystems/update-flake-lock@da03c0f078bc4b2c37ee4f7e072d34bf8f188bb3 # v29
+      with:
+        inputs: ${{ steps.list.outputs.inputs }}
+        commit-msg: Update flake.lock
+        pr-title: Update flake.lock
