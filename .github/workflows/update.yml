@@ -2,7 +2,7 @@ name: Update flake.lock
 
 on:
   schedule:
-    - cron: '0 22 * * 5'
+    - cron: '0 22 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,16 +20,14 @@ jobs:
     - name: Install Nix
       uses: DeterminateSystems/nix-installer-action@3138316df39ed29be04236d7ffc686fa525866aa # v23
 
-    - name: List inputs to update
-      id: list
-      run: |
-        EXCLUDED='["secrets"]'
-        INPUTS=$(jq -r --argjson excluded "${EXCLUDED}" '.nodes.root.inputs | keys - $excluded | join(" ")' flake.lock)
-        echo "inputs=${INPUTS}" >> "${GITHUB_OUTPUT}"
-
     - name: Update flake.lock
       uses: DeterminateSystems/update-flake-lock@da03c0f078bc4b2c37ee4f7e072d34bf8f188bb3 # v29
       with:
-        inputs: ${{ steps.list.outputs.inputs }}
+        inputs: >-
+          home-manager
+          llm-agents
+          neovim-config
+          nixpkgs
+          nixpkgs-unstable
         commit-msg: Update flake.lock
         pr-title: Update flake.lock
