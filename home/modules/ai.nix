@@ -173,6 +173,7 @@ in
             "Read(~/Code/secrets/**)"
           ];
         };
+        feedbackDrafts = "off";
         feedbackSurveyRate = 0.0;
         outputStyle = "dev-desheffer:Skimmable";
         promptSuggestionEnabled = false;
