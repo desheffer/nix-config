@@ -175,7 +175,7 @@ in
         };
         feedbackDrafts = "off";
         feedbackSurveyRate = 0.0;
-        outputStyle = "dev-desheffer:Skimmable";
+        outputStyle = "dev-desheffer:Clear";
         promptSuggestionEnabled = false;
         sandbox = {
           enabled = true;
