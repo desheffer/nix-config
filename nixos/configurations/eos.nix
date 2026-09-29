@@ -5,6 +5,17 @@ let
   passwords = secrets.nixosModules.passwords;
   keys = secrets.nixosModules.keys;
 
+  pkgs-linux-7-1 =
+    import
+      (builtins.fetchTarball {
+        url = "https://github.com/nixos/nixpkgs/archive/0a93637388adbaeed82e91096d034f4ffbf32428.tar.gz";
+        sha256 = "0iwx3zyqfxwk9a5xqfzrblzpsfhr3r11g2lgmhszg0qjxlk2k8d8";
+      })
+      {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+
 in
 lib.mkNixosConfiguration {
   hostname = "eos";
@@ -14,7 +25,7 @@ lib.mkNixosConfiguration {
       { pkgs, ... }:
       {
         boot = {
-          kernelPackages = pkgs.linuxPackages_latest;
+          kernelPackages = pkgs-linux-7-1.linuxPackages_7_1;
 
           initrd = {
             availableKernelModules = [
