@@ -68,15 +68,9 @@ in
     };
 
     xdg.dataFile = {
-      "icons/hicolor/16x16/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "16x16" "0nwwckkgid12jbp5d64sp97rmwlyl8yprqmv41ckapcmcgb04698";
-      "icons/hicolor/32x32/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "32x32" "1vm2gq78065484iyp26rc198hm9k3z3z365khcpbzyy97fc1l1bl";
-      "icons/hicolor/128x128/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "128x128" "0bc73xqgi8d2v95z4wa4zc9smgmhsbcmj8d65qx97jidxj67g2vh";
-      "icons/hicolor/256x256/apps/com.mitchellh.ghostty.png".source =
-        mkIcon "256x256" "1yfp6s5gia9jlk0pvhcmlj7r30s21si3y3rv45niqwc6008ayz8d";
-      "icons/hicolor/512x512/apps/com.mitchellh.ghostty.png".source =
+      "icons/Tela/scalable/apps/com.mitchellh.ghostty.png".source =
+        mkIcon "512x512" "1gwnhcxb98scx7rnj18kp03m6q6i3097xfc8a0xkzbkq8nf83706";
+      "icons/Tela/scalable@2x/apps/com.mitchellh.ghostty.png".source =
         mkIcon "512x512" "1gwnhcxb98scx7rnj18kp03m6q6i3097xfc8a0xkzbkq8nf83706";
     };
 
