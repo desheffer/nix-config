@@ -226,6 +226,15 @@ in
         ${config.home.homeDirectory}/.claude/settings.json
     '';
 
+    home.activation.claudeDiffSidebar = hm.dag.entryAfter [ "writeBoundary" ] ''
+      claudeJson=${config.home.homeDirectory}/.claude.json
+      if [ -f "$claudeJson" ]; then
+        tmp=$(mktemp)
+        ${pkgs.jq}/bin/jq '.diffSidebarOpen = false' "$claudeJson" > "$tmp"
+        run mv "$tmp" "$claudeJson"
+      fi
+    '';
+
     home.file.".claude/CLAUDE.md".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude/CLAUDE.md";
   };
