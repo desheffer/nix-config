@@ -126,6 +126,7 @@ in
         '';
         show-tooltip = false;
         show-window-previews = false;
+        taskbar-locked = true;
         trans-dynamic-anim-target = 0.25;
         trans-dynamic-behavior = "ALL_WINDOWS";
         trans-dynamic-distance = 20;
