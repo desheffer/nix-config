@@ -24,6 +24,13 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
+  claude-themes = pkgs.fetchFromGitHub {
+    owner = "matcra587";
+    repo = "claude-themes";
+    rev = "d9de2d4e12ba27dde79979552e002566bf9194f1";
+    hash = "sha256-xktgRCmmLBqXKVmGPBHWEQ09h0Gohr7ePaxR82HeUkM=";
+  };
+
   difit-skills = pkgs.fetchFromGitHub {
     owner = "yoshiko-pg";
     repo = "difit";
@@ -213,7 +220,7 @@ in
           mode = "replace";
           verbs = [ "Processing" ];
         };
-        theme = "dark";
+        theme = "custom:gruvbox-dark-ansi";
         tui = "fullscreen";
       };
     };
@@ -237,5 +244,33 @@ in
 
     home.file.".claude/CLAUDE.md".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude/CLAUDE.md";
+
+    home.file.".claude/themes/gruvbox-dark.json".text = builtins.toJSON (
+      recursiveUpdate
+        (builtins.fromJSON (builtins.readFile "${claude-themes}/plugins/gruvbox/themes/gruvbox-dark.json"))
+        {
+          overrides = {
+            diffAdded = "#002800";
+            diffAddedWord = "#006000";
+            diffRemoved = "#3f0001";
+            diffRemovedWord = "#901011";
+          };
+        }
+    );
+
+    home.file.".claude/themes/gruvbox-dark-ansi.json".text = builtins.toJSON (
+      recursiveUpdate
+        (builtins.fromJSON (builtins.readFile "${claude-themes}/plugins/gruvbox/themes/gruvbox-dark-ansi.json"))
+        {
+          overrides = {
+            diffAdded = "ansi256(22)";
+            diffAddedDimmed = "ansi256(236)";
+            diffAddedWord = "ansi256(28)";
+            diffRemoved = "ansi256(52)";
+            diffRemovedDimmed = "ansi256(236)";
+            diffRemovedWord = "ansi256(88)";
+          };
+        }
+    );
   };
 }
