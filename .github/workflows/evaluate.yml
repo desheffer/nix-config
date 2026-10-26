@@ -2,6 +2,8 @@ name: Evaluate configurations
 
 on:
   pull_request:
+  push:
+    branches: [main]
   workflow_call:
     inputs:
       ref:
