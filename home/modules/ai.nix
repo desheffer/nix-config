@@ -154,6 +154,7 @@ in
             "Bash(make stop)"
             "Bash(make up)"
             "Bash(mkdir *)"
+            "Bash(nix build *)"
             "Bash(nix eval *)"
             "Bash(nix flake metadata *)"
             "Bash(nix flake show *)"
@@ -189,6 +190,8 @@ in
             "make start"
             "make stop"
             "make up"
+            "nix build *"
+            "nix eval *"
           ];
           failIfUnavailable = true;
           filesystem.allowWrite = [
