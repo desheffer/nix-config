@@ -24,13 +24,6 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
-  difit-skills = pkgs.fetchFromGitHub {
-    owner = "yoshiko-pg";
-    repo = "difit";
-    rev = "v5.0.12";
-    hash = "sha256-1EoC5t+8KjNmwKg5lFLig26tzCnp2byhkeGjctVdRls=";
-  };
-
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -53,6 +46,41 @@ let
     '';
   };
 
+  # `difit` reviews the branch against `origin/main`.
+  # `difit reply <file>` adds the comment JSON in the file.
+  # `difit wait` blocks until a thread's last message is from someone other than Claude.
+  difit-wrapped = pkgs.writeShellApplication {
+    name = "difit";
+    runtimeInputs = [ pkgs.jq ];
+    text = ''
+      case "''${1:-}" in
+        comment)
+          exec ${pkgs.difit}/bin/difit "$@"
+          ;;
+        reply)
+          file="$2"
+          shift 2
+          exec ${pkgs.difit}/bin/difit comment add "$@" < "$file"
+          ;;
+        wait)
+          shift
+          while true; do
+            feedback=$(${pkgs.difit}/bin/difit comment get "$@" --format json \
+              | jq -c '[.threads[] | select(.messages[-1].author != "Claude")]')
+            if [ "$feedback" != "[]" ]; then
+              echo "$feedback"
+              exit 0
+            fi
+            sleep 1
+          done
+          ;;
+        *)
+          exec ${pkgs.difit}/bin/difit . origin/main --merge-base "$@"
+          ;;
+      esac
+    '';
+  };
+
 in
 {
   options.modules.ai = {
@@ -64,7 +92,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ difit ];
+    home.packages = [ difit-wrapped ];
 
     home.shellAliases = {
       cc = "claude --setting-sources user";
@@ -74,11 +102,6 @@ in
     programs.claude-code = {
       enable = true;
       package = claude-code-wrapped;
-
-      skills = {
-        difit = "${difit-skills}/skills/difit";
-        difit-review = "${difit-skills}/skills/difit-review";
-      };
 
       mcpServers = {
         atlassian-rovo-mcp = {
