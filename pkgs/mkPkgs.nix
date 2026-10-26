@@ -28,7 +28,7 @@ let
     (final: prev: {
       # Example: some-pkg = pkgs-unstable.some.pkg;
       claude-code = llm-agents.packages.${system}.claude-code;
-      difit = difit-nix.packages.${system}.difit;
+      difit = difit-nix.packages.${system}.difit.override { pnpm_10 = final.pnpm_10_latest; };
       opencode = llm-agents.packages.${system}.opencode;
     })
   ];
