@@ -44,11 +44,6 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
 
-    difit-nix = {
-      url = "github:acevif/difit-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

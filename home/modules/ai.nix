@@ -27,8 +27,8 @@ let
   difit-skills = pkgs.fetchFromGitHub {
     owner = "yoshiko-pg";
     repo = "difit";
-    rev = "v5.0.8";
-    hash = "sha256-AT2dUT14+yfMLxcJdJC/CI28RfyElsoa97vxUIMjUo0=";
+    rev = "v5.0.12";
+    hash = "sha256-1EoC5t+8KjNmwKg5lFLig26tzCnp2byhkeGjctVdRls=";
   };
 
   superpowers = pkgs.fetchFromGitHub {

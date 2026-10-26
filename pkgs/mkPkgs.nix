@@ -2,7 +2,6 @@ inputs@{
   nixpkgs,
   nixpkgs-unstable,
   llm-agents,
-  difit-nix,
   ...
 }:
 
@@ -28,7 +27,7 @@ let
     (final: prev: {
       # Example: some-pkg = pkgs-unstable.some.pkg;
       claude-code = llm-agents.packages.${system}.claude-code;
-      difit = difit-nix.packages.${system}.difit.override { pnpm_10 = final.pnpm_10_latest; };
+      difit = final.callPackage ./difit.nix { };
       opencode = llm-agents.packages.${system}.opencode;
     })
   ];
