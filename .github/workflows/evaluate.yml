@@ -1,0 +1,35 @@
+name: Evaluate configurations
+
+on:
+  pull_request:
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        required: true
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        host: [argent, astral, eos, ethereal]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      with:
+        ref: ${{ inputs.ref }}
+
+    - name: Install Nix
+      uses: DeterminateSystems/nix-installer-action@3138316df39ed29be04236d7ffc686fa525866aa # v23
+
+    - name: Evaluate configuration
+      run: |
+        nix eval ".#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel.drvPath" \
+          --override-input secrets path:./ci/secrets-stub
