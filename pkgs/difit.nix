@@ -62,6 +62,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     makeWrapper ${lib.getExe nodejs_24} $out/bin/difit \
       --add-flags "$out/lib/node_modules/difit/dist/cli/index.js" \
+      --add-flags "--host 127.0.0.1" \
       --prefix PATH : ${
         lib.makeBinPath [
           gh
