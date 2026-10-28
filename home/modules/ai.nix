@@ -24,6 +24,13 @@ let
     hash = "sha256-SBXErWk9inC74bH0nzbBCrmjnWdZ4ug0ZqLfWaXEEpg=";
   };
 
+  mattpocock-skills = pkgs.fetchFromGitHub {
+    owner = "mattpocock";
+    repo = "skills";
+    rev = "59db609eb1e18aaf59b63284d0e52255aff0c63c";
+    hash = "sha256-CkNJKbSlW8bUSfvHqfl7JTPnq8o1iYdzI24LGDMojE4=";
+  };
+
   superpowers = pkgs.fetchFromGitHub {
     owner = "obra";
     repo = "superpowers";
@@ -40,6 +47,7 @@ let
         --prefix PATH : ${pkgs.nodejs}/bin \
         --add-flags "--plugin-dir ${claude-plugins-official}/plugins/code-simplifier" \
         --add-flags "--plugin-dir ${claude-temporal-plugin}" \
+        --add-flags "--plugin-dir ${mattpocock-skills}" \
         --add-flags "--plugin-dir ${superpowers}" \
         --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/dev-desheffer/claude" \
         --add-flags "--plugin-dir ${config.home.homeDirectory}/Code/gudea/llm-plugins/plugins/gudea-eng"
