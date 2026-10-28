@@ -54,11 +54,11 @@ let
     '';
   };
 
-  # `difit` reviews the branch against `origin/main`.
-  # `difit reply <file>` adds the comment JSON in the file.
-  # `difit wait` blocks until a thread's last message is from someone other than Claude.
-  difit-wrapped = pkgs.writeShellApplication {
-    name = "difit";
+  # `difit-cli` reviews the branch against `origin/main`.
+  # `difit-cli reply <file>` adds the comment JSON in the file.
+  # `difit-cli wait` blocks until a thread's last message is from someone other than Claude.
+  difit-cli = pkgs.writeShellApplication {
+    name = "difit-cli";
     runtimeInputs = [ pkgs.jq ];
     text = ''
       case "''${1:-}" in
@@ -100,7 +100,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [ difit-wrapped ];
+    home.packages = [
+      pkgs.difit
+      difit-cli
+    ];
 
     home.shellAliases = {
       cc = "claude --setting-sources user";
@@ -215,6 +218,8 @@ in
           excludedCommands = [
             "difit"
             "difit *"
+            "difit-cli"
+            "difit-cli *"
             "docker compose exec * ./gradlew *"
             "make down"
             "make restart"
