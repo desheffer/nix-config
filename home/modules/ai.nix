@@ -107,7 +107,7 @@ in
 
     home.shellAliases = {
       cc = "claude --setting-sources user";
-      CC = "claude --setting-sources user --permission-mode acceptEdits --settings '{\"sandbox\":{\"enabled\":false}}'";
+      CC = "claude --setting-sources user --settings '{\"sandbox\":{\"enabled\":false}}'";
     };
 
     programs.claude-code = {
@@ -132,20 +132,14 @@ in
             "/nix/store"
           ];
           allow = [
-            "Edit"
             "Read(~/Code/**)"
             "Skill"
-            "WebFetch"
             "WebSearch"
-            "Write"
 
-            "Bash(awk *)"
             "Bash(cat *)"
             "Bash(cut *)"
             "Bash(diff *)"
-            "Bash(docker compose exec * ./gradlew *)"
             "Bash(file *)"
-            "Bash(find *)"
             "Bash(gh api search/*)"
             "Bash(gh issue list *)"
             "Bash(gh issue view *)"
@@ -159,42 +153,25 @@ in
             "Bash(gh search *)"
             "Bash(gh workflow list *)"
             "Bash(gh workflow view *)"
-            "Bash(git add *)"
             "Bash(git blame *)"
-            "Bash(git branch *)"
-            "Bash(git commit *)"
             "Bash(git describe *)"
             "Bash(git diff *)"
-            "Bash(git grep *)"
             "Bash(git log *)"
             "Bash(git ls-files *)"
             "Bash(git ls-remote *)"
             "Bash(git ls-tree *)"
             "Bash(git remote -v)"
             "Bash(git rev-parse *)"
-            "Bash(git revert *)"
             "Bash(git show *)"
-            "Bash(git stash *)"
             "Bash(git status *)"
             "Bash(git worktree list *)"
             "Bash(grep *)"
             "Bash(head *)"
             "Bash(jq *)"
             "Bash(ls *)"
-            "Bash(make down)"
-            "Bash(make build)"
-            "Bash(make restart)"
-            "Bash(make start)"
-            "Bash(make stop)"
-            "Bash(make up)"
-            "Bash(mkdir *)"
-            "Bash(nix build *)"
-            "Bash(nix eval *)"
             "Bash(nix flake metadata *)"
             "Bash(nix flake show *)"
             "Bash(pwd *)"
-            "Bash(rg *)"
-            "Bash(rmdir *)"
             "Bash(sort *)"
             "Bash(stat *)"
             "Bash(tail *)"
