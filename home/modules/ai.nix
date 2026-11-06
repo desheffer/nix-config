@@ -205,6 +205,9 @@ in
           ];
           deny = [
             "Edit(~/Code/secrets/**)"
+            "Read(~/.aws/**)"
+            "Read(~/.kube/**)"
+            "Read(~/.ssh/**)"
             "Read(~/Code/secrets/**)"
           ];
         };
@@ -235,6 +238,7 @@ in
           ];
           filesystem.denyRead = [
             "~/.aws"
+            "~/.kube"
             "~/.ssh"
             "~/Code/secrets"
           ];
@@ -247,6 +251,9 @@ in
           ];
         };
         showTurnDuration = false;
+        skillOverrides = {
+          code-review = "off";
+        };
         spinnerTipsEnabled = false;
         spinnerVerbs = {
           mode = "replace";
