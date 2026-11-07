@@ -46,7 +46,7 @@ let
             export USER=$(whoami)
             echo "USER: ''${USER}"
 
-            SYSTEM=$(nix show-config --json | jq -r '.system.value')
+            SYSTEM=$(nix config show --json | jq -r '.system.value')
             echo "SYSTEM: ''${SYSTEM}"
 
             nix run .#homeConfigurations."''${USER}@''${SYSTEM}".activationPackage
