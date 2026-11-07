@@ -97,4 +97,6 @@ let
   );
 
 in
-flake-utils.lib.eachDefaultSystemMap mkDevShell
+flake-utils.lib.eachDefaultSystemMap (system: {
+  default = mkDevShell system;
+})
