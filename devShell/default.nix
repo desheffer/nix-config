@@ -26,6 +26,7 @@ let
       packages = with pkgs; [
         git
         jq
+        nh
       ];
 
       # NOTE: Use ''$ to escape $ in variable names.
@@ -49,7 +50,7 @@ let
             SYSTEM=$(nix config show --json | jq -r '.system.value')
             echo "SYSTEM: ''${SYSTEM}"
 
-            nix run .#homeConfigurations."''${USER}@''${SYSTEM}".activationPackage
+            nh home switch . -c "''${USER}@''${SYSTEM}"
           '';
         }
         {
@@ -57,7 +58,7 @@ let
           name = "@clean";
           help = "collects garbage by removing old generations and unreachable paths";
           command = ''
-            nix-collect-garbage -d
+            nh clean all
           '';
         }
         {
@@ -73,7 +74,7 @@ let
           name = "@boot";
           help = "builds a new system configuration and makes it the boot default";
           command = ''
-            nixos-rebuild boot --flake .#
+            nh os boot .
           '';
         }
         {
@@ -81,7 +82,7 @@ let
           name = "@dry-build";
           help = "dry-builds a new system configuration";
           command = ''
-            nixos-rebuild dry-build --flake .#
+            nh os build --dry .
           '';
         }
         {
@@ -89,7 +90,7 @@ let
           name = "@switch";
           help = "builds and activates a new system configuration and makes it the boot default";
           command = ''
-            nixos-rebuild switch --flake .#
+            nh os switch .
           '';
         }
       ];
