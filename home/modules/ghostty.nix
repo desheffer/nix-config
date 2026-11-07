@@ -5,8 +5,6 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.ghostty;
 
@@ -20,14 +18,14 @@ let
 in
 {
   options.modules.ghostty = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Ghostty terminal emulator.";
       default = config.modules.gui.enable;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
 

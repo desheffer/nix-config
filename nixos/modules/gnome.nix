@@ -5,28 +5,26 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.gnome;
 
 in
 {
   options.modules.gnome = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable GNOME desktop environment.";
       default = false;
     };
 
-    gdmScalingFactor = mkOption {
-      type = types.ints.unsigned;
+    gdmScalingFactor = lib.mkOption {
+      type = lib.types.ints.unsigned;
       description = "Scaling factor for the GDM login screen.";
       default = 1;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     services.xserver = {
       enable = true;
       excludePackages = with pkgs; [ xterm ];

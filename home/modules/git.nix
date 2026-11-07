@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.git;
 
 in
 {
   options.modules.git = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Git.";
       default = true;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       git-absorb
       git-town

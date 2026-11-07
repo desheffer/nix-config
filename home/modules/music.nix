@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.music;
 
 in
 {
   options.modules.music = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable music applications.";
       default = config.modules.gui.enable;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       spotify
       pear-desktop

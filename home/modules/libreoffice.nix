@@ -5,20 +5,18 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.libreoffice;
 
 in
 {
   options.modules.libreoffice = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable LibreOffice.";
       default = config.modules.gui.enable;
     };
   };
 
-  config = mkIf cfg.enable { home.packages = with pkgs; [ libreoffice ]; };
+  config = lib.mkIf cfg.enable { home.packages = with pkgs; [ libreoffice ]; };
 }

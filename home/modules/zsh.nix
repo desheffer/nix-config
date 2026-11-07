@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.zsh;
 
 in
 {
   options.modules.zsh = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Z shell (Zsh).";
       default = true;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.shellAliases = {
       cat = "bat --style=plain";
 
@@ -181,7 +179,7 @@ in
       enableBashIntegration = false;
 
       settings = {
-        format = concatStrings [
+        format = lib.concatStrings [
           "$username"
           "$hostname"
           "$directory"

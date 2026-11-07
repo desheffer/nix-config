@@ -5,10 +5,8 @@
   ...
 }:
 
-with lib;
-
 {
-  home.stateVersion = mkForce "21.11";
+  home.stateVersion = lib.mkForce "21.11";
 
   imports = [
     ./ai.nix

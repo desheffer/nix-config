@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.neovim;
 
 in
 {
   options.modules.neovim = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Neovim.";
       default = true;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.neovim-config = {
       enable = true;
 

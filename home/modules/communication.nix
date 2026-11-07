@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.communication;
 
 in
 {
   options.modules.communication = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable communication tools.";
       default = config.modules.gui.enable;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.discord = {
       enable = true;
       settings.SKIP_HOST_UPDATE = true;

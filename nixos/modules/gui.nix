@@ -5,16 +5,14 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.gui;
 
 in
 {
   options.modules.gui = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable extra GUI applications.";
       default = config.modules.gnome.enable;
     };

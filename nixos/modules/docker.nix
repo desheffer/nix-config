@@ -5,28 +5,26 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.docker;
 
 in
 {
   options.modules.docker = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable Docker.";
       default = false;
     };
 
-    enableNvidia = mkOption {
-      type = types.bool;
+    enableNvidia = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable nvidia-container-toolkit.";
       default = config.modules.nvidia.enable;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     virtualisation.docker = {
       enable = true;
 

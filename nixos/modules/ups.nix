@@ -5,33 +5,31 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.ups;
 
 in
 {
   options.modules.ups = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable support for an Uninterruptible Power Supply.";
       default = false;
     };
 
-    driver = mkOption {
-      type = types.str;
+    driver = lib.mkOption {
+      type = lib.types.str;
       description = "Specify the program to run to talk to the UPS.";
       default = "usbhid-ups";
     };
 
-    password = mkOption {
-      type = types.str;
+    password = lib.mkOption {
+      type = lib.types.str;
       description = "The user's (clear text) password";
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     power.ups = {
       enable = true;
 

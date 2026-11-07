@@ -4,16 +4,14 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.disko;
 
 in
 {
   options.modules.disko = {
-    device = mkOption {
-      type = types.str;
+    device = lib.mkOption {
+      type = lib.types.str;
       description = "Target disk for the disko partition scheme.";
     };
   };

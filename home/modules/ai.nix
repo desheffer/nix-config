@@ -5,8 +5,6 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.ai;
 
@@ -92,14 +90,14 @@ let
 in
 {
   options.modules.ai = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable AI tools.";
       default = false;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = [
       pkgs.difit
       difit-cli
@@ -243,13 +241,13 @@ in
 
     home.file."${config.home.homeDirectory}/.claude/settings.json".enable = false;
 
-    home.activation.claudeSettings = hm.dag.entryAfter [ "linkGeneration" ] ''
+    home.activation.claudeSettings = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       run install -Dm444 \
         ${config.home.file."${config.home.homeDirectory}/.claude/settings.json".source} \
         ${config.home.homeDirectory}/.claude/settings.json
     '';
 
-    home.activation.claudeDiffSidebar = hm.dag.entryAfter [ "writeBoundary" ] ''
+    home.activation.claudeDiffSidebar = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       claudeJson=${config.home.homeDirectory}/.claude.json
       if [ -f "$claudeJson" ]; then
         tmp=$(mktemp)

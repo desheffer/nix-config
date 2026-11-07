@@ -5,20 +5,18 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.secrets;
 
 in
 {
   options.modules.secrets = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable secrets.";
       default = false;
     };
   };
 
-  config = mkIf cfg.enable { secrets.enable = true; };
+  config = lib.mkIf cfg.enable { secrets.enable = true; };
 }

@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.gnome;
 
 in
 {
   options.modules.gnome = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to enable GNOME with most GUI applications.";
       default = false;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     dconf.settings = {
       "ca/desrt/dconf-editor" = {
         show-warning = false;
@@ -46,8 +44,8 @@ in
       };
 
       "org/gnome/desktop/peripherals/keyboard" = {
-        delay = hm.gvariant.mkUint32 250;
-        repeat-interval = hm.gvariant.mkUint32 30;
+        delay = lib.hm.gvariant.mkUint32 250;
+        repeat-interval = lib.hm.gvariant.mkUint32 30;
       };
 
       "org/gnome/desktop/peripherals/touchpad" = {
@@ -57,7 +55,7 @@ in
       };
 
       "org/gnome/desktop/privacy" = {
-        old-files-age = hm.gvariant.mkUint32 7;
+        old-files-age = lib.hm.gvariant.mkUint32 7;
         remember-recent-files = false;
         remove-old-temp-files = true;
         remove-old-trash-files = true;
@@ -68,7 +66,7 @@ in
       };
 
       "org/gnome/desktop/session" = {
-        idle-delay = hm.gvariant.mkUint32 3600;
+        idle-delay = lib.hm.gvariant.mkUint32 3600;
       };
 
       "org/gnome/desktop/sound" = {
@@ -83,7 +81,7 @@ in
 
       "org/gnome/settings-daemon/plugins/color" = {
         night-light-enabled = true;
-        night-light-temperature = hm.gvariant.mkUint32 3000;
+        night-light-temperature = lib.hm.gvariant.mkUint32 3000;
       };
 
       "org/gnome/settings-daemon/plugins/housekeeping" = {

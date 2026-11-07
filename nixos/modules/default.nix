@@ -5,10 +5,8 @@
   ...
 }:
 
-with lib;
-
 {
-  system.stateVersion = mkForce "21.11";
+  system.stateVersion = lib.mkForce "21.11";
 
   imports = [
     ./boot.nix

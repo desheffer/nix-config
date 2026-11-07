@@ -5,22 +5,20 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.fonts;
 
 in
 {
   options.modules.fonts = {
-    enable = mkOption {
-      type = types.bool;
+    enable = lib.mkOption {
+      type = lib.types.bool;
       description = "Whether to install fonts.";
       default = config.modules.gui.enable;
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     fonts.packages = with pkgs; [
       nerd-fonts.jetbrains-mono
       noto-fonts

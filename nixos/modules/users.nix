@@ -6,8 +6,6 @@
   ...
 }:
 
-with lib;
-
 let
   cfg = config.modules.users;
   passwords = flakeInputs.secrets.nixosModules.passwords;
