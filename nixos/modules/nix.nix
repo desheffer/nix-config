@@ -23,7 +23,6 @@ in
         download-buffer-size = 500000000;
       };
 
-      registry.nixpkgs.flake = flakeInputs.nixpkgs;
       registry.nixpkgs-unstable.flake = flakeInputs.nixpkgs-unstable;
     };
 
