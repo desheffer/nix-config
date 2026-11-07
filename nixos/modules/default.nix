@@ -11,6 +11,7 @@
   imports = [
     ./boot.nix
     ./cad.nix
+    ./chrome.nix
     ./cli.nix
     ./disko.nix
     ./docker.nix
