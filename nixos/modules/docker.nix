@@ -44,5 +44,7 @@ in
       80
       443
     ];
+
+    networking.firewall.interfaces."br-+".allowedTCPPorts = [ 8443 ];
   };
 }
